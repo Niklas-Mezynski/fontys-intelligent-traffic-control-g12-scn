@@ -1,0 +1,2 @@
+module assembler_module {
+}
