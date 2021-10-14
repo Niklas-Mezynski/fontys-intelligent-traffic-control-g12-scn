@@ -43,7 +43,7 @@ public class ExampleTest {
     //
      @Test
      public void testTrue() {
-     assertThat(1).isEqualTo(1);
+     assertThat(1).isEqualTo(2);
      }
 
 //    @Test
