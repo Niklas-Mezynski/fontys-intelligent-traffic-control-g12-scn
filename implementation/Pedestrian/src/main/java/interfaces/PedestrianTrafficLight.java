@@ -14,4 +14,10 @@ public interface PedestrianTrafficLight {
     void pushButton();
 
     State getCurrentState();
+
+    Shape getShape();
+
+    void setShape(Shape shape);
+
+    void printCurrentLight();
 }

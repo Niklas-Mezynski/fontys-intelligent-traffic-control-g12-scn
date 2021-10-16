@@ -18,7 +18,7 @@ public class GreenBlinkingLightState extends State{
     
     @Override
     public void requestStateChange() {
-        System.out.println("green light is blinking until the timer expires");
+        System.out.println(this.name + " until the timer expires");
         changeState();
     }
 }

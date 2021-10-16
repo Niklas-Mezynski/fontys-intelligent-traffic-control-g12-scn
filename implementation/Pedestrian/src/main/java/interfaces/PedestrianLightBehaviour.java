@@ -18,4 +18,8 @@ public interface PedestrianLightBehaviour {
     boolean buttonIsPushed();
     
     void setButtonPushed(boolean bool);
+
+    Shape getShape();
+
+    void printCurrentLight();
 }

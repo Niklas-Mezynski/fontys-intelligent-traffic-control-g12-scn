@@ -2,6 +2,8 @@ package lightbehaviours;
 
 import interfaces.PedestrianLightBehaviour;
 import interfaces.PedestrianTrafficLight;
+import interfaces.Shape;
+import shapes.DotShape;
 import states.GreenBlinkingLightState;
 import states.GreenLightState;
 import states.RedLightButtonPushedState;
@@ -58,5 +60,15 @@ public class ExtendedPedestrianLightBehaviour implements PedestrianLightBehaviou
     @Override
     public void setButtonPushed(boolean bool) {
         this.buttonPushed = bool;
+    }
+
+    @Override
+    public Shape getShape() {
+        return this.trafficLight.getShape();
+    }
+
+    @Override
+    public void printCurrentLight() {
+        this.currentState.printLight();
     }
 }

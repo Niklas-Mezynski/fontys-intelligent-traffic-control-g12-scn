@@ -6,19 +6,19 @@ import interfaces.PedestrianLightBehaviour;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class GreenLightState extends State{
+public class YellowLightState extends State{
 
-    public GreenLightState(PedestrianLightBehaviour light, State next, String name){
+    public YellowLightState(PedestrianLightBehaviour light, State next, String name){
         super(light, next, name);
     }
-    
-    public GreenLightState(PedestrianLightBehaviour light, String name){
+
+    public YellowLightState(PedestrianLightBehaviour light, String name){
         super(light, name);
     }
     
     @Override
     public void requestStateChange() {
-        System.out.println(this.name + " until timer expires");
+        System.out.println(this.name + " until the timer expires");
         changeState();
     }
 }

@@ -3,4 +3,5 @@ module pedestrian_module {
     exports lightbehaviours;
     exports states;
     exports trafficlights;
+    exports shapes;
 }

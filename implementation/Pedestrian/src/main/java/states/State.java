@@ -31,9 +31,13 @@ public abstract class State{
     public String getName() {
         return this.name;
     }
+
+    public void printLight() {
+        System.out.println("current light: " + this.name + " in " + this.lightBehaviour.getShape());
+    }
     
     public void printTransition(){
-        System.out.println("from " + getName() + " to " + nextState.getName());
+        System.out.println("from " + this.name + " to " + nextState + " (" + this.lightBehaviour.getShape() + ")");
     }
     
     public void changeState() {
@@ -44,6 +48,11 @@ public abstract class State{
     
     public void setNextState(State state){
         this.nextState = state;
+    }
+
+    @Override
+    public String toString(){
+        return getName();
     }
     
 }
