@@ -21,6 +21,7 @@
     </build>
     <modules>
         <module>Assembler</module>
+        <module>Pedestrian</module>
     </modules>
     <name>TrafficControlSystem</name>
     <dependencyManagement>
