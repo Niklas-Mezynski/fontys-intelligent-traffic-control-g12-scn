@@ -3,17 +3,18 @@ package states;
 import interfaces.PedestrianLightBehaviour;
 
 /**
+ * Red light state
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class RedLightState extends State{
 
-    public RedLightState(PedestrianLightBehaviour light, State next, String name){
-        super(light, next, name);
+    public RedLightState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+        super(light, next, name, canPass, length);
     }
     
-    public RedLightState(PedestrianLightBehaviour light, String name){
-        super(light, name);
+    public RedLightState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+        super(light, name, canPass, length);
     }
     
     @Override

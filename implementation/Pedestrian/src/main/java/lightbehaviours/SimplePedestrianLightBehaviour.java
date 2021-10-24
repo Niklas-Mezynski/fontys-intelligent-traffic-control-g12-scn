@@ -9,7 +9,7 @@ import states.RedLightButtonPushedState;
 import states.RedLightState;
 import states.State;
 
-/**
+/** SimplePedestrianLightBehaviour implementation of PedestrianLightBehaviour
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
@@ -17,9 +17,9 @@ public class SimplePedestrianLightBehaviour implements PedestrianLightBehaviour{
     private final PedestrianTrafficLight trafficLight;
     private boolean buttonPushed = false;
     
-    State RED_LIGHT = new RedLightState(this, "red light");
-    State GREEN_LIGHT = new GreenLightState(this, RED_LIGHT, "green light");
-    State RED_LIGHT_BUTTON_PUSHED = new RedLightButtonPushedState(this, GREEN_LIGHT, "red light with button pushed");
+    State RED_LIGHT = new RedLightState(this, "red light", false, 2);
+    State GREEN_LIGHT = new GreenLightState(this, RED_LIGHT, "green light", true, 2);
+    State RED_LIGHT_BUTTON_PUSHED = new RedLightButtonPushedState(this, GREEN_LIGHT, "red light with button pushed", false, 1);
     
     State currentState;
     
