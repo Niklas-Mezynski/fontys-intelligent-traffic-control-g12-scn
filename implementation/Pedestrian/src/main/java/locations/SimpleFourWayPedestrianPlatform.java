@@ -40,8 +40,6 @@ public class SimpleFourWayPedestrianPlatform implements FourWayPlatform {
                     pedestrians.get(west.getName()).add(p);
                 }
                 else if(p.getDestination().getXCoordinate() > xCoordinate){
-                    Platform idke = east;
-                    var idk = pedestrians.get(east.getName());
                     pedestrians.get(east.getName()).add(p);
                 }
                 else if(p.getDestination().getYCoordinate() < yCoordinate){
