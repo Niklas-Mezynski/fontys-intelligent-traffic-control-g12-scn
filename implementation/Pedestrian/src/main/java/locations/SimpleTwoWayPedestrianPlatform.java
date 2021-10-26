@@ -1,8 +1,8 @@
 package locations;
 
 import interfaces.Pedestrian;
-import interfaces.Platform;
-import interfaces.TwoWayPlatform;
+import interfaces.PedestrianPlatform;
+import interfaces.TwoWayPedestrianPlatform;
 
 import java.util.*;
 
@@ -10,55 +10,30 @@ import java.util.*;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class SimpleTwoWayPedestrianPlatform implements TwoWayPlatform {
-    private final String name;
+public class SimpleTwoWayPedestrianPlatform extends SimplePedestrianPlatform implements TwoWayPedestrianPlatform {
     private HashMap<String, LinkedList<Pedestrian>> pedestrians;
-    private Platform horizontal, vertical;
-    private final int xCoordinate;
-    private final int yCoordinate;
+    private PedestrianPlatform horizontal, vertical;
 
     public SimpleTwoWayPedestrianPlatform(String name, int x, int y){
-        this.name = name;
+        super(name, x, y);
         pedestrians = new HashMap<>();
-        xCoordinate = x;
-        yCoordinate = y;
-    }
-
-    @Override
-    public String getName() {
-        return name;
     }
 
     @Override
     public void addPedestrian(Pedestrian p){
         if(p != null){
             if(!this.equals(p.getDestination())){
-                if(p.getDestination().getXCoordinate() != xCoordinate && horizontal != null){
+                if(p.getDestination().getXCoordinate() != super.getXCoordinate() && horizontal != null){
                     pedestrians.get(horizontal.getName()).add(p);
                 }
-                else if(p.getDestination().getYCoordinate() != yCoordinate && vertical != null){
+                else if(p.getDestination().getYCoordinate() != super.getYCoordinate() && vertical != null){
                     pedestrians.get(vertical.getName()).add(p);
                 }
             }
             else {
-                System.out.println(p.getName() + " has arrived at final destination " + name);
+                System.out.println(p.getName() + " has arrived at final destination " + super.getName());
             }
         }
-    }
-
-    @Override
-    public void addPedestrians(List<Pedestrian> p) {
-            p.forEach(this::addPedestrian);
-    }
-
-    @Override
-    public int getXCoordinate() {
-        return xCoordinate;
-    }
-
-    @Override
-    public int getYCoordinate() {
-        return yCoordinate;
     }
 
     /**
@@ -70,17 +45,17 @@ public class SimpleTwoWayPedestrianPlatform implements TwoWayPlatform {
     public void movePedestrians(int number, String nextName){
         var optionalPlatform = getPlatformByName(nextName);
         if(optionalPlatform.isPresent()){
-            Platform nextPlatform = optionalPlatform.get();
+            PedestrianPlatform nextPlatform = optionalPlatform.get();
             var currentPedestrians = pedestrians.get(nextName);
 
             if(currentPedestrians.isEmpty()){
-                System.out.println("No pedestrians waiting at platform " + name + " to go to platform " + nextName);
+                System.out.println("No pedestrians waiting at platform " + super.getName() + " to go to platform " + nextName);
             }
             else{
                 for(int i=0; i<number; i++ ){
                     var firstPedestrian = currentPedestrians.pollFirst();
                     if(firstPedestrian != null){
-                        System.out.println(firstPedestrian.getName() + " is " + firstPedestrian.getAction() + " from " + name + " to " + nextName);
+                        System.out.println(firstPedestrian.getName() + " is " + firstPedestrian.getAction() + " from " + super.getName() + " to " + nextName);
                         nextPlatform.addPedestrian(firstPedestrian);
                     }
                 }
@@ -98,23 +73,10 @@ public class SimpleTwoWayPedestrianPlatform implements TwoWayPlatform {
      * @param name of next platform
      * @return next platform
      */
-    private Optional<Platform> getPlatformByName(String name) {
+    private Optional<PedestrianPlatform> getPlatformByName(String name) {
         if(name.equals(horizontal.getName())) return Optional.of(horizontal);
         if(name.equals(vertical.getName())) return Optional.of(vertical);
         return Optional.empty();
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SimpleTwoWayPedestrianPlatform that = (SimpleTwoWayPedestrianPlatform) o;
-        return name.equals(that.name) && xCoordinate == that.getXCoordinate() && yCoordinate == that.getYCoordinate();
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, xCoordinate, yCoordinate);
     }
 
     @Override
@@ -125,23 +87,23 @@ public class SimpleTwoWayPedestrianPlatform implements TwoWayPlatform {
     }
 
     @Override
-    public Platform getHorizontalPlatform() {
+    public PedestrianPlatform getHorizontalPlatform() {
         return horizontal;
     }
 
     @Override
-    public void setHorizontalPlatform(Platform other) {
+    public void setHorizontalPlatform(PedestrianPlatform other) {
         this.horizontal = other;
         pedestrians.put(horizontal.getName(), new LinkedList<>());
     }
 
     @Override
-    public Platform getVerticalPlatform() {
+    public PedestrianPlatform getVerticalPlatform() {
         return vertical;
     }
 
     @Override
-    public void setVerticalPlatform(Platform other) {
+    public void setVerticalPlatform(PedestrianPlatform other) {
         this.vertical = other;
         pedestrians.put(vertical.getName(), new LinkedList<>());
     }

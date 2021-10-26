@@ -23,10 +23,10 @@ public class Main {
 
         trafLightFac.createSimpleStreetTrafficLight().activate();
 
-        TwoWayPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
-        TwoWayPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
-        TwoWayPlatform p01 = platFac.createTwoWayPlatform("p01", 0, 1);
-        TwoWayPlatform p11 = platFac.createTwoWayPlatform("p11", 1, 1);
+        TwoWayPedestrianPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
+        TwoWayPedestrianPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
+        TwoWayPedestrianPlatform p01 = platFac.createTwoWayPlatform("p01", 0, 1);
+        TwoWayPedestrianPlatform p11 = platFac.createTwoWayPlatform("p11", 1, 1);
 
         p00.setHorizontalPlatform(p10);
         p10.setHorizontalPlatform(p00);

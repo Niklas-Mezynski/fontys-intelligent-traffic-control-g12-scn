@@ -1,7 +1,7 @@
 package pedestrians;
 
 import interfaces.Pedestrian;
-import interfaces.Platform;
+import interfaces.PedestrianPlatform;
 
 /**
  * Abstract base class for Pedestrian objects.
@@ -10,7 +10,7 @@ import interfaces.Platform;
  */
 public abstract class SimplePedestrian implements Pedestrian {
     private final String name;
-    private Platform destination;
+    private PedestrianPlatform destination;
 
     /**
      * Constructor for pedestrian
@@ -18,7 +18,7 @@ public abstract class SimplePedestrian implements Pedestrian {
      * @param name of the pedestrian
      * @param destination platform of the pedestrian
      */
-    public SimplePedestrian(String name, Platform destination){
+    public SimplePedestrian(String name, PedestrianPlatform destination){
         this.name = name;
         this.destination = destination;
     }
@@ -39,7 +39,7 @@ public abstract class SimplePedestrian implements Pedestrian {
      * @return destination platform of the pedestrian
      */
     @Override
-    public Platform getDestination() {
+    public PedestrianPlatform getDestination() {
         return destination;
     }
 
@@ -49,7 +49,7 @@ public abstract class SimplePedestrian implements Pedestrian {
      * @param destination platform of the pedestrian
      */
     @Override
-    public void setDestination(Platform destination) {
+    public void setDestination(PedestrianPlatform destination) {
         this.destination = destination;
     }
 

@@ -1,6 +1,6 @@
 package pedestrians;
 
-import interfaces.Platform;
+import interfaces.PedestrianPlatform;
 
 /**
  * Pedestrian object of type Jogger.
@@ -8,7 +8,7 @@ import interfaces.Platform;
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class Jogger extends SimplePedestrian {
-    public Jogger(String name, Platform destination){
+    public Jogger(String name, PedestrianPlatform destination){
         super( name, destination);
     }
 

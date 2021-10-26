@@ -2,7 +2,7 @@ package factories;
 
 import interfaces.Pedestrian;
 import interfaces.PedestrianFactory;
-import interfaces.Platform;
+import interfaces.PedestrianPlatform;
 import pedestrians.Jogger;
 import pedestrians.Skateboarder;
 import pedestrians.Walker;
@@ -15,17 +15,17 @@ import pedestrians.Walker;
 public class SimplePedestrianFactory implements PedestrianFactory {
 
     @Override
-    public Pedestrian createWalker(String name, Platform destination) {
+    public Pedestrian createWalker(String name, PedestrianPlatform destination) {
         return new Walker(name, destination);
     }
 
     @Override
-    public Pedestrian createJogger(String name, Platform destination) {
+    public Pedestrian createJogger(String name, PedestrianPlatform destination) {
         return new Jogger(name, destination);
     }
 
     @Override
-    public Pedestrian createSkateboarder(String name, Platform destination) {
+    public Pedestrian createSkateboarder(String name, PedestrianPlatform destination) {
         return new Skateboarder(name, destination);
     }
 }

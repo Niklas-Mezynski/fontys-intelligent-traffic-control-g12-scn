@@ -1,6 +1,6 @@
 package pedestrians;
 
-import interfaces.Platform;
+import interfaces.PedestrianPlatform;
 
 /**
  * Pedestrian object of type Walker.
@@ -8,7 +8,7 @@ import interfaces.Platform;
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class Walker extends SimplePedestrian {
-    public Walker(String name, Platform destination){
+    public Walker(String name, PedestrianPlatform destination){
         super( name, destination);
     }
 

@@ -18,14 +18,14 @@ public interface Pedestrian {
      *
      * @return destination platform of pedestrian
      */
-    Platform getDestination();
+    PedestrianPlatform getDestination();
 
     /**
      * Setter for destination platform of Pedestrian
      *
      * @param destination platform of pedestrian
      */
-    void setDestination(Platform destination);
+    void setDestination(PedestrianPlatform destination);
 
     /**
      * Returns action performed by Pedestrian

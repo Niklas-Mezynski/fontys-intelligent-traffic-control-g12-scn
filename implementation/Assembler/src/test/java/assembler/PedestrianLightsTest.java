@@ -179,8 +179,8 @@ public class PedestrianLightsTest {
     public void testPairPlatforms() {
         SoftAssertions softly = new SoftAssertions();
 
-        PairPlatform a = platFac.createPairPlatform("a", 0, 0);
-        PairPlatform b = platFac.createPairPlatform("b", 1 , 0);
+        PairPedestrianPlatform a = platFac.createPairPlatform("a", 0, 0);
+        PairPedestrianPlatform b = platFac.createPairPlatform("b", 1 , 0);
         a.setPairPlatform(b);
         b.setPairPlatform(a);
 
@@ -227,10 +227,10 @@ public class PedestrianLightsTest {
     public void testTwoWayPlatforms() {
         SoftAssertions softly = new SoftAssertions();
 
-        TwoWayPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
-        TwoWayPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
-        TwoWayPlatform p01 = platFac.createTwoWayPlatform("p01", 0, 1);
-        TwoWayPlatform p11 = platFac.createTwoWayPlatform("p11", 1, 1);
+        TwoWayPedestrianPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
+        TwoWayPedestrianPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
+        TwoWayPedestrianPlatform p01 = platFac.createTwoWayPlatform("p01", 0, 1);
+        TwoWayPedestrianPlatform p11 = platFac.createTwoWayPlatform("p11", 1, 1);
 
         p00.setHorizontalPlatform(p10);
         p10.setHorizontalPlatform(p00);
@@ -323,11 +323,11 @@ public class PedestrianLightsTest {
     public void testFourWayPlatforms() {
         SoftAssertions softly = new SoftAssertions();
 
-        PairPlatform a = platFac.createPairPlatform("a", 0, 1);
-        FourWayPlatform b = platFac.createFourWayPlatform("b", 1, 1);
-        PairPlatform c = platFac.createPairPlatform("c", 2, 1);
-        PairPlatform d = platFac.createPairPlatform("d", 1, 0);
-        PairPlatform e = platFac.createPairPlatform("e", 1, 2);
+        PairPedestrianPlatform a = platFac.createPairPlatform("a", 0, 1);
+        FourWayPedestrianPlatform b = platFac.createFourWayPlatform("b", 1, 1);
+        PairPedestrianPlatform c = platFac.createPairPlatform("c", 2, 1);
+        PairPedestrianPlatform d = platFac.createPairPlatform("d", 1, 0);
+        PairPedestrianPlatform e = platFac.createPairPlatform("e", 1, 2);
 
         b.setWestPlatform(a);
         a.setPairPlatform(b);

@@ -81,7 +81,7 @@ public abstract class State{
      * Changes state from current to next
      */
     public void changeState() {
-        this.lightBehaviour.getTrafficLight().inform(name);
+        this.lightBehaviour.getTrafficLight().inform();
         this.printTransition();
         this.lightBehaviour.setCurrentState(nextState);
         this.lightBehaviour.getCurrentState().requestStateChange();

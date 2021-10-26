@@ -1,6 +1,6 @@
 package pedestrians;
 
-import interfaces.Platform;
+import interfaces.PedestrianPlatform;
 
 /**
  * Pedestrian object of type Skateboarder.
@@ -8,7 +8,7 @@ import interfaces.Platform;
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class Skateboarder extends SimplePedestrian {
-    public Skateboarder(String name, Platform destination){
+    public Skateboarder(String name, PedestrianPlatform destination){
         super( name, destination);
     }
 

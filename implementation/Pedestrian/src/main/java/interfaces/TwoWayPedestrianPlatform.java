@@ -7,32 +7,32 @@ package interfaces;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public interface TwoWayPlatform extends Platform{
+public interface TwoWayPedestrianPlatform extends PedestrianPlatform {
     /**
      * Getter for Horizontal pair platform
      *
      * @return Horizontal pair platform
      */
-    Platform getHorizontalPlatform();
+    PedestrianPlatform getHorizontalPlatform();
 
     /**
      * Setter for Horizontal pair platform
      *
      * @param other pair platform
      */
-    void setHorizontalPlatform(Platform other);
+    void setHorizontalPlatform(PedestrianPlatform other);
 
     /**
      * Getter for Vertical pair platform
      *
      * @return Vertical pair platform
      */
-    Platform getVerticalPlatform();
+    PedestrianPlatform getVerticalPlatform();
 
     /**
      * Setter for Vertical pair platform
      *
      * @param other pair platform
      */
-    void setVerticalPlatform(Platform other);
+    void setVerticalPlatform(PedestrianPlatform other);
 }

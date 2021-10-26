@@ -6,20 +6,20 @@ package interfaces;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public interface PairPlatform extends Platform{
+public interface PairPedestrianPlatform extends PedestrianPlatform {
     /**
      * Getter for pair platform
      *
      * @return pair platform
      */
-    Platform getPairPlatform();
+    PedestrianPlatform getPairPlatform();
 
     /**
      * Setter for pair platform
      *
      * @param other platform to be paired with
      */
-    void setPairPlatform(Platform other);
+    void setPairPlatform(PedestrianPlatform other);
 
     /**
      * Returns first pedestrian in the queue

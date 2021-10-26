@@ -91,7 +91,7 @@ public abstract class BaseTrafficLight implements TrafficLight {
     }
 
     @Override
-    public void inform(String light) {
+    public void inform() {
         var state = getCurrentState();
         observers.forEach(s -> s.update(state.isPassAllowed(), state.getLength(), getNameOfPairObserver(s)));
     }

@@ -8,7 +8,7 @@ import java.util.List;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public interface Platform extends Observer{
+public interface PedestrianPlatform extends Observer{
     /**
      * Adds Pedestrian to Platform
      *

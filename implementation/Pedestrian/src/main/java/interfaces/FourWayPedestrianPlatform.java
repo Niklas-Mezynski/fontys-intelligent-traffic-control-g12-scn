@@ -6,60 +6,60 @@ package interfaces;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public interface FourWayPlatform extends Platform{
+public interface FourWayPedestrianPlatform extends PedestrianPlatform {
     /**
      * Getter for east pair platform
      *
      * @return east pair platform
      */
-    Platform getEastPlatform();
+    PedestrianPlatform getEastPlatform();
 
     /**
      * Setter for east pair platform
      *
      * @param other pair platform
      */
-    void setEastPlatform(Platform other);
+    void setEastPlatform(PedestrianPlatform other);
 
     /**
      * Getter for west pair platform
      *
      * @return west pair platform
      */
-    Platform getWestPlatform();
+    PedestrianPlatform getWestPlatform();
 
     /**
      * Setter for west pair platform
      *
      * @param other pair platform
      */
-    void setWestPlatform(Platform other);
+    void setWestPlatform(PedestrianPlatform other);
 
     /**
      * Getter for south pair platform
      *
      * @return south pair platform
      */
-    Platform getSouthPlatform();
+    PedestrianPlatform getSouthPlatform();
 
     /**
      * Setter for south pair platform
      *
      * @param other pair platform
      */
-    void setSouthPlatform(Platform other);
+    void setSouthPlatform(PedestrianPlatform other);
 
     /**
      * Getter for north pair platform
      *
      * @return north pair platform
      */
-    Platform getNorthPlatform();
+    PedestrianPlatform getNorthPlatform();
 
     /**
      * Setter for north pair platform
      *
      * @param other pair platform
      */
-    void setNorthPlatform(Platform other);
+    void setNorthPlatform(PedestrianPlatform other);
 }

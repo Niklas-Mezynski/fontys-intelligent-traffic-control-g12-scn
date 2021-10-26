@@ -13,7 +13,7 @@ public interface PedestrianFactory {
      * @param destination of pedestrian
      * @return new Walker instance
      */
-    Pedestrian createWalker(String name, Platform destination);
+    Pedestrian createWalker(String name, PedestrianPlatform destination);
 
     /**
      * Creates Pedestrian of type Jogger
@@ -22,7 +22,7 @@ public interface PedestrianFactory {
      * @param destination of pedestrian
      * @return new Jogger instance
      */
-    Pedestrian createJogger(String name, Platform destination);
+    Pedestrian createJogger(String name, PedestrianPlatform destination);
 
     /**
      * Creates Pedestrian of type Skateboarder
@@ -31,5 +31,5 @@ public interface PedestrianFactory {
      * @param destination of pedestrian
      * @return new Skateboarder instance
      */
-    Pedestrian createSkateboarder(String name, Platform destination);
+    Pedestrian createSkateboarder(String name, PedestrianPlatform destination);
 }

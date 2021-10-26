@@ -1,43 +1,31 @@
 package locations;
 
+import interfaces.PairPedestrianPlatform;
 import interfaces.Pedestrian;
-import interfaces.PairPlatform;
-import interfaces.Platform;
+import interfaces.PedestrianPlatform;
 
 import java.util.LinkedList;
-import java.util.List;
-import java.util.Objects;
 
 /** Implementation of PairPlatform
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class SimplePairPedestrianPlatform implements PairPlatform {
-    private final String name;
+public class SimplePairPedestrianPlatform extends SimplePedestrianPlatform implements PairPedestrianPlatform {
     private LinkedList<Pedestrian> pedestrians;
-    private Platform pairPedestrianPlatform;
-    private final int xCoordinate;
-    private final int yCoordinate;
+    private PedestrianPlatform pairPedestrianPlatform;
 
     public SimplePairPedestrianPlatform(String name, int x, int y){
-        this.name = name;
+        super(name, x, y);
         pedestrians = new LinkedList<>();
-        this.xCoordinate = x;
-        this.yCoordinate = y;
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public Platform getPairPlatform() {
+    public PedestrianPlatform getPairPlatform() {
         return pairPedestrianPlatform;
     }
 
     @Override
-    public void setPairPlatform(Platform other) {
+    public void setPairPlatform(PedestrianPlatform other) {
         this.pairPedestrianPlatform = other;
     }
 
@@ -48,29 +36,14 @@ public class SimplePairPedestrianPlatform implements PairPlatform {
                 pedestrians.add(p);
             }
             else {
-                System.out.println(p.getName() + " has arrived at final destination " + name);
+                System.out.println(p.getName() + " has arrived at final destination " + super.getName());
             }
         }
     }
 
     @Override
-    public void addPedestrians(List<Pedestrian> p) {
-            p.forEach(this::addPedestrian);
-    }
-
-    @Override
     public Pedestrian getFirstInQueue(){
         return pedestrians.pollFirst();
-    }
-
-    @Override
-    public int getXCoordinate() {
-        return xCoordinate;
-    }
-
-    @Override
-    public int getYCoordinate() {
-        return yCoordinate;
     }
 
     /**
@@ -80,30 +53,17 @@ public class SimplePairPedestrianPlatform implements PairPlatform {
      */
     public void movePedestrians(int number){
         if(pedestrians.isEmpty()) {
-            System.out.println("No pedestrians waiting at platform " + name + " to go to platform " + pairPedestrianPlatform.getName());
+            System.out.println("No pedestrians waiting at platform " + super.getName() + " to go to platform " + pairPedestrianPlatform.getName());
         }
         else{
             for(int i=0; i<number; i++ ){
                 var firstPedestrian = getFirstInQueue();
                 if(firstPedestrian != null){
-                    System.out.println(firstPedestrian.getName() + " is " + firstPedestrian.getAction() + " from " + name + " to " + pairPedestrianPlatform.getName());
+                    System.out.println(firstPedestrian.getName() + " is " + firstPedestrian.getAction() + " from " + super.getName() + " to " + pairPedestrianPlatform.getName());
                     pairPedestrianPlatform.addPedestrian(firstPedestrian);
                 }
             }
         }
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        SimplePairPedestrianPlatform that = (SimplePairPedestrianPlatform) o;
-        return name.equals(that.name);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(name, pedestrians, pairPedestrianPlatform);
     }
 
     @Override

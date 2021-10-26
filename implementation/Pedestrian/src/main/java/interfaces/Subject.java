@@ -24,7 +24,6 @@ public interface Subject {
     /**
      * Informs observers for state change
      *
-     * @param light name of the new light signal
      */
-    void inform(String light);
+    void inform();
 }

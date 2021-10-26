@@ -14,7 +14,7 @@ public interface PedestrianPlatformFactory {
      * @param y coordinate of the platform
      * @return new PairPlatform instance
      */
-    PairPlatform createPairPlatform(String name, int x, int y);
+    PairPedestrianPlatform createPairPlatform(String name, int x, int y);
 
     /**
      * Creates Platform of type FourWayPlatform
@@ -24,7 +24,7 @@ public interface PedestrianPlatformFactory {
      * @param y coordinate of the platform
      * @return new FourWayPlatform instance
      */
-    FourWayPlatform createFourWayPlatform(String name, int x, int y);
+    FourWayPedestrianPlatform createFourWayPlatform(String name, int x, int y);
 
     /**
      * Creates Platform of type TwoWayPlatform
@@ -34,5 +34,5 @@ public interface PedestrianPlatformFactory {
      * @param y coordinate of the platform
      * @return new TwoWayPlatform instance
      */
-    TwoWayPlatform createTwoWayPlatform(String name, int x, int y);
+    TwoWayPedestrianPlatform createTwoWayPlatform(String name, int x, int y);
 }
