@@ -21,63 +21,59 @@ public class Main {
         PedestrianTrafficLightFactory trafLightFac = new SimplePedestrianTrafficLightFactory();
         PedestrianLightBehaviourFactory lightBehFac = new SimplePedestrianLightBehaviourFactory();
 
-        PairPlatform a = platFac.createPairPlatform("a", 0, 1);
-        FourWayPlatform b = platFac.createFourWayPlatform("b", 1, 1);
-        PairPlatform c = platFac.createPairPlatform("c", 2, 1);
-        PairPlatform d = platFac.createPairPlatform("d", 1, 0);
-        PairPlatform e = platFac.createPairPlatform("e", 1, 2);
+        TwoWayPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
+        TwoWayPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
+        TwoWayPlatform p01 = platFac.createTwoWayPlatform("p01", 0, 1);
+        TwoWayPlatform p11 = platFac.createTwoWayPlatform("p11", 1, 1);
 
-        b.setWestPlatform(a);
-        a.setPairPlatform(b);
+        p00.setHorizontalPlatform(p10);
+        p10.setHorizontalPlatform(p00);
 
-        b.setEastPlatform(c);
-        c.setPairPlatform(b);
+        p00.setVerticalPlatform(p01);
+        p01.setVerticalPlatform(p00);
 
-        b.setNorthPlatform(d);
-        d.setPairPlatform(b);
+        p01.setHorizontalPlatform(p11);
+        p11.setHorizontalPlatform(p01);
 
-        b.setSouthPlatform(e);
-        e.setPairPlatform(b);
+        p11.setVerticalPlatform(p10);
+        p10.setVerticalPlatform(p11);
 
-        Pedestrian p1 = pedFac.createWalker("w1", c);
-        Pedestrian p2 = pedFac.createSkateboarder("s1", d);
-        Pedestrian p3 = pedFac.createJogger("j1", e);
-        Pedestrian p4 = pedFac.createJogger("j2", a);
+        Pedestrian p1 = pedFac.createWalker("w1", p01);
+        Pedestrian p2 = pedFac.createWalker("w2", p10);
+        Pedestrian p3 = pedFac.createWalker("w3", p11);
+        Pedestrian p4 = pedFac.createWalker("w4", p00);
 
-        a.addPedestrian(p1);
-        a.addPedestrian(p2);
-        a.addPedestrian(p3);
-        c.addPedestrian(p4);
+        p00.addPedestrian(p1);
+        p00.addPedestrian(p2);
+        p00.addPedestrian(p3);
+        p11.addPedestrian(p4);
 
-        PedestrianTrafficLight trafficLightUp = trafLightFac.createPedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightLeft = trafLightFac.createPedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightRight = trafLightFac.createPedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightDown = trafLightFac.createPedestrianTrafficLight();
+        PedestrianTrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
+        PedestrianTrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
+        PedestrianTrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
+        PedestrianTrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
 
-        trafficLightLeft.addObserver(a);
-        trafficLightLeft.addObserver(b);
+        trafficLightLeft.addObserver(p00);
+        trafficLightLeft.addObserver(p01);
 
-        trafficLightRight.addObserver(b);
-        trafficLightRight.addObserver(c);
+        trafficLightRight.addObserver(p10);
+        trafficLightRight.addObserver(p11);
 
-        trafficLightUp.addObserver(b);
-        trafficLightUp.addObserver(d);
+        trafficLightUp.addObserver(p00);
+        trafficLightUp.addObserver(p10);
 
-        trafficLightDown.addObserver(b);
-        trafficLightDown.addObserver(e);
+        trafficLightDown.addObserver(p01);
+        trafficLightDown.addObserver(p11);
 
-        PedestrianLightBehaviour lightBehaviourLeft = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightLeft);
-        PedestrianLightBehaviour lightBehaviourRight = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightRight);
-        PedestrianLightBehaviour lightBehaviourUp = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightUp);
-        PedestrianLightBehaviour lightBehaviourDown = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightDown);
-
-        trafficLightLeft.setPedestrianLightBehaviour(lightBehaviourLeft);
-        trafficLightRight.setPedestrianLightBehaviour(lightBehaviourRight);
-        trafficLightUp.setPedestrianLightBehaviour(lightBehaviourUp);
-        trafficLightDown.setPedestrianLightBehaviour(lightBehaviourDown);
-
-        System.out.println();
-        trafficLightLeft.pushButton();
+//        PedestrianLightBehaviour lightBehaviourLeft = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightLeft);
+//        PedestrianLightBehaviour lightBehaviourRight = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightRight);
+//        PedestrianLightBehaviour lightBehaviourUp = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightUp);
+//        PedestrianLightBehaviour lightBehaviourDown = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightDown);
+//
+//        trafficLightLeft.setPedestrianLightBehaviour(lightBehaviourLeft);
+//        trafficLightRight.setPedestrianLightBehaviour(lightBehaviourRight);
+//        trafficLightUp.setPedestrianLightBehaviour(lightBehaviourUp);
+//        trafficLightDown.setPedestrianLightBehaviour(lightBehaviourDown);
 
         System.out.println();
         trafficLightLeft.pushButton();
@@ -86,13 +82,86 @@ public class Main {
         trafficLightUp.pushButton();
 
         System.out.println();
-        trafficLightDown.pushButton();
-
-        System.out.println();
         trafficLightRight.pushButton();
 
         System.out.println();
+        trafficLightDown.pushButton();
+
+        System.out.println();
         trafficLightLeft.pushButton();
+
+//        PairPlatform a = platFac.createPairPlatform("a", 0, 1);
+//        FourWayPlatform b = platFac.createFourWayPlatform("b", 1, 1);
+//        PairPlatform c = platFac.createPairPlatform("c", 2, 1);
+//        PairPlatform d = platFac.createPairPlatform("d", 1, 0);
+//        PairPlatform e = platFac.createPairPlatform("e", 1, 2);
+//
+//        b.setWestPlatform(a);
+//        a.setPairPlatform(b);
+//
+//        b.setEastPlatform(c);
+//        c.setPairPlatform(b);
+//
+//        b.setNorthPlatform(d);
+//        d.setPairPlatform(b);
+//
+//        b.setSouthPlatform(e);
+//        e.setPairPlatform(b);
+//
+//        Pedestrian p1 = pedFac.createWalker("w1", c);
+//        Pedestrian p2 = pedFac.createSkateboarder("s1", d);
+//        Pedestrian p3 = pedFac.createJogger("j1", e);
+//        Pedestrian p4 = pedFac.createJogger("j2", a);
+//
+//        a.addPedestrian(p1);
+//        a.addPedestrian(p2);
+//        a.addPedestrian(p3);
+//        c.addPedestrian(p4);
+//
+//        PedestrianTrafficLight trafficLightUp = trafLightFac.createPedestrianTrafficLight();
+//        PedestrianTrafficLight trafficLightLeft = trafLightFac.createPedestrianTrafficLight();
+//        PedestrianTrafficLight trafficLightRight = trafLightFac.createPedestrianTrafficLight();
+//        PedestrianTrafficLight trafficLightDown = trafLightFac.createPedestrianTrafficLight();
+//
+//        trafficLightLeft.addObserver(a);
+//        trafficLightLeft.addObserver(b);
+//
+//        trafficLightRight.addObserver(b);
+//        trafficLightRight.addObserver(c);
+//
+//        trafficLightUp.addObserver(b);
+//        trafficLightUp.addObserver(d);
+//
+//        trafficLightDown.addObserver(b);
+//        trafficLightDown.addObserver(e);
+//
+//        PedestrianLightBehaviour lightBehaviourLeft = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightLeft);
+//        PedestrianLightBehaviour lightBehaviourRight = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightRight);
+//        PedestrianLightBehaviour lightBehaviourUp = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightUp);
+//        PedestrianLightBehaviour lightBehaviourDown = lightBehFac.createSimplePedestrianLightBehaviour(trafficLightDown);
+//
+//        trafficLightLeft.setPedestrianLightBehaviour(lightBehaviourLeft);
+//        trafficLightRight.setPedestrianLightBehaviour(lightBehaviourRight);
+//        trafficLightUp.setPedestrianLightBehaviour(lightBehaviourUp);
+//        trafficLightDown.setPedestrianLightBehaviour(lightBehaviourDown);
+//
+//        System.out.println();
+//        trafficLightLeft.pushButton();
+//
+//        System.out.println();
+//        trafficLightLeft.pushButton();
+//
+//        System.out.println();
+//        trafficLightUp.pushButton();
+//
+//        System.out.println();
+//        trafficLightDown.pushButton();
+//
+//        System.out.println();
+//        trafficLightRight.pushButton();
+//
+//        System.out.println();
+//        trafficLightLeft.pushButton();
     }
     
 }
