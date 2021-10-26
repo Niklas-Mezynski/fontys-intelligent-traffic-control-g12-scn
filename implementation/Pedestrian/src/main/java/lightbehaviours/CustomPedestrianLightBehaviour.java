@@ -3,7 +3,7 @@ package lightbehaviours;
 import interfaces.PedestrianLightBehaviour;
 import interfaces.PedestrianTrafficLight;
 import interfaces.Shape;
-import states.*;
+import pedestrianstates.*;
 
 /** CustomPedestrianLightBehaviour implementation of PedestrianLightBehaviour
  *

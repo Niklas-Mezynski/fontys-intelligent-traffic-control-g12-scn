@@ -25,4 +25,14 @@ public interface PedestrianPlatformFactory {
      * @return new FourWayPlatform instance
      */
     FourWayPlatform createFourWayPlatform(String name, int x, int y);
+
+    /**
+     * Creates Platform of type TwoWayPlatform
+     *
+     * @param name of the platform
+     * @param x coordinate of the platform
+     * @param y coordinate of the platform
+     * @return new TwoWayPlatform instance
+     */
+    TwoWayPlatform createTwoWayPlatform(String name, int x, int y);
 }

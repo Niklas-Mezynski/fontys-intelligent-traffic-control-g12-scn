@@ -1,19 +1,19 @@
-package states;
+package pedestrianstates;
 
 import interfaces.PedestrianLightBehaviour;
 
 /**
- * Red light with button pushed state
+ * Green light blinking state
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class RedLightButtonPushedState extends State{
+public class GreenBlinkingLightState extends State{
 
-    public RedLightButtonPushedState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+    public GreenBlinkingLightState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
         super(light, next, name, canPass, length);
     }
 
-    public RedLightButtonPushedState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+    public GreenBlinkingLightState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
         super(light, name, canPass, length);
     }
     @Override

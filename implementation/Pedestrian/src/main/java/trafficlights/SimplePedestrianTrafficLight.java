@@ -2,7 +2,7 @@ package trafficlights;
 
 import interfaces.*;
 import shapes.DotShape;
-import states.State;
+import pedestrianstates.State;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class SimplePedestrianTrafficLight implements PedestrianTrafficLight{
+public class SimplePedestrianTrafficLight implements PedestrianTrafficLight {
     private PedestrianLightBehaviour lightBehaviour;
     private Shape shape = new DotShape();
     private List<Observer> observers = new ArrayList<>();

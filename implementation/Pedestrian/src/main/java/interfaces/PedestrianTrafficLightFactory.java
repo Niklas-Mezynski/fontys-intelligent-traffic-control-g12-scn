@@ -7,9 +7,30 @@ package interfaces;
  */
 public interface PedestrianTrafficLightFactory {
     /**
-     * Creates PedestrianTrafficLight
+     * Creates PedestrianTrafficLight without behaviour
      *
      * @return new PedestrianTrafficLight instance
      */
-    PedestrianTrafficLight createPedestrianTrafficLight();
+    PedestrianTrafficLight createEmptyPedestrianTrafficLight();
+
+    /**
+     * Creates PedestrianTrafficLight with simple behaviour
+     *
+     * @return new PedestrianTrafficLight instance
+     */
+    PedestrianTrafficLight createSimplePedestrianTrafficLight();
+
+    /**
+     * Creates PedestrianTrafficLight with extended behaviour
+     *
+     * @return new PedestrianTrafficLight instance
+     */
+    PedestrianTrafficLight createExtendedPedestrianTrafficLight();
+
+    /**
+     * Creates PedestrianTrafficLight with custom behaviour
+     *
+     * @return new PedestrianTrafficLight instance
+     */
+    PedestrianTrafficLight createCustomPedestrianTrafficLight();
 }

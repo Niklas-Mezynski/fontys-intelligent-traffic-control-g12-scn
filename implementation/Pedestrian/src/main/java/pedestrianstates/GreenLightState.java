@@ -1,19 +1,19 @@
-package states;
+package pedestrianstates;
 
 import interfaces.PedestrianLightBehaviour;
 
 /**
- * Yellow light state
+ * Green light state
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class YellowLightState extends State{
+public class GreenLightState extends State{
 
-    public YellowLightState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+    public GreenLightState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
         super(light, next, name, canPass, length);
     }
 
-    public YellowLightState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+    public GreenLightState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
         super(light, name, canPass, length);
     }
     @Override

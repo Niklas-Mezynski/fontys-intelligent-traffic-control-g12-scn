@@ -1,4 +1,4 @@
-package states;
+package pedestrianstates;
 
 import interfaces.PedestrianLightBehaviour;
 

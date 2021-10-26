@@ -3,12 +3,11 @@ package lightbehaviours;
 import interfaces.PedestrianLightBehaviour;
 import interfaces.PedestrianTrafficLight;
 import interfaces.Shape;
-import shapes.DotShape;
-import states.GreenBlinkingLightState;
-import states.GreenLightState;
-import states.RedLightButtonPushedState;
-import states.RedLightState;
-import states.State;
+import pedestrianstates.GreenBlinkingLightState;
+import pedestrianstates.GreenLightState;
+import pedestrianstates.RedLightButtonPushedState;
+import pedestrianstates.RedLightState;
+import pedestrianstates.State;
 
 /** ExtendedPedestrianLightBehaviour implementation of PedestrianLightBehaviour
  *

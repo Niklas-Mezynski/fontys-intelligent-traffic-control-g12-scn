@@ -1,8 +1,8 @@
 package locations;
 
-import interfaces.FourWayPlatform;
 import interfaces.Pedestrian;
 import interfaces.Platform;
+import interfaces.TwoWayPlatform;
 
 import java.util.*;
 
@@ -10,14 +10,14 @@ import java.util.*;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class SimpleFourWayPedestrianPlatform implements FourWayPlatform {
+public class SimpleTwoWayPedestrianPlatform implements TwoWayPlatform {
     private final String name;
     private HashMap<String, LinkedList<Pedestrian>> pedestrians;
-    private Platform east, west, north, south;
+    private Platform horizontal, vertical;
     private final int xCoordinate;
     private final int yCoordinate;
 
-    public SimpleFourWayPedestrianPlatform(String name, int x, int y){
+    public SimpleTwoWayPedestrianPlatform(String name, int x, int y){
         this.name = name;
         pedestrians = new HashMap<>();
         xCoordinate = x;
@@ -33,17 +33,11 @@ public class SimpleFourWayPedestrianPlatform implements FourWayPlatform {
     public void addPedestrian(Pedestrian p){
         if(p != null){
             if(!this.equals(p.getDestination())){
-                if(p.getDestination().getXCoordinate() < xCoordinate && west != null){
-                    pedestrians.get(west.getName()).add(p);
+                if(p.getDestination().getXCoordinate() != xCoordinate && horizontal != null){
+                    pedestrians.get(horizontal.getName()).add(p);
                 }
-                else if(p.getDestination().getXCoordinate() > xCoordinate && east != null){
-                    pedestrians.get(east.getName()).add(p);
-                }
-                else if(p.getDestination().getYCoordinate() < yCoordinate && north != null){
-                    pedestrians.get(north.getName()).add(p);
-                }
-                else if(p.getDestination().getYCoordinate() > yCoordinate && south != null){
-                    pedestrians.get(south.getName()).add(p);
+                else if(p.getDestination().getYCoordinate() != yCoordinate && vertical != null){
+                    pedestrians.get(vertical.getName()).add(p);
                 }
             }
             else {
@@ -105,10 +99,8 @@ public class SimpleFourWayPedestrianPlatform implements FourWayPlatform {
      * @return next platform
      */
     private Optional<Platform> getPlatformByName(String name) {
-        if(name.equals(east.getName())) return Optional.of(east);
-        if(name.equals(west.getName())) return Optional.of(west);
-        if(name.equals(south.getName())) return Optional.of(south);
-        if(name.equals(north.getName())) return Optional.of(north);
+        if(name.equals(horizontal.getName())) return Optional.of(horizontal);
+        if(name.equals(vertical.getName())) return Optional.of(vertical);
         return Optional.empty();
     }
 
@@ -116,7 +108,7 @@ public class SimpleFourWayPedestrianPlatform implements FourWayPlatform {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SimpleFourWayPedestrianPlatform that = (SimpleFourWayPedestrianPlatform) o;
+        SimpleTwoWayPedestrianPlatform that = (SimpleTwoWayPedestrianPlatform) o;
         return name.equals(that.name) && xCoordinate == that.getXCoordinate() && yCoordinate == that.getYCoordinate();
     }
 
@@ -133,46 +125,24 @@ public class SimpleFourWayPedestrianPlatform implements FourWayPlatform {
     }
 
     @Override
-    public Platform getEastPlatform() {
-        return east;
+    public Platform getHorizontalPlatform() {
+        return horizontal;
     }
 
     @Override
-    public void setEastPlatform(Platform other) {
-        this.east = other;
-        pedestrians.put(east.getName(), new LinkedList<>());
+    public void setHorizontalPlatform(Platform other) {
+        this.horizontal = other;
+        pedestrians.put(horizontal.getName(), new LinkedList<>());
     }
 
     @Override
-    public Platform getWestPlatform() {
-        return west;
+    public Platform getVerticalPlatform() {
+        return vertical;
     }
 
     @Override
-    public void setWestPlatform(Platform other) {
-        this.west = other;
-        pedestrians.put(west.getName(), new LinkedList<>());
-    }
-
-    @Override
-    public Platform getSouthPlatform() {
-        return south;
-    }
-
-    @Override
-    public void setSouthPlatform(Platform other) {
-        this.south = other;
-        pedestrians.put(south.getName(), new LinkedList<>());
-    }
-
-    @Override
-    public Platform getNorthPlatform() {
-        return north;
-    }
-
-    @Override
-    public void setNorthPlatform(Platform other) {
-        this.north = other;
-        pedestrians.put(north.getName(), new LinkedList<>());
+    public void setVerticalPlatform(Platform other) {
+        this.vertical = other;
+        pedestrians.put(vertical.getName(), new LinkedList<>());
     }
 }
