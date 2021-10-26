@@ -1,12 +1,12 @@
 package interfaces;
 
-import pedestrianstates.State;
+import states.State;
 
 /**
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public interface PedestrianLightBehaviour {
+public interface LightBehaviour {
     /**
      * Getter for current light state
      *
@@ -34,28 +34,23 @@ public interface PedestrianLightBehaviour {
     Shape getShape();
 
     /**
-     * Prints current light in text form
-     */
-    void printCurrentLight();
-
-    /**
      * Getter for traffic light
      *
      * @return traffic light of this behaviour
      */
-    PedestrianTrafficLight getTrafficLight();
+    TrafficLight getTrafficLight();
 
     /**
-     * Checks if button of traffic light has been pushed
+     * Checks if traffic light has been activated
      *
-     * @return boolean value of button being pushed
+     * @return boolean value of traffic light being active
      */
-    boolean buttonIsPushed();
+    boolean isActive();
 
     /**
-     * Setter for button pushed state
+     * Setter for activity state
      *
-     * @param bool of the new button pushed state
+     * @param bool of the new activity state
      */
-    void setButtonPushed(boolean bool);
+    void setActive(boolean bool);
 }

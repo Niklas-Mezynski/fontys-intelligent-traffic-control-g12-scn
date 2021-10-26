@@ -3,9 +3,9 @@ package factories;
 import interfaces.Pedestrian;
 import interfaces.PedestrianFactory;
 import interfaces.Platform;
-import pedestirans.Jogger;
-import pedestirans.Skateboarder;
-import pedestirans.Walker;
+import pedestrians.Jogger;
+import pedestrians.Skateboarder;
+import pedestrians.Walker;
 
 /**
  * Implementation of PedestrianFactory

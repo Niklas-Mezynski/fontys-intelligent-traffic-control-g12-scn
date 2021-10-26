@@ -1,9 +1,9 @@
 package assembler;
 
 import factories.SimplePedestrianFactory;
-import factories.SimplePedestrianLightBehaviourFactory;
+import factories.SimpleLightBehaviourFactory;
 import factories.SimplePedestrianPlatformFactory;
-import factories.SimplePedestrianTrafficLightFactory;
+import factories.SimpleTrafficLightFactory;
 import interfaces.*;
 
 /**
@@ -18,8 +18,10 @@ public class Main {
     public static void main(String[] args) {
         PedestrianFactory pedFac = new SimplePedestrianFactory();
         PedestrianPlatformFactory platFac = new SimplePedestrianPlatformFactory();
-        PedestrianTrafficLightFactory trafLightFac = new SimplePedestrianTrafficLightFactory();
-        PedestrianLightBehaviourFactory lightBehFac = new SimplePedestrianLightBehaviourFactory();
+        TrafficLightFactory trafLightFac = new SimpleTrafficLightFactory();
+        LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
+
+        trafLightFac.createSimpleStreetTrafficLight().activate();
 
         TwoWayPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
         TwoWayPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
@@ -48,10 +50,10 @@ public class Main {
         p00.addPedestrian(p3);
         p11.addPedestrian(p4);
 
-        PedestrianTrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
 
         trafficLightLeft.addObserver(p00);
         trafficLightLeft.addObserver(p01);
@@ -76,19 +78,19 @@ public class Main {
 //        trafficLightDown.setPedestrianLightBehaviour(lightBehaviourDown);
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
         System.out.println();
-        trafficLightUp.pushButton();
+        trafficLightUp.activate();
 
         System.out.println();
-        trafficLightRight.pushButton();
+        trafficLightRight.activate();
 
         System.out.println();
-        trafficLightDown.pushButton();
+        trafficLightDown.activate();
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
 //        PairPlatform a = platFac.createPairPlatform("a", 0, 1);
 //        FourWayPlatform b = platFac.createFourWayPlatform("b", 1, 1);

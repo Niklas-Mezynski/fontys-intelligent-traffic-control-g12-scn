@@ -1,6 +1,6 @@
-package pedestrianstates;
+package states;
 
-import interfaces.PedestrianLightBehaviour;
+import interfaces.LightBehaviour;
 
 /**
  * Abstract base class for State objects.
@@ -13,7 +13,7 @@ public abstract class State{
     protected boolean canPass;
     protected int length;
     protected State nextState;
-    protected PedestrianLightBehaviour lightBehaviour;
+    protected LightBehaviour lightBehaviour;
 
     /**
      * Constructor for state
@@ -23,7 +23,7 @@ public abstract class State{
      * @param canPass boolean showing whether the state allows passing
      * @param length of the state (number of pedestrians that can pass during single signal)
      */
-    public State(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+    public State(LightBehaviour light, String name, boolean canPass, int length){
         this.lightBehaviour = light;
         this.name = name;
         this.canPass = canPass;
@@ -39,7 +39,7 @@ public abstract class State{
      * @param canPass boolean showing whether the state allows passing
      * @param length of the state (number of pedestrians that can pass during single signal)
      */
-    public State(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+    public State(LightBehaviour light, State next, String name, boolean canPass, int length){
         this.lightBehaviour = light;
         this.nextState = next;
         this.name = name;
@@ -52,7 +52,7 @@ public abstract class State{
      *
      * @return PedestrianLightBehaviour of the state
      */
-    public PedestrianLightBehaviour getLightBehaviour() {
+    public LightBehaviour getLightBehaviour() {
         return this.lightBehaviour;
     }
 
@@ -68,13 +68,6 @@ public abstract class State{
      */
     public String getName() {
         return this.name;
-    }
-
-    /**
-     * Prints the current light state
-     */
-    public void printLight() {
-        System.out.println("current light: " + this.name + " in " + this.lightBehaviour.getShape());
     }
 
     /**

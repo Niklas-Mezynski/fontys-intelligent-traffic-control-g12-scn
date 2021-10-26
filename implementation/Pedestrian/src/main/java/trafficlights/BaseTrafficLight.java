@@ -1,45 +1,50 @@
 package trafficlights;
 
-import interfaces.*;
+import interfaces.LightBehaviour;
+import interfaces.Observer;
+import interfaces.Shape;
+import interfaces.TrafficLight;
+import states.State;
 import shapes.DotShape;
-import pedestrianstates.State;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Implementation of PedestrianTrafficLight
+ * Base class for TrafficLight
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class SimplePedestrianTrafficLight implements PedestrianTrafficLight {
-    private PedestrianLightBehaviour lightBehaviour;
+public abstract class BaseTrafficLight implements TrafficLight {
+    private LightBehaviour lightBehaviour;
     private Shape shape = new DotShape();
     private List<Observer> observers = new ArrayList<>();
 
-    public SimplePedestrianTrafficLight(){
+    public BaseTrafficLight(){
     }
 
     @Override
-    public void setPedestrianLightBehaviour(PedestrianLightBehaviour light) {
+    public void setLightBehaviour(LightBehaviour light) {
         this.lightBehaviour = light;
     }
 
     @Override
-    public PedestrianLightBehaviour getPedestrianLightBehaviour() {
+    public LightBehaviour getLightBehaviour() {
         return this.lightBehaviour;
     }
 
     @Override
-    public void pushButton() {
+    public void activate() {
         if(this.lightBehaviour == null) {
             System.out.println("No light behaviour supplied yet!");
         }
         else {
-            System.out.println("button pushed");
+            printActiveMessage();
             this.lightBehaviour.activateChange();
         }
     }
+
+    protected abstract void printActiveMessage();
 
     @Override
     public State getCurrentState() {
@@ -58,7 +63,7 @@ public class SimplePedestrianTrafficLight implements PedestrianTrafficLight {
 
     @Override
     public void printCurrentLight() {
-        this.lightBehaviour.printCurrentLight();
+        System.out.println("current light: " + lightBehaviour.getCurrentState().getName() + " in " + shape);
     }
 
     @Override

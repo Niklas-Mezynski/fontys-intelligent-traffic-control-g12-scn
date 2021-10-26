@@ -3,9 +3,9 @@ package assembler;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import factories.SimplePedestrianFactory;
-import factories.SimplePedestrianLightBehaviourFactory;
+import factories.SimpleLightBehaviourFactory;
 import factories.SimplePedestrianPlatformFactory;
-import factories.SimplePedestrianTrafficLightFactory;
+import factories.SimpleTrafficLightFactory;
 import interfaces.*;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -36,18 +36,18 @@ public class PedestrianLightsTest {
 
     PedestrianFactory pedFac = new SimplePedestrianFactory();
     PedestrianPlatformFactory platFac = new SimplePedestrianPlatformFactory();
-    PedestrianTrafficLightFactory trafLightFac = new SimplePedestrianTrafficLightFactory();
-    PedestrianLightBehaviourFactory lightBehFac = new SimplePedestrianLightBehaviourFactory();
+    TrafficLightFactory trafLightFac = new SimpleTrafficLightFactory();
+    LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
 
-    PedestrianTrafficLight light = trafLightFac.createEmptyPedestrianTrafficLight();
-    PedestrianLightBehaviour simple = lightBehFac.createSimplePedestrianLightBehaviour(light);
-    PedestrianLightBehaviour extended = lightBehFac.createExtendedPedestrianLightBehaviour(light);
-    PedestrianLightBehaviour custom = lightBehFac.createCustomPedestrianLightBehaviour(light);
+    TrafficLight light = trafLightFac.createEmptyPedestrianTrafficLight();
+    LightBehaviour simple = lightBehFac.createSimplePedestrianLightBehaviour(light);
+    LightBehaviour extended = lightBehFac.createExtendedPedestrianLightBehaviour(light);
+    LightBehaviour custom = lightBehFac.createCustomPedestrianLightBehaviour(light);
 
 
     @Test
     public void testEmptyBehaviour() {
-        light.pushButton();
+        light.activate();
         assertThat(outputStreamCaptor.toString()).contains("No light behaviour supplied yet!");
     }
 
@@ -56,12 +56,12 @@ public class PedestrianLightsTest {
         SoftAssertions softly = new SoftAssertions();
 
         //supply behaviour
-        light.setPedestrianLightBehaviour(simple);
+        light.setLightBehaviour(simple);
         var redState = light.getCurrentState();
         softly.assertThat(redState.getName()).isEqualTo("red light");
 
         //test behaviour
-        light.pushButton();
+        light.activate();
         softly.assertThat(outputStreamCaptor.toString().contains("from red light to red light with button pushed")).isTrue();
         softly.assertThat(outputStreamCaptor.toString().contains("from red light with button pushed to green light")).isTrue();
         softly.assertThat(outputStreamCaptor.toString().contains("from green light to red light")).isTrue();
@@ -74,12 +74,12 @@ public class PedestrianLightsTest {
         SoftAssertions softly = new SoftAssertions();
 
         //supply behaviour
-        light.setPedestrianLightBehaviour(extended);
+        light.setLightBehaviour(extended);
         var redState = light.getCurrentState();
         softly.assertThat(redState.getName()).isEqualTo("red light");
 
         //test behaviour
-        light.pushButton();
+        light.activate();
         softly.assertThat(outputStreamCaptor.toString()).contains("from red light to red light with button pushed");
         softly.assertThat(outputStreamCaptor.toString()).contains("from red light with button pushed to green light");
         softly.assertThat(outputStreamCaptor.toString()).contains("from green light to green blinking light");
@@ -93,12 +93,12 @@ public class PedestrianLightsTest {
         SoftAssertions softly = new SoftAssertions();
 
         //supply behaviour
-        light.setPedestrianLightBehaviour(custom);
+        light.setLightBehaviour(custom);
         var redState = light.getCurrentState();
         softly.assertThat(redState.getName()).isEqualTo("red light");
 
         //test behaviour
-        light.pushButton();
+        light.activate();
         softly.assertThat(outputStreamCaptor.toString()).contains("from red light to red light with button pushed");
         softly.assertThat(outputStreamCaptor.toString()).contains("from red light with button pushed to green light");
         softly.assertThat(outputStreamCaptor.toString()).contains("from green light to green blinking light");
@@ -113,25 +113,25 @@ public class PedestrianLightsTest {
         SoftAssertions softly = new SoftAssertions();
 
         //supply first behaviour
-        light.setPedestrianLightBehaviour(simple);
+        light.setLightBehaviour(simple);
         var redState = light.getCurrentState();
         softly.assertThat(redState.getName()).isEqualTo("red light");
 
         //test first behaviour
-        light.pushButton();
+        light.activate();
         softly.assertThat(outputStreamCaptor.toString().contains("from red light to red light with button pushed")).isTrue();
         softly.assertThat(outputStreamCaptor.toString().contains("from red light with button pushed to green light")).isTrue();
         softly.assertThat(outputStreamCaptor.toString().contains("from green light to red light")).isTrue();
         softly.assertThat(light.getCurrentState()).isEqualTo(redState);
 
         //change behaviour
-        light.setPedestrianLightBehaviour(extended);
+        light.setLightBehaviour(extended);
         redState = light.getCurrentState();
         softly.assertThat(redState.getName()).isEqualTo("red light");
         outputStreamCaptor.reset();
 
         //test second behaviour
-        light.pushButton();
+        light.activate();
         softly.assertThat(outputStreamCaptor.toString()).contains("from red light to red light with button pushed");
         softly.assertThat(outputStreamCaptor.toString()).contains("from red light with button pushed to green light");
         softly.assertThat(outputStreamCaptor.toString()).contains("from green light to green blinking light");
@@ -155,7 +155,7 @@ public class PedestrianLightsTest {
     public void testShapeChange() {
         SoftAssertions softly = new SoftAssertions();
 
-        light.setPedestrianLightBehaviour(simple);
+        light.setLightBehaviour(simple);
 
         //test default shape
         light.printCurrentLight();
@@ -193,13 +193,13 @@ public class PedestrianLightsTest {
         b.addPedestrians(List.of(p1, p2));
         a.addPedestrians(List.of(p3, p4, p5));
 
-        PedestrianTrafficLight trafficLight = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLight = trafLightFac.createSimplePedestrianTrafficLight();
 
         trafficLight.addObserver(a);
         trafficLight.addObserver(b);
 
         System.out.println();
-        trafficLight.pushButton();
+        trafficLight.activate();
         
         softly.assertThat(outputStreamCaptor.toString()).contains("walker p1 is walking from b to a");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker p1 has arrived at final destination a");
@@ -214,7 +214,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLight.pushButton();
+        trafficLight.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("No pedestrians waiting at platform b");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker p5 is walking from a to b");
@@ -254,10 +254,10 @@ public class PedestrianLightsTest {
         p00.addPedestrian(p3);
         p11.addPedestrian(p4);
 
-        PedestrianTrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
 
         trafficLightLeft.addObserver(p00);
         trafficLightLeft.addObserver(p01);
@@ -272,7 +272,7 @@ public class PedestrianLightsTest {
         trafficLightDown.addObserver(p11);
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w1 is walking from p00 to p01");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w1 has arrived at final destination p01");
@@ -281,7 +281,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightUp.pushButton();
+        trafficLightUp.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w2 is walking from p00 to p10");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w2 has arrived at final destination p10");
@@ -291,7 +291,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightRight.pushButton();
+        trafficLightRight.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w3 is walking from p10 to p11");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w3 has arrived at final destination p11");
@@ -300,7 +300,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightDown.pushButton();
+        trafficLightDown.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w4 is walking from p11 to p01");
         softly.assertThat(outputStreamCaptor.toString()).contains("No pedestrians waiting at platform p01 to go to platform p11");
@@ -308,7 +308,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("No pedestrians waiting at platform p00 to go to platform p01");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w4 is walking from p01 to p00");
@@ -351,10 +351,10 @@ public class PedestrianLightsTest {
         a.addPedestrian(p3);
         c.addPedestrian(p4);
 
-        PedestrianTrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
-        PedestrianTrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightUp = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightLeft = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightRight = trafLightFac.createSimplePedestrianTrafficLight();
+        TrafficLight trafficLightDown = trafLightFac.createSimplePedestrianTrafficLight();
 
         trafficLightLeft.addObserver(a);
         trafficLightLeft.addObserver(b);
@@ -369,7 +369,7 @@ public class PedestrianLightsTest {
         trafficLightDown.addObserver(e);
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w1 is walking from a to b");
         softly.assertThat(outputStreamCaptor.toString()).contains("skateboarder s1 is skateboarding from a to b");
@@ -378,7 +378,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("jogger j1 is jogging from a to b");
         softly.assertThat(outputStreamCaptor.toString()).contains("No pedestrians waiting at platform b to go to platform a");
@@ -386,7 +386,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightUp.pushButton();
+        trafficLightUp.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("skateboarder s1 is skateboarding from b to d");
         softly.assertThat(outputStreamCaptor.toString()).contains("skateboarder s1 has arrived at final destination d");
@@ -395,7 +395,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightDown.pushButton();
+        trafficLightDown.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("jogger j1 is jogging from b to e");
         softly.assertThat(outputStreamCaptor.toString()).contains("jogger j1 has arrived at final destination e");
@@ -404,7 +404,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightRight.pushButton();
+        trafficLightRight.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w1 is walking from b to c");
         softly.assertThat(outputStreamCaptor.toString()).contains("walker w1 has arrived at final destination c");
@@ -413,7 +413,7 @@ public class PedestrianLightsTest {
         outputStreamCaptor.reset();
 
         System.out.println();
-        trafficLightLeft.pushButton();
+        trafficLightLeft.activate();
 
         softly.assertThat(outputStreamCaptor.toString()).contains("No pedestrians waiting at platform a to go to platform b");
         softly.assertThat(outputStreamCaptor.toString()).contains("jogger j2 is jogging from b to a");

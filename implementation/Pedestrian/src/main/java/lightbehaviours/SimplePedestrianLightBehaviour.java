@@ -1,71 +1,23 @@
 package lightbehaviours;
 
-import interfaces.PedestrianLightBehaviour;
-import interfaces.PedestrianTrafficLight;
-import interfaces.Shape;
-import pedestrianstates.GreenLightState;
-import pedestrianstates.RedLightButtonPushedState;
-import pedestrianstates.RedLightState;
-import pedestrianstates.State;
+import interfaces.TrafficLight;
+import states.GreenLightState;
+import states.RedLightButtonPushedState;
+import states.RedLightState;
+import states.State;
 
-/** SimplePedestrianLightBehaviour implementation of PedestrianLightBehaviour
+/** SimplePedestrianLightBehaviour extension of SimpleLightBehaviour
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class SimplePedestrianLightBehaviour implements PedestrianLightBehaviour{
-    private final PedestrianTrafficLight trafficLight;
-    private boolean buttonPushed = false;
-    
+public class SimplePedestrianLightBehaviour  extends SimpleLightBehaviour {
     State RED_LIGHT = new RedLightState(this, "red light", false, 2);
     State GREEN_LIGHT = new GreenLightState(this, RED_LIGHT, "green light", true, 2);
     State RED_LIGHT_BUTTON_PUSHED = new RedLightButtonPushedState(this, GREEN_LIGHT, "red light with button pushed", false, 1);
-    
-    State currentState;
-    
-    public SimplePedestrianLightBehaviour(PedestrianTrafficLight traffic){
-        this.trafficLight = traffic;
+
+    public SimplePedestrianLightBehaviour(TrafficLight traffic){
+        super(traffic);
         RED_LIGHT.setNextState(RED_LIGHT_BUTTON_PUSHED);
         currentState = RED_LIGHT;
-    }
-
-    @Override
-    public PedestrianTrafficLight getTrafficLight() {
-        return this.trafficLight;
-    }
-
-    @Override
-    public State getCurrentState() {
-        return this.currentState;
-    }
-
-    @Override
-    public void setCurrentState(State state) {
-        this.currentState = state;
-    }
-    
-    @Override
-    public void activateChange() {
-        buttonPushed = true;
-        this.currentState.requestStateChange();
-    }
-
-    @Override
-    public boolean buttonIsPushed() {
-        return this.buttonPushed;
-    }
-
-    @Override
-    public void setButtonPushed(boolean bool) {
-        this.buttonPushed = bool;
-    }
-
-    @Override
-    public Shape getShape() {
-        return this.trafficLight.getShape();
-    }
-
-    @Override
-    public void printCurrentLight() {
-        this.currentState.printLight();
     }
 }

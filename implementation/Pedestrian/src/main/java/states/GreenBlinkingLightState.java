@@ -1,6 +1,6 @@
-package pedestrianstates;
+package states;
 
-import interfaces.PedestrianLightBehaviour;
+import interfaces.LightBehaviour;
 
 /**
  * Green light blinking state
@@ -9,11 +9,11 @@ import interfaces.PedestrianLightBehaviour;
  */
 public class GreenBlinkingLightState extends State{
 
-    public GreenBlinkingLightState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+    public GreenBlinkingLightState(LightBehaviour light, State next, String name, boolean canPass, int length){
         super(light, next, name, canPass, length);
     }
 
-    public GreenBlinkingLightState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+    public GreenBlinkingLightState(LightBehaviour light, String name, boolean canPass, int length){
         super(light, name, canPass, length);
     }
     @Override

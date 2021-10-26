@@ -1,6 +1,6 @@
-package pedestrianstates;
+package states;
 
-import interfaces.PedestrianLightBehaviour;
+import interfaces.LightBehaviour;
 
 /**
  * Green light state
@@ -9,11 +9,11 @@ import interfaces.PedestrianLightBehaviour;
  */
 public class GreenLightState extends State{
 
-    public GreenLightState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+    public GreenLightState(LightBehaviour light, State next, String name, boolean canPass, int length){
         super(light, next, name, canPass, length);
     }
 
-    public GreenLightState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+    public GreenLightState(LightBehaviour light, String name, boolean canPass, int length){
         super(light, name, canPass, length);
     }
     @Override

@@ -1,10 +1,10 @@
 module pedestrian_module {
     exports interfaces;
     exports lightbehaviours;
-    exports pedestrianstates;
+    exports states;
     exports trafficlights;
     exports shapes;
     exports locations;
-    exports pedestirans;
+    exports pedestrians;
     exports factories;
 }

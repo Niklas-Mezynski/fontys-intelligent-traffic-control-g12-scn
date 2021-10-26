@@ -1,13 +1,13 @@
 package interfaces;
 
-import pedestrianstates.State;
+import states.State;
 
 /**
- * Interface for PedestrianTrafficLight objects.
+ * Interface for TrafficLight objects.
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public interface PedestrianTrafficLight extends Subject{
+public interface TrafficLight extends Subject{
     /**
      * Getter for light state of the traffic light
      *
@@ -39,17 +39,17 @@ public interface PedestrianTrafficLight extends Subject{
      *
      * @param light behaviour of the traffic light
      */
-    void setPedestrianLightBehaviour(PedestrianLightBehaviour light);
+    void setLightBehaviour(LightBehaviour light);
 
     /**
      * Getter for traffic light behaviour
      *
      * @return light behaviour of the traffic light
      */
-    PedestrianLightBehaviour getPedestrianLightBehaviour();
+    LightBehaviour getLightBehaviour();
 
     /**
      * Used when physical button of traffic light is pushed by pedestrian
      */
-    void pushButton();
+    void activate();
 }

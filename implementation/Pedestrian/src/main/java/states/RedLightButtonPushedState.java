@@ -1,6 +1,6 @@
-package pedestrianstates;
+package states;
 
-import interfaces.PedestrianLightBehaviour;
+import interfaces.LightBehaviour;
 
 /**
  * Red light with button pushed state
@@ -9,11 +9,11 @@ import interfaces.PedestrianLightBehaviour;
  */
 public class RedLightButtonPushedState extends State{
 
-    public RedLightButtonPushedState(PedestrianLightBehaviour light, State next, String name, boolean canPass, int length){
+    public RedLightButtonPushedState(LightBehaviour light, State next, String name, boolean canPass, int length){
         super(light, next, name, canPass, length);
     }
 
-    public RedLightButtonPushedState(PedestrianLightBehaviour light, String name, boolean canPass, int length){
+    public RedLightButtonPushedState(LightBehaviour light, String name, boolean canPass, int length){
         super(light, name, canPass, length);
     }
     @Override

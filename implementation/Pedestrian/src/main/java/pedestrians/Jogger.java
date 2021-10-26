@@ -1,24 +1,24 @@
-package pedestirans;
+package pedestrians;
 
 import interfaces.Platform;
 
 /**
- * Pedestrian object of type Walker.
+ * Pedestrian object of type Jogger.
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class Walker extends SimplePedestrian {
-    public Walker(String name, Platform destination){
+public class Jogger extends SimplePedestrian {
+    public Jogger(String name, Platform destination){
         super( name, destination);
     }
 
     @Override
     public String getName() {
-        return "walker " + super.getName();
+        return "jogger " + super.getName();
     }
 
     @Override
     public String getAction() {
-        return "walking";
+        return "jogging";
     }
 }

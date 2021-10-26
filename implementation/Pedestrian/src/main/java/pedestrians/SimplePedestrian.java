@@ -1,4 +1,4 @@
-package pedestirans;
+package pedestrians;
 
 import interfaces.Pedestrian;
 import interfaces.Platform;
