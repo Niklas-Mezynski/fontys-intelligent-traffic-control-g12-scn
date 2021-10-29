@@ -1,0 +1,30 @@
+package states;
+
+import interfaces.LightBehaviour;
+import interfaces.State;
+
+/**
+ * Green light blinking state
+ *
+ * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
+ */
+public class GreenBlinkingLightState extends StateBase {
+
+    public GreenBlinkingLightState(LightBehaviour light, State next, String name, boolean canPass, int length){
+        super(light, next, name, canPass, length);
+    }
+
+    public GreenBlinkingLightState(LightBehaviour light, String name, boolean canPass, int length){
+        super(light, name, canPass, length);
+    }
+    @Override
+    public void requestStateChange() {
+        System.out.println(this.name + " with length " + length);
+        changeState();
+    }
+
+    @Override
+    public void setNextState(State state) {
+
+    }
+}

@@ -92,23 +92,23 @@ public class Main {
         System.out.println();
         trafficLightLeft.activate();
 
-//        PairPlatform a = platFac.createPairPlatform("a", 0, 1);
-//        FourWayPlatform b = platFac.createFourWayPlatform("b", 1, 1);
-//        PairPlatform c = platFac.createPairPlatform("c", 2, 1);
-//        PairPlatform d = platFac.createPairPlatform("d", 1, 0);
-//        PairPlatform e = platFac.createPairPlatform("e", 1, 2);
+//        PairPedestrianPlatform a = platFac.createPairPedestrianPlatform("a", 0, 1);
+//        FourWayPedestrianPlatform b = platFac.createFourWayPedestrianPlatform("b", 1, 1);
+//        PairPedestrianPlatform c = platFac.createPairPedestrianPlatform("c", 2, 1);
+//        PairPedestrianPlatform d = platFac.createPairPedestrianPlatform("d", 1, 0);
+//        PairPedestrianPlatform e = platFac.createPairPedestrianPlatform("e", 1, 2);
 //
 //        b.setWestPlatform(a);
-//        a.setPairPlatform(b);
+//        a.setPairPedestrianPlatform(b);
 //
 //        b.setEastPlatform(c);
-//        c.setPairPlatform(b);
+//        c.setPairPedestrianPlatform(b);
 //
 //        b.setNorthPlatform(d);
-//        d.setPairPlatform(b);
+//        d.setPairPedestrianPlatform(b);
 //
 //        b.setSouthPlatform(e);
-//        e.setPairPlatform(b);
+//        e.setPairPedestrianPlatform(b);
 //
 //        Pedestrian p1 = pedFac.createWalker("w1", c);
 //        Pedestrian p2 = pedFac.createSkateboarder("s1", d);
