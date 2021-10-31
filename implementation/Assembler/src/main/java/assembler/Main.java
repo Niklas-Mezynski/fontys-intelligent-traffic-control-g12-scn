@@ -19,7 +19,7 @@ public class Main {
                 PedestrianFactory pedFac = new SimplePedestrianFactory();
                 PedestrianPlatformFactory platFac = new SimplePedestrianPlatformFactory();
                 TrafficLightFactory trafLightFac = new SimpleTrafficLightFactory();
-                LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
+                //LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
 
                 trafLightFac.createSimpleStreetTrafficLight().activate();
 
