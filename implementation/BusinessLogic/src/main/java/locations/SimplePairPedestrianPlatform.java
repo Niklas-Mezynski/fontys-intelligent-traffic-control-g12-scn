@@ -11,7 +11,7 @@ import java.util.LinkedList;
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class SimplePairPedestrianPlatform extends SimplePedestrianPlatform implements PairPedestrianPlatform {
-    private LinkedList<Pedestrian> pedestrians;
+    private final LinkedList<Pedestrian> pedestrians;
     private PedestrianPlatform pairPedestrianPlatform;
 
     public SimplePairPedestrianPlatform(String name, int x, int y){

@@ -1,28 +1,18 @@
 package lightbehaviours;
 
-import interfaces.LightBehaviour;
-import interfaces.Shape;
-import interfaces.TrafficLight;
-import interfaces.State;
+import interfaces.*;
+import shapes.DotShape;
 
 /** SimpleLightBehaviour base
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public abstract class SimpleLightBehaviour implements LightBehaviour {
-    private final TrafficLight trafficLight;
+    private Shape shape = new DotShape();
     private boolean isActive = false;
+    private Subject subject;
 
     State currentState;
-
-    public SimpleLightBehaviour(TrafficLight traffic){
-        this.trafficLight = traffic;
-    }
-
-    @Override
-    public TrafficLight getTrafficLight() {
-        return this.trafficLight;
-    }
 
     @Override
     public State getCurrentState() {
@@ -52,6 +42,22 @@ public abstract class SimpleLightBehaviour implements LightBehaviour {
 
     @Override
     public Shape getShape() {
-        return this.trafficLight.getShape();
+        return this.shape;
     }
+
+    @Override
+    public void setShape(Shape shape){
+        this.shape = shape;
+    }
+
+    @Override
+    public void setSubject(Subject sub){
+        this.subject = sub;
+    }
+
+    @Override
+    public void informSubject(){
+        this.subject.inform();
+    }
+
 }

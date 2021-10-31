@@ -9,32 +9,35 @@ public interface LightBehaviourFactory {
     /**
      * Creates LightBehaviour of type SimplePedestrianLightBehaviour
      *
-     * @param light trafficLight of the behaviour
      * @return new SimplePedestrianLightBehaviour instance
      */
-    LightBehaviour createSimplePedestrianLightBehaviour(TrafficLight light);
+    LightBehaviour createSimplePedestrianLightBehaviour();
 
     /**
      * Creates LightBehaviour of type ExtendedPedestrianLightBehaviour
      *
-     * @param light trafficLight of the behaviour
      * @return new ExtendedPedestrianLightBehaviour instance
      */
-    LightBehaviour createExtendedPedestrianLightBehaviour(TrafficLight light);
+    LightBehaviour createExtendedPedestrianLightBehaviour();
 
     /**
      * Creates LightBehaviour of type CustomPedestrianLightBehaviour
      *
-     * @param light trafficLight of the behaviour
      * @return new CustomPedestrianLightBehaviour instance
      */
-    LightBehaviour createCustomPedestrianLightBehaviour(TrafficLight light);
+    LightBehaviour createCustomPedestrianLightBehaviour();
+
+    /**
+     * Creates LightBehaviour of type EmergencyPedestrianLightBehaviour
+     *
+     * @return new CustomPedestrianLightBehaviour instance
+     */
+    LightBehaviour createEmergencyPedestrianLightBehaviour();
 
     /**
      * Creates LightBehaviour of type SimpleStreetLightBehaviour
      *
-     * @param light trafficLight of the behaviour
      * @return new SimpleStreetLightBehaviour instance
      */
-    LightBehaviour createSimpleStreetLightBehaviour(TrafficLight light);
+    LightBehaviour createSimpleStreetLightBehaviour();
 }

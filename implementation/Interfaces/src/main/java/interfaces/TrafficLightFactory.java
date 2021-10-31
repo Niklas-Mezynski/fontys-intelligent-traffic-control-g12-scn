@@ -42,6 +42,13 @@ public interface TrafficLightFactory {
     TrafficLight createCustomPedestrianTrafficLight();
 
     /**
+     * Creates PedestrianTrafficLight with emergency behaviour
+     *
+     * @return new PedestrianTrafficLight instance
+     */
+    TrafficLight createEmergencyPedestrianTrafficLight();
+
+    /**
      * Creates SimpleStreetTrafficLight with simple behaviour
      *
      * @return new SimpleStreetTrafficLight instance

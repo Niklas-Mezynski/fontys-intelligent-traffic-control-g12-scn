@@ -5,7 +5,6 @@ import interfaces.Observer;
 import interfaces.Shape;
 import interfaces.TrafficLight;
 import interfaces.State;
-import shapes.DotShape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,8 +16,7 @@ import java.util.List;
  */
 public abstract class BaseTrafficLight implements TrafficLight {
     private LightBehaviour lightBehaviour;
-    private Shape shape = new DotShape();
-    private List<Observer> observers = new ArrayList<>();
+    private final List<Observer> observers = new ArrayList<>();
 
     public BaseTrafficLight(){
     }
@@ -26,6 +24,7 @@ public abstract class BaseTrafficLight implements TrafficLight {
     @Override
     public void setLightBehaviour(LightBehaviour light) {
         this.lightBehaviour = light;
+        this.lightBehaviour.setSubject(this);
     }
 
     @Override
@@ -53,17 +52,17 @@ public abstract class BaseTrafficLight implements TrafficLight {
 
     @Override
     public Shape getShape() {
-        return this.shape;
+        return this.lightBehaviour.getShape();
     }
 
     @Override
     public void setShape(Shape shape) {
-        this.shape = shape;
+        this.lightBehaviour.setShape(shape);
     }
 
     @Override
     public void printCurrentLight() {
-        System.out.println("current light: " + lightBehaviour.getCurrentState().getName() + " in " + shape);
+        System.out.println("current light: " + lightBehaviour.getCurrentState().getName() + " in " + getShape());
     }
 
     @Override

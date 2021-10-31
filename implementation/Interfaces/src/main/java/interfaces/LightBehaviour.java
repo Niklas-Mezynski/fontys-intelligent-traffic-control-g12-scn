@@ -32,13 +32,6 @@ public interface LightBehaviour {
     Shape getShape();
 
     /**
-     * Getter for traffic light
-     *
-     * @return traffic light of this behaviour
-     */
-    TrafficLight getTrafficLight();
-
-    /**
      * Checks if traffic light has been activated
      *
      * @return boolean value of traffic light being active
@@ -51,4 +44,24 @@ public interface LightBehaviour {
      * @param bool of the new activity state
      */
     void setActive(boolean bool);
+
+    /**
+     * Setter for traffic light shape
+     *
+     * @param shape of the traffic light
+     */
+    void setShape(Shape shape);
+
+    /**
+     * Setter for subject
+     *
+     * @param subject of the traffic light behaviour
+     */
+    void setSubject(Subject subject);
+
+    /**
+     * Used to inform subject
+     *
+     */
+    void informSubject();
 }

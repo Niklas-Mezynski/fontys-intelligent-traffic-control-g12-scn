@@ -25,7 +25,7 @@ public class SimpleTrafficLightFactory implements TrafficLightFactory {
     @Override
     public TrafficLight createSimplePedestrianTrafficLight() {
         TrafficLight trafficLight = createEmptyPedestrianTrafficLight();
-        LightBehaviour behaviour = lightBehaviourFactory.createSimplePedestrianLightBehaviour(trafficLight);
+        LightBehaviour behaviour = lightBehaviourFactory.createSimplePedestrianLightBehaviour();
         trafficLight.setLightBehaviour(behaviour);
         return trafficLight;
     }
@@ -33,7 +33,7 @@ public class SimpleTrafficLightFactory implements TrafficLightFactory {
     @Override
     public TrafficLight createExtendedPedestrianTrafficLight() {
         TrafficLight trafficLight = createEmptyPedestrianTrafficLight();
-        LightBehaviour behaviour = lightBehaviourFactory.createExtendedPedestrianLightBehaviour(trafficLight);
+        LightBehaviour behaviour = lightBehaviourFactory.createExtendedPedestrianLightBehaviour();
         trafficLight.setLightBehaviour(behaviour);
         return trafficLight;
     }
@@ -41,7 +41,15 @@ public class SimpleTrafficLightFactory implements TrafficLightFactory {
     @Override
     public TrafficLight createCustomPedestrianTrafficLight() {
         TrafficLight trafficLight = createEmptyPedestrianTrafficLight();
-        LightBehaviour behaviour = lightBehaviourFactory.createCustomPedestrianLightBehaviour(trafficLight);
+        LightBehaviour behaviour = lightBehaviourFactory.createCustomPedestrianLightBehaviour();
+        trafficLight.setLightBehaviour(behaviour);
+        return trafficLight;
+    }
+
+    @Override
+    public TrafficLight createEmergencyPedestrianTrafficLight() {
+        TrafficLight trafficLight = createEmptyPedestrianTrafficLight();
+        LightBehaviour behaviour = lightBehaviourFactory.createEmergencyPedestrianLightBehaviour();
         trafficLight.setLightBehaviour(behaviour);
         return trafficLight;
     }
@@ -49,7 +57,7 @@ public class SimpleTrafficLightFactory implements TrafficLightFactory {
     @Override
     public TrafficLight createSimpleStreetTrafficLight() {
         TrafficLight trafficLight = createEmptyStreetTrafficLight();
-        LightBehaviour behaviour = lightBehaviourFactory.createSimpleStreetLightBehaviour(trafficLight);
+        LightBehaviour behaviour = lightBehaviourFactory.createSimpleStreetLightBehaviour();
         trafficLight.setLightBehaviour(behaviour);
         return trafficLight;
     }

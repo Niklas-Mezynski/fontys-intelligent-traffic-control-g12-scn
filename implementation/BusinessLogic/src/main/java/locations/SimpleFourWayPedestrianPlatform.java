@@ -11,7 +11,7 @@ import java.util.*;
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class SimpleFourWayPedestrianPlatform extends SimplePedestrianPlatform implements FourWayPedestrianPlatform {
-    private HashMap<String, LinkedList<Pedestrian>> pedestrians;
+    private final HashMap<String, LinkedList<Pedestrian>> pedestrians;
     private PedestrianPlatform east, west, north, south;
 
     public SimpleFourWayPedestrianPlatform(String name, int x, int y){

@@ -1,10 +1,7 @@
 package factories;
 
 import interfaces.*;
-import lightbehaviours.CustomPedestrianLightBehaviour;
-import lightbehaviours.ExtendedPedestrianLightBehaviour;
-import lightbehaviours.SimplePedestrianLightBehaviour;
-import lightbehaviours.SimpleStreetLightBehaviour;
+import lightbehaviours.*;
 
 /**
  * Implementation of PedestrianLightBehaviourFactory
@@ -14,22 +11,27 @@ import lightbehaviours.SimpleStreetLightBehaviour;
 public class SimpleLightBehaviourFactory implements LightBehaviourFactory {
 
     @Override
-    public LightBehaviour createSimplePedestrianLightBehaviour(TrafficLight light) {
-        return new SimplePedestrianLightBehaviour(light);
+    public LightBehaviour createSimplePedestrianLightBehaviour() {
+        return new SimplePedestrianLightBehaviour();
     }
 
     @Override
-    public LightBehaviour createExtendedPedestrianLightBehaviour(TrafficLight light) {
-        return new ExtendedPedestrianLightBehaviour(light);
+    public LightBehaviour createExtendedPedestrianLightBehaviour() {
+        return new ExtendedPedestrianLightBehaviour();
     }
 
     @Override
-    public LightBehaviour createCustomPedestrianLightBehaviour(TrafficLight light) {
-        return new CustomPedestrianLightBehaviour(light);
+    public LightBehaviour createCustomPedestrianLightBehaviour() {
+        return new CustomPedestrianLightBehaviour();
     }
 
     @Override
-    public LightBehaviour createSimpleStreetLightBehaviour(TrafficLight light) {
-        return new SimpleStreetLightBehaviour(light);
+    public LightBehaviour createEmergencyPedestrianLightBehaviour() {
+        return new EmergencyPedestrianLightBehaviour();
+    }
+
+    @Override
+    public LightBehaviour createSimpleStreetLightBehaviour() {
+        return new SimpleStreetLightBehaviour();
     }
 }

@@ -82,7 +82,7 @@ public abstract class StateBase implements State {
      * Changes state from current to next
      */
     public void changeState() {
-        this.lightBehaviour.getTrafficLight().inform();
+        this.lightBehaviour.informSubject();
         this.printTransition();
         this.lightBehaviour.setCurrentState(nextState);
         this.lightBehaviour.getCurrentState().requestStateChange();

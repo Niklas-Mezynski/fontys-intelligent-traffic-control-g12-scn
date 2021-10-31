@@ -40,9 +40,10 @@ public class PedestrianLightsTest {
     LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
 
     TrafficLight light = trafLightFac.createEmptyPedestrianTrafficLight();
-    LightBehaviour simple = lightBehFac.createSimplePedestrianLightBehaviour(light);
-    LightBehaviour extended = lightBehFac.createExtendedPedestrianLightBehaviour(light);
-    LightBehaviour custom = lightBehFac.createCustomPedestrianLightBehaviour(light);
+    LightBehaviour simple = lightBehFac.createSimplePedestrianLightBehaviour();
+    LightBehaviour extended = lightBehFac.createExtendedPedestrianLightBehaviour();
+    LightBehaviour custom = lightBehFac.createCustomPedestrianLightBehaviour();
+    LightBehaviour emergency = lightBehFac.createEmergencyPedestrianLightBehaviour();
 
 
     @Test
@@ -109,6 +110,22 @@ public class PedestrianLightsTest {
     }
 
     @Test
+    public void testEmergencyBehaviour() {
+        SoftAssertions softly = new SoftAssertions();
+
+        //supply behaviour
+        light.setLightBehaviour(emergency);
+        var initState = light.getCurrentState();
+        softly.assertThat(initState.getName()).isEqualTo("yellow blinking light");
+
+        //test behaviour
+        light.activate();
+        softly.assertThat(outputStreamCaptor.toString()).contains("from yellow blinking light to yellow blinking light");
+        softly.assertThat(light.getCurrentState()).isEqualTo(initState);
+        softly.assertAll();
+    }
+
+    @Test
     public void testBehaviourChange() {
         SoftAssertions softly = new SoftAssertions();
 
@@ -142,11 +159,13 @@ public class PedestrianLightsTest {
 
     @Test
     public void testDefaultShape() {
+        light.setLightBehaviour(simple);
         assertThat(light.getShape().toString()).isEqualTo("Dot Shape");
     }
 
     @Test
     public void testCustomShape() {
+        light.setLightBehaviour(simple);
         light.setShape(new CustomShape("Star Shape"));
         assertThat(light.getShape().toString()).isEqualTo("Star Shape");
     }

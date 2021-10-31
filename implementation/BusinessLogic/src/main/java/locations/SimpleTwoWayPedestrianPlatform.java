@@ -11,7 +11,7 @@ import java.util.*;
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
 public class SimpleTwoWayPedestrianPlatform extends SimplePedestrianPlatform implements TwoWayPedestrianPlatform {
-    private HashMap<String, LinkedList<Pedestrian>> pedestrians;
+    private final HashMap<String, LinkedList<Pedestrian>> pedestrians;
     private PedestrianPlatform horizontal, vertical;
 
     public SimpleTwoWayPedestrianPlatform(String name, int x, int y){

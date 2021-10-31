@@ -1,6 +1,5 @@
 package lightbehaviours;
 
-import interfaces.TrafficLight;
 import states.GreenLightState;
 import states.RedLightButtonPushedState;
 import states.RedLightState;
@@ -15,8 +14,7 @@ public class SimplePedestrianLightBehaviour  extends SimpleLightBehaviour {
     StateBase GREEN_LIGHT = new GreenLightState(this, RED_LIGHT, "green light", true, 2);
     StateBase RED_LIGHT_BUTTON_PUSHED = new RedLightButtonPushedState(this, GREEN_LIGHT, "red light with button pushed", false, 1);
 
-    public SimplePedestrianLightBehaviour(TrafficLight traffic){
-        super(traffic);
+    public SimplePedestrianLightBehaviour(){
         RED_LIGHT.setNextState(RED_LIGHT_BUTTON_PUSHED);
         currentState = RED_LIGHT;
     }

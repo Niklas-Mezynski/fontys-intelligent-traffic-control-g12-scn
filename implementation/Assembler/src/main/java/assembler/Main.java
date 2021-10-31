@@ -5,6 +5,7 @@ import factories.SimpleLightBehaviourFactory;
 import factories.SimplePedestrianPlatformFactory;
 import factories.SimpleTrafficLightFactory;
 import interfaces.*;
+import lightbehaviours.EmergencyPedestrianLightBehaviour;
 
 /**
  *
@@ -19,9 +20,7 @@ public class Main {
                 PedestrianFactory pedFac = new SimplePedestrianFactory();
                 PedestrianPlatformFactory platFac = new SimplePedestrianPlatformFactory();
                 TrafficLightFactory trafLightFac = new SimpleTrafficLightFactory();
-                //LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
-
-                trafLightFac.createSimpleStreetTrafficLight().activate();
+//              LightBehaviourFactory lightBehFac = new SimpleLightBehaviourFactory();
 
                 TwoWayPedestrianPlatform p00 = platFac.createTwoWayPlatform("p00", 0, 0);
                 TwoWayPedestrianPlatform p10 = platFac.createTwoWayPlatform("p10", 1, 0);
