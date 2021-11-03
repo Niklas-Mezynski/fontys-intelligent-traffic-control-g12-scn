@@ -1,36 +1,55 @@
-package lightBehaviour;
+package stateEnumsTests;
 
+import lightBehaviour.GermanyPedestrianLightBehaviour;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+import org.mockito.ArgumentCaptor;
+import org.mockito.Captor;
+import org.mockito.Mockito;
 import trafficLights.SimplePedestrianTrafficLight;
 
+import java.util.List;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class GermanSimplePedestrianTrafficLightTest {
 
-    /**
-     * Initialize the pedestrian lights.
-     */
-    SimplePedestrianTrafficLight germanLight = new SimplePedestrianTrafficLight(GermanyPedestrianLightBehaviour.RED_LIGHT);
+    // Init the LightBehaviour
+    GermanyPedestrianLightBehaviour redLight = GermanyPedestrianLightBehaviour.RED_LIGHT;
+    GermanyPedestrianLightBehaviour greenLight = GermanyPedestrianLightBehaviour.GREEN_LIGHT;
 
-    /**
-     * Assert whether the getCurrentState() method returns the expected state.
-     * In this case it should be GermanyPedestrianLightBehaviour.RED_LIGHT
-     */
     @Test
-    void getCurrentStateShouldReturnCorrectStateTest() {
-        assertThat(germanLight.getCurrentState()).isEqualTo(GermanyPedestrianLightBehaviour.RED_LIGHT);
+    void redLightGetNextTest() {
+        assertThat(redLight.getNext()).isEqualTo(greenLight);
     }
 
-    /**
-     * Assert whether the changeState() method changes state correctly.
-     */
     @Test
-    void changeStateMethodTest() {
-        
-        //1: Change the state
-        germanLight.changeState(GermanyPedestrianLightBehaviour.GREEN_LIGHT);
-        //2: Assert
-        assertThat(germanLight.getCurrentState()).isEqualTo(GermanyPedestrianLightBehaviour.GREEN_LIGHT);
+    void redLightCheckValues() {
+
+        SoftAssertions.assertSoftly(s -> {
+            s.assertThat(redLight.canPass()).isFalse();
+            s.assertThat(redLight.getName()).isEqualTo("Red Light");
+            s.assertThat(redLight.length()).isEqualTo(0);
+        });
+
+    }
+
+    @Test
+    void greenLightGetNextTest() {
+        assertThat(greenLight.getNext()).isEqualTo(redLight);
+    }
+
+    @Test
+    void greenLightCheckValues() {
+
+        SoftAssertions.assertSoftly(s -> {
+            s.assertThat(greenLight.canPass()).isTrue();
+            s.assertThat(greenLight.getName()).isEqualTo("Green Light");
+            s.assertThat(greenLight.length()).isEqualTo(2);
+        });
 
     }
 }
+
