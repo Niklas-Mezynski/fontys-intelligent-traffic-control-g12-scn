@@ -1,4 +1,4 @@
-package stateEnumsTests;
+package lightBehaviour;
 
 import lightBehaviour.DutchPedestrianLightBehaviour;
 import org.junit.jupiter.api.Test;
