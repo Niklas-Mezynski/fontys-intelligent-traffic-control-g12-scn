@@ -1,4 +1,4 @@
-package stateEnumsTests;
+package lightBehaviour;
 
 import lightBehaviour.GermanyPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
