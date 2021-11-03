@@ -3,6 +3,7 @@ package trafficLights;
 import lightBehaviour.GermanyPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+import shapes.SimpleShape;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -47,6 +48,18 @@ public class SimplePedestrianTrafficLightTest {
 
     @Test
     void testToString() {
-        assertThat(trafficLight.toString()).isEqualTo("SimplePedestrianTrafficLight{currentState=RED_LIGHT}");
+        assertThat(trafficLight.toString()).isEqualTo("SimplePedestrianTrafficLight{ currentState=RED_LIGHT, currentShape=Dot Shape }");
+    }
+
+    @Test
+    void getCurrentShape() {
+        assertThat(trafficLight.getCurrentShape()).isEqualTo(new SimpleShape("Dot Shape"));
+    }
+
+    @Test
+    void setCurrentShape() {
+        var shape = new SimpleShape("Man Shape");
+        trafficLight.setCurrentShape(shape);
+        assertThat(trafficLight.getCurrentShape()).isEqualTo(shape);
     }
 }
