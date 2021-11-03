@@ -1,5 +1,7 @@
 package lightBehaviour;
 
+import lightBehaviour.DutchPedestrianLightBehaviour;
+import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import trafficLights.SimplePedestrianTrafficLight;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
@@ -39,6 +41,35 @@ public class DutchSimplePedestrianTrafficLightTest {
     @Test
     public void testToString(){
         assertThat(dutchLight.toString()).isEqualTo("SimplePedestrianTrafficLight{ currentState=RED_LIGHT, currentShape=Dot Shape }");
+    }
+
+    @Test
+    public void redLightCheckValues(){
+        SoftAssertions.assertSoftly(softAssertions -> {
+            softAssertions.assertThat(dutchLight.getCurrentState().canPass()).isEqualTo(false);
+            softAssertions.assertThat(dutchLight.getCurrentState().getName()).isEqualTo("Red Light");
+            softAssertions.assertThat(dutchLight.getCurrentState().length()).isEqualTo(0);
+        });
+    }
+
+    @Test
+    public void greenLightCheckValues(){
+        dutchLight.changeState(DutchPedestrianLightBehaviour.GREEN_LIGHT);
+        SoftAssertions.assertSoftly(softAssertions -> {
+            softAssertions.assertThat(dutchLight.getCurrentState().canPass()).isEqualTo(true);
+            softAssertions.assertThat(dutchLight.getCurrentState().getName()).isEqualTo("Green Light");
+            softAssertions.assertThat(dutchLight.getCurrentState().length()).isEqualTo(2);
+        });
+    }
+
+    @Test
+    public void greenLightBlinkingCheckValues(){
+        dutchLight.changeState(DutchPedestrianLightBehaviour.GREEN_BLINKING_LIGHT);
+        SoftAssertions.assertSoftly(softAssertions -> {
+            softAssertions.assertThat(dutchLight.getCurrentState().canPass()).isEqualTo(true);
+            softAssertions.assertThat(dutchLight.getCurrentState().getName()).isEqualTo("Green Blinking Light");
+            softAssertions.assertThat(dutchLight.getCurrentState().length()).isEqualTo(2);
+        });
     }
     
 }
