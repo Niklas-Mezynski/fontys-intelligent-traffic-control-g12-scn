@@ -1,7 +1,7 @@
 module businesslogic_module {
     requires interfaces_module;
-    opens trafficLights;
     opens lightBehaviour;
+    opens trafficLights;
     exports trafficLights;
     exports lightBehaviour;
 }
