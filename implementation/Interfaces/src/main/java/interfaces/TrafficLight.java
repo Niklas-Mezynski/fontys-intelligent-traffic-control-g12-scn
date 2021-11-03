@@ -8,5 +8,6 @@ public interface TrafficLight {
 
     void startTraffic();
 
+    State getCurrentState();
 
 }

@@ -8,9 +8,7 @@ public enum StateEnum implements State {
     RED_LIGHT(0, false, "Red Light"){
 
         @Override
-        public State changeState(TrafficLight light) {
-            light.changeState(RED_AND_YELLOW);
-            System.out.println("Changing from RED -> red and yellow");
+        public State getNext() {
             return RED_AND_YELLOW;
         }
 
@@ -18,9 +16,7 @@ public enum StateEnum implements State {
     RED_AND_YELLOW(0, false, "Red and yellow"){
 
         @Override
-        public State changeState(TrafficLight light) {
-            light.changeState(GREEN_LIGHT);
-            System.out.println("Changing from RED_AND_YELLOW -> green");
+        public State getNext() {
             return GREEN_LIGHT;
         }
 
@@ -29,9 +25,7 @@ public enum StateEnum implements State {
     YELLOW(1, true, "Yellow"){
 
         @Override
-        public State changeState(TrafficLight light) {
-            light.changeState(RED_LIGHT);
-            System.out.println("Changing from yellow -> red");
+        public State getNext() {
             return RED_LIGHT;
         }
 
@@ -40,9 +34,7 @@ public enum StateEnum implements State {
     GREEN_LIGHT(2, true, "Green Light"){
 
         @Override
-        public State changeState(TrafficLight light) {
-            light.changeState(YELLOW);
-            System.out.println("green -> yellow");
+        public State getNext() {
             return YELLOW;
         }
 

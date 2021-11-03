@@ -36,6 +36,11 @@ public class SimplePedestrianTrafficLight implements TrafficLight {
     }
 
     @Override
+    public State getCurrentState() {
+        return currentState;
+    }
+
+    @Override
     public String toString() {
         return "SimplePedestrianTrafficLight{" +
                 "currentState=" + currentState.toString() +
