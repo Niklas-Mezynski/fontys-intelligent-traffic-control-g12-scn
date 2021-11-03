@@ -1,9 +1,8 @@
 package Germany;
 
 import interfaces.State;
-import interfaces.TrafficLight;
 
-public enum StateEnum implements State {
+public enum GermanyStateEnum implements State {
 
     RED_LIGHT(0, false, "Red Light"){
 
@@ -44,7 +43,7 @@ public enum StateEnum implements State {
     private boolean canPass;
     private String name;
 
-    StateEnum(int length, boolean canPass, String name) {
+    GermanyStateEnum(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;
