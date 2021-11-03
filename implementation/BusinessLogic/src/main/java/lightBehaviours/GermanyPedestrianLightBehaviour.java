@@ -1,4 +1,4 @@
-package lightBehaviour;
+package lightBehaviours;
 
 import interfaces.State;
 
@@ -26,9 +26,9 @@ public enum GermanyPedestrianLightBehaviour implements State {
 
     };
 
-    private int length;
-    private boolean canPass;
-    private String name;
+    private final int length;
+    private final boolean canPass;
+    private final String name;
 
     GermanyPedestrianLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;

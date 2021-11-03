@@ -1,7 +1,7 @@
 package assembler;
 
 import interfaces.State;
-import lightBehaviour.DutchPedestrianLightBehaviour;
+import lightBehaviours.DutchPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

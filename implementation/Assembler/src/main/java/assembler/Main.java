@@ -1,5 +1,6 @@
 package assembler;
 
+import lightBehaviours.DutchPedestrianLightBehaviour;
 import trafficLights.SimplePedestrianTrafficLight;
 import interfaces.State;
 
@@ -14,7 +15,7 @@ public class Main {
          */
         public static void main(String[] args) {
 
-                State state = lightBehaviour.DutchPedestrianLightBehaviour.RED_LIGHT;
+                State state = DutchPedestrianLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
 
                 System.out.println(test);

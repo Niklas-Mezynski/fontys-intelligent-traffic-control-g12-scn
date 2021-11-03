@@ -1,6 +1,6 @@
 package trafficLights;
 
-import lightBehaviour.GermanyPedestrianLightBehaviour;
+import lightBehaviours.GermanyPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import shapes.SimpleShape;
