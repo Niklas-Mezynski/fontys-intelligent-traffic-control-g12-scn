@@ -2,6 +2,10 @@ package lightBehaviour;
 
 import interfaces.State;
 
+/**
+ * Light behaviour for dutch pedestrian traffic lights
+ *
+ */
 public enum DutchPedestrianLightBehaviour implements State {
 
     RED_LIGHT(0, false, "Red Light"){
@@ -12,23 +16,6 @@ public enum DutchPedestrianLightBehaviour implements State {
         }
 
     },
-    /*RED_AND_YELLOW(0, false, "Red and yellow"){
-
-        @Override
-        public State getNext() {
-            return GREEN_LIGHT;
-        }
-
-    },
-
-    YELLOW(1, true, "Yellow"){
-
-        @Override
-        public State getNext() {
-            return RED_LIGHT;
-        }
-
-    },*/
 
     GREEN_LIGHT(2, true, "Green Light"){
 
@@ -38,6 +25,7 @@ public enum DutchPedestrianLightBehaviour implements State {
         }
 
     },
+
     GREEN_BLINKING_LIGHT(2, true, "Green Light"){
 
         @Override

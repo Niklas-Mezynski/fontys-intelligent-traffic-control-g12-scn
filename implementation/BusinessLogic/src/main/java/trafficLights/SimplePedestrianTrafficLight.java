@@ -2,7 +2,10 @@ package trafficLights;
 
 import interfaces.State;
 import interfaces.TrafficLight;
-
+/**
+ * Instance object implementing TrafficLight interface
+ *
+ */
 public class SimplePedestrianTrafficLight implements TrafficLight {
 
     private State currentState;
