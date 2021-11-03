@@ -31,4 +31,17 @@ public interface TrafficLight {
      */
     State getCurrentState();
 
+    /**
+     * Returns current shape
+     *
+     */
+    Shape getCurrentShape();
+
+    /**
+     * Setter for current shape
+     *
+     * @param newShape to change current shape to
+     */
+    void setCurrentShape(Shape newShape);
+
 }

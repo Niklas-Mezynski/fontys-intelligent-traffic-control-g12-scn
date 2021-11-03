@@ -40,7 +40,7 @@ public class DutchSimplePedestrianTrafficLightTest {
 
     @Test
     public void testToString(){
-        assertThat(dutchLight.toString()).isEqualTo("SimplePedestrianTrafficLight{currentState=RED_LIGHT}");
+        assertThat(dutchLight.toString()).isEqualTo("SimplePedestrianTrafficLight{ currentState=RED_LIGHT, currentShape=Dot Shape }");
     }
 
     @Test
