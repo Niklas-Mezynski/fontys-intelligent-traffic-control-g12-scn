@@ -1,6 +1,5 @@
-package stateEnumsTests;
+package lightBehaviour;
 
-import lightBehaviour.GermanyPedestrianLightBehaviour;
 import org.junit.jupiter.api.Test;
 import trafficLights.SimplePedestrianTrafficLight;
 

@@ -14,13 +14,21 @@ public interface TrafficLight {
     void changeState(State state);
 
     /**
-     * Changes state of the traffic light
+     * Used to loop through all passing states
      *
      */
     void stopTraffic();
 
+    /**
+     * Used to loop through all non-passing states
+     *
+     */
     void startTraffic();
 
+    /**
+     * Returns current state
+     *
+     */
     State getCurrentState();
 
 }
