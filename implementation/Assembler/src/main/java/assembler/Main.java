@@ -1,8 +1,7 @@
 package assembler;
 
-
-import Germany.SimplePedestrianTrafficLight;
-import Germany.GermanyStateEnum;
+import trafficLights.SimplePedestrianTrafficLight;
+import stateEnums.GermanyStateEnum;
 import interfaces.State;
 
 /**

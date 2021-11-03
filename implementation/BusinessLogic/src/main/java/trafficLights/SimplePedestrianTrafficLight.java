@@ -1,4 +1,4 @@
-package Germany;
+package trafficLights;
 
 import interfaces.State;
 import interfaces.TrafficLight;
