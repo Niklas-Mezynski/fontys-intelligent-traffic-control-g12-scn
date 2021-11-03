@@ -26,7 +26,7 @@ public enum DutchPedestrianLightBehaviour implements State {
 
     },
 
-    GREEN_BLINKING_LIGHT(2, true, "Green Light"){
+    GREEN_BLINKING_LIGHT(2, true, "Green Blinking Light"){
 
         @Override
         public State getNext() {
