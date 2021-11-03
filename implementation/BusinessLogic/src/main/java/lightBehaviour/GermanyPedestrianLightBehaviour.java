@@ -2,7 +2,7 @@ package lightBehaviour;
 
 import interfaces.State;
 
-public enum DutchLightBehaviour implements State {
+public enum GermanyPedestrianLightBehaviour implements State {
 
     RED_LIGHT(0, false, "Red Light"){
 
@@ -43,7 +43,7 @@ public enum DutchLightBehaviour implements State {
     private boolean canPass;
     private String name;
 
-    DutchLightBehaviour(int length, boolean canPass, String name) {
+    GermanyPedestrianLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;
