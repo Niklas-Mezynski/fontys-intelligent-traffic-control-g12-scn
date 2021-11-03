@@ -1,8 +1,8 @@
-package stateEnums;
+package lightBehaviour;
 
 import interfaces.State;
 
-public enum DutchStateEnum implements State {
+public enum DutchLightBehaviour implements State {
 
     RED_LIGHT(0, false, "Red Light"){
 
@@ -43,7 +43,7 @@ public enum DutchStateEnum implements State {
     private boolean canPass;
     private String name;
 
-    DutchStateEnum(int length, boolean canPass, String name) {
+    DutchLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;

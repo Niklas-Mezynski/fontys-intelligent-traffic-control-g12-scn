@@ -1,7 +1,7 @@
 package assembler;
 
 import trafficLights.SimplePedestrianTrafficLight;
-import stateEnums.GermanyStateEnum;
+import lightBehaviour.GermanyLightBehaviour;
 import interfaces.State;
 
 /**
@@ -15,7 +15,7 @@ public class Main {
          */
         public static void main(String[] args) {
 
-                State state = GermanyStateEnum.RED_LIGHT;
+                State state = GermanyLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
                 System.out.println(test);
 
