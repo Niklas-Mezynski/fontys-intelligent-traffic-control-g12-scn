@@ -1,6 +1,5 @@
 package lightBehaviour;
 
-import lightBehaviour.DutchPedestrianLightBehaviour;
 import org.junit.jupiter.api.Test;
 import trafficLights.SimplePedestrianTrafficLight;
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
