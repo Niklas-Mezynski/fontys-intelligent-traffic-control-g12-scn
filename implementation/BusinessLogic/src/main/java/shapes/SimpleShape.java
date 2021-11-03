@@ -1,9 +1,12 @@
 package shapes;
 
 import interfaces.Shape;
-
 import java.util.Objects;
 
+/**
+ * Implementation of the Shape Interface
+ *
+ */
 public class SimpleShape implements Shape {
     private String name;
 
@@ -31,6 +34,6 @@ public class SimpleShape implements Shape {
 
     @Override
     public String toString() {
-        return getName();
+        return getName() + " Shape";
     }
 }

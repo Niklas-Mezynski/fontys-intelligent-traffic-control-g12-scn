@@ -47,18 +47,18 @@ public class SimplePedestrianTrafficLightTest {
 
     @Test
     void testToString() {
-        assertThat(trafficLight.toString()).isEqualTo("SimplePedestrianTrafficLight{ currentState=RED_LIGHT, currentShape=Dot Shape }");
+        assertThat(trafficLight.toString()).isEqualTo("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
     }
 
     @Test
-    void getCurrentShape() {
-        assertThat(trafficLight.getCurrentShape()).isEqualTo(new SimpleShape("Dot Shape"));
+    void getShape() {
+        assertThat(trafficLight.getShape()).isEqualTo(new SimpleShape("Dot"));
     }
 
     @Test
-    void setCurrentShape() {
-        var shape = new SimpleShape("Man Shape");
-        trafficLight.setCurrentShape(shape);
-        assertThat(trafficLight.getCurrentShape()).isEqualTo(shape);
+    void setShape() {
+        var shape = new SimpleShape("Man");
+        trafficLight.setShape(shape);
+        assertThat(trafficLight.getShape()).isEqualTo(shape);
     }
 }

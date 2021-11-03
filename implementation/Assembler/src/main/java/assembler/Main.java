@@ -16,14 +16,13 @@ public class Main {
 
                 State state = lightBehaviour.DutchPedestrianLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
-                System.out.println(test);
 
+                System.out.println(test);
                 test.startTraffic();
 
                 System.out.println("----");
 
                 test.stopTraffic();
-
                 System.out.println(test);
 
         }

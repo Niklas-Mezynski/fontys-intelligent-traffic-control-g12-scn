@@ -35,13 +35,13 @@ public interface TrafficLight {
      * Returns current shape
      *
      */
-    Shape getCurrentShape();
+    Shape getShape();
 
     /**
      * Setter for current shape
      *
-     * @param newShape to change current shape to
+     * @param newShape to replace the current shape
      */
-    void setCurrentShape(Shape newShape);
+    void setShape(Shape newShape);
 
 }

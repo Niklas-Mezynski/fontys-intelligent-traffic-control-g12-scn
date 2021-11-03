@@ -10,7 +10,7 @@ import shapes.SimpleShape;
  *
  */
 public class SimplePedestrianTrafficLight implements TrafficLight {
-    private Shape shape = new SimpleShape("Dot Shape");
+    private Shape shape = new SimpleShape("Dot");
     private State currentState;
 
     public SimplePedestrianTrafficLight(State initialState) {
@@ -47,20 +47,20 @@ public class SimplePedestrianTrafficLight implements TrafficLight {
     }
 
     @Override
-    public Shape getCurrentShape() {
+    public Shape getShape() {
         return shape;
     }
 
     @Override
-    public void setCurrentShape(Shape newShape) {
+    public void setShape(Shape newShape) {
         this.shape = newShape;
     }
 
     @Override
     public String toString() {
         return "SimplePedestrianTrafficLight{" +
-                " currentState=" + currentState.toString() +
-                ", currentShape=" + shape.toString() +
+                " currentState = " + currentState +
+                ", shape = " + shape +
                 " }";
     }
 }
