@@ -14,7 +14,7 @@ public class Main {
          */
         public static void main(String[] args) {
 
-                State state = lightBehaviour.GermanyPedestrianLightBehaviour.RED_LIGHT;
+                State state = lightBehaviour.DutchPedestrianLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
                 System.out.println(test);
 

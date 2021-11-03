@@ -8,11 +8,11 @@ public enum DutchPedestrianLightBehaviour implements State {
 
         @Override
         public State getNext() {
-            return RED_AND_YELLOW;
+            return GREEN_LIGHT;
         }
 
     },
-    RED_AND_YELLOW(0, false, "Red and yellow"){
+    /*RED_AND_YELLOW(0, false, "Red and yellow"){
 
         @Override
         public State getNext() {
@@ -28,13 +28,21 @@ public enum DutchPedestrianLightBehaviour implements State {
             return RED_LIGHT;
         }
 
-    },
+    },*/
 
     GREEN_LIGHT(2, true, "Green Light"){
 
         @Override
         public State getNext() {
-            return YELLOW;
+            return GREEN_BLINKING_LIGHT;
+        }
+
+    },
+    GREEN_BLINKING_LIGHT(2, true, "Green Light"){
+
+        @Override
+        public State getNext() {
+            return RED_LIGHT;
         }
 
     };
