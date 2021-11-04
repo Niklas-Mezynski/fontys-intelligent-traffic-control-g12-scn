@@ -15,9 +15,9 @@ import java.io.PrintStream;
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}
  */
-public class PedestrianLightsTest {
+public class IntegrationTest {
     
-    public PedestrianLightsTest() {
+    public IntegrationTest() {
     }
 
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
@@ -28,7 +28,7 @@ public class PedestrianLightsTest {
     }
 
     @Test
-    public void integrationTest(){
+    public void trafficLightWithDutchPedestrianBehaviourTest(){
         SoftAssertions softly = new SoftAssertions();
 
         State state = DutchPedestrianLightBehaviour.RED_LIGHT;
