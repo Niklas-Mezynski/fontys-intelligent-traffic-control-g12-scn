@@ -1,8 +1,12 @@
 package assembler;
 
 import lightBehaviours.DutchPedestrianLightBehaviour;
+import lightBehaviours.GermanyPedestrianLightBehaviour;
 import trafficLights.SimplePedestrianTrafficLight;
 import interfaces.State;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 /**
  *
@@ -14,17 +18,28 @@ public class Main {
          * @param args the command line arguments
          */
         public static void main(String[] args) {
-
-                State state = DutchPedestrianLightBehaviour.RED_LIGHT;
+                Timer timer = new Timer();
+                State state = GermanyPedestrianLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
 
-                System.out.println(test);
+                //System.out.println(test);
                 test.startTraffic();
 
                 System.out.println("----");
 
-                test.stopTraffic();
-                System.out.println(test);
+
+                timer.schedule(new TimerTask() {
+
+                        @Override
+                        public void run() {
+                                test.stopTraffic();
+                                timer.cancel();
+                        }
+                }, 2 * 10000);
+
+
+
+                //System.out.println(test);
 
         }
 }
