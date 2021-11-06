@@ -4,13 +4,13 @@ import interfaces.Shape;
 import java.util.Objects;
 
 /**
- * Implementation of the Shape Interface
+ * Base class for implementations of the Shape Interface
  *
  */
-public class SimpleShape implements Shape {
+public abstract class ShapeBase implements Shape {
     private String name;
 
-    public SimpleShape(String name){
+    public ShapeBase(String name){
         this.name = name;
     }
 
@@ -23,7 +23,7 @@ public class SimpleShape implements Shape {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        SimpleShape that = (SimpleShape) o;
+        ShapeBase that = (ShapeBase) o;
         return Objects.equals(name, that.name);
     }
 
