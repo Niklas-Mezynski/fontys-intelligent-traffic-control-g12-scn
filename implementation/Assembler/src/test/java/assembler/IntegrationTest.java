@@ -2,6 +2,7 @@ package assembler;
 
 import interfaces.State;
 import lightBehaviours.DutchPedestrianLightBehaviour;
+import lightBehaviours.GermanPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -43,6 +44,56 @@ public class IntegrationTest {
         softly.assertThat(outputStreamCaptor.toString()).contains("Changing from GREEN_LIGHT -> GREEN_BLINKING_LIGHT");
         softly.assertThat(outputStreamCaptor.toString()).contains("Changing from GREEN_BLINKING_LIGHT -> RED_LIGHT");
         softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        softly.assertAll();
+    }
+
+    @Test
+    public void trafficLightWithGermanPedestrianBehaviourTest(){
+        SoftAssertions softly = new SoftAssertions();
+
+        State state = GermanPedestrianLightBehaviour.RED_LIGHT;
+        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+        System.out.println(test);
+        test.startTraffic();
+        test.stopTraffic();
+        System.out.println(test);
+
+        softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from RED_LIGHT -> GREEN_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from GREEN_LIGHT -> RED_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        softly.assertAll();
+    }
+
+    @Test
+    public void trafficLightWithLightBehaviourChangeTest(){
+        SoftAssertions softly = new SoftAssertions();
+
+        State state = DutchPedestrianLightBehaviour.RED_LIGHT;
+        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+        System.out.println(test);
+        test.startTraffic();
+        test.stopTraffic();
+        System.out.println(test);
+
+        softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from RED_LIGHT -> GREEN_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from GREEN_LIGHT -> GREEN_BLINKING_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from GREEN_BLINKING_LIGHT -> RED_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+
+        outputStreamCaptor.reset();
+        test.changeState(GermanPedestrianLightBehaviour.RED_LIGHT);
+        System.out.println(test);
+        test.startTraffic();
+        test.stopTraffic();
+        System.out.println(test);
+
+        softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from RED_LIGHT -> GREEN_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("Changing from GREEN_LIGHT -> RED_LIGHT");
+        softly.assertThat(outputStreamCaptor.toString()).contains("SimplePedestrianTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        softly.assertAll();
     }
 
 }
