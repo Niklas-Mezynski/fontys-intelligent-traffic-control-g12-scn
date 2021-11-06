@@ -1,7 +1,6 @@
 package assembler;
 
-import lightBehaviours.DutchPedestrianLightBehaviour;
-import lightBehaviours.GermanyPedestrianLightBehaviour;
+import lightBehaviours.GermanPedestrianLightBehaviour;
 import trafficLights.SimplePedestrianTrafficLight;
 import interfaces.State;
 
@@ -19,7 +18,7 @@ public class Main {
          */
         public static void main(String[] args) {
                 Timer timer = new Timer();
-                State state = GermanyPedestrianLightBehaviour.RED_LIGHT;
+                State state = GermanPedestrianLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
 
                 //System.out.println(test);

@@ -3,14 +3,14 @@ package trafficLights;
 import interfaces.Shape;
 import interfaces.State;
 import interfaces.TrafficLight;
-import shapes.SimpleShape;
+import shapes.DotShape;
 
 /**
  * Instance object implementing TrafficLight interface
  *
  */
 public class SimplePedestrianTrafficLight implements TrafficLight {
-    private Shape shape = new SimpleShape("Dot");
+    private Shape shape = new DotShape();
     private State currentState;
 
     public SimplePedestrianTrafficLight(State initialState) {
