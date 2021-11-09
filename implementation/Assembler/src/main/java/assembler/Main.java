@@ -1,8 +1,12 @@
 package assembler;
 
+import interfaces.PedestrianLightState;
+import interfaces.StreetLightState;
 import lightBehaviours.GermanPedestrianLightBehaviour;
+import lightBehaviours.SimpleStreetLightBehaviour;
 import trafficLights.SimplePedestrianTrafficLight;
-import interfaces.State;
+import interfaces.LightState;
+import trafficLights.SimpleStreetTrafficLight;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -17,24 +21,34 @@ public class Main {
          * @param args the command line arguments
          */
         public static void main(String[] args) {
-                Timer timer = new Timer();
-                State state = GermanPedestrianLightBehaviour.RED_LIGHT;
+                //Timer timer = new Timer();
+                PedestrianLightState state = GermanPedestrianLightBehaviour.RED_LIGHT;
+                StreetLightState state2 = SimpleStreetLightBehaviour.RED_LIGHT;
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+                SimpleStreetTrafficLight test2 = new SimpleStreetTrafficLight(state2);
 
                 //System.out.println(test);
-                test.startTraffic();
+                test2.startTraffic();
 
                 System.out.println("----");
 
+                test2.stopTraffic();
 
-                timer.schedule(new TimerTask() {
+                System.out.println("----");
 
-                        @Override
-                        public void run() {
-                                test.stopTraffic();
-                                timer.cancel();
-                        }
-                }, 2 * 10000);
+                System.out.println(test2);
+
+                System.out.println(test);
+
+
+//                timer.schedule(new TimerTask() {
+//
+//                        @Override
+//                        public void run() {
+//                                test.stopTraffic();
+//                                timer.cancel();
+//                        }
+//                }, 2 * 10000);
 
 
 
