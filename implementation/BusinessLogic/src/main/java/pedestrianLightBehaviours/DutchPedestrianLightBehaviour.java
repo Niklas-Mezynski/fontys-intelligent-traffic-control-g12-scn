@@ -1,12 +1,12 @@
-package lightBehaviours;
+package pedestrianLightBehaviours;
 
 import interfaces.PedestrianLightState;
 
 /**
- * Light behaviour for german pedestrian traffic lights
+ * Light behaviour for dutch pedestrian traffic lights
  *
  */
-public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
+public enum DutchPedestrianLightBehaviour implements PedestrianLightState {
 
     RED_LIGHT(0, false, "Red Light"){
 
@@ -21,6 +21,15 @@ public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
 
         @Override
         public PedestrianLightState getNext() {
+            return GREEN_BLINKING_LIGHT;
+        }
+
+    },
+
+    GREEN_BLINKING_LIGHT(2, true, "Green Blinking Light"){
+
+        @Override
+        public PedestrianLightState getNext() {
             return RED_LIGHT;
         }
 
@@ -30,7 +39,7 @@ public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
     private final boolean canPass;
     private final String name;
 
-    GermanPedestrianLightBehaviour(int length, boolean canPass, String name) {
+    DutchPedestrianLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;

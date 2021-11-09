@@ -1,13 +1,15 @@
-package lightBehaviours;
+package streetLightBehaviours;
 
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+import streetLightBehaviours.SimpleStreetLightBehaviour;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
-public class DutchPedestrianLightBehaviourTest {
-    DutchPedestrianLightBehaviour redLight = DutchPedestrianLightBehaviour.RED_LIGHT;
-    DutchPedestrianLightBehaviour greenLight = DutchPedestrianLightBehaviour.GREEN_LIGHT;
-    DutchPedestrianLightBehaviour greenBlinkingLight = DutchPedestrianLightBehaviour.GREEN_BLINKING_LIGHT;
+public class SimpleStreetLightBehaviourTest {
+    SimpleStreetLightBehaviour redLight = SimpleStreetLightBehaviour.RED_LIGHT;
+    SimpleStreetLightBehaviour greenLight = SimpleStreetLightBehaviour.GREEN_LIGHT;
+    SimpleStreetLightBehaviour yellowLight = SimpleStreetLightBehaviour.YELLOW_LIGHT;
 
     @Test
     public void redLightGetNextTest(){
@@ -28,12 +30,12 @@ public class DutchPedestrianLightBehaviourTest {
 
     @Test
     void greenLightGetNextTest() {
-        assertThat(greenLight.getNext()).isEqualTo(greenBlinkingLight);
+        assertThat(greenLight.getNext()).isEqualTo(yellowLight);
     }
 
     @Test
-    void greenBlinkingLightGetNextTest() {
-        assertThat(greenBlinkingLight.getNext()).isEqualTo(redLight);
+    void yellowLightGetNextTest() {
+        assertThat(yellowLight.getNext()).isEqualTo(redLight);
     }
 
     @Test
@@ -49,12 +51,12 @@ public class DutchPedestrianLightBehaviourTest {
     }
 
     @Test
-    void greenBlinkingLightCheckValues() {
+    void yellowLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
-            s.assertThat(greenBlinkingLight.canPass()).isTrue();
-            s.assertThat(greenBlinkingLight.getName()).isEqualTo("Green Blinking Light");
-            s.assertThat(greenBlinkingLight.length()).isEqualTo(2);
+            s.assertThat(yellowLight.canPass()).isTrue();
+            s.assertThat(yellowLight.getName()).isEqualTo("Yellow Light");
+            s.assertThat(yellowLight.length()).isEqualTo(0);
             s.assertAll();
         });
 

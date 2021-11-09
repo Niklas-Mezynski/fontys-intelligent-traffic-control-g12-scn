@@ -1,15 +1,18 @@
-package lightBehaviours;
+package streetLightBehaviours;
 
-import interfaces.PedestrianLightState;
 import interfaces.StreetLightState;
 
-public enum GermanStreetLightBehaviour implements StreetLightState {
+/**
+ * Light behaviour for simple street traffic lights
+ *
+ */
+public enum SimpleStreetLightBehaviour implements StreetLightState {
 
     RED_LIGHT(0, false, "Red Light"){
 
         @Override
         public StreetLightState getNext() {
-            return RED_YELLOW;
+            return GREEN_LIGHT;
         }
 
     },
@@ -18,20 +21,12 @@ public enum GermanStreetLightBehaviour implements StreetLightState {
 
         @Override
         public StreetLightState getNext() {
-            return YELLOW;
+            return YELLOW_LIGHT;
         }
 
     },
 
-    RED_YELLOW(0, false, "Red Yellow Light"){
-
-        @Override
-        public StreetLightState getNext() {
-            return GREEN_LIGHT;
-        }
-
-    },
-    YELLOW(2, true, "Yellow Light"){
+    YELLOW_LIGHT(0, true, "Yellow Light"){
 
         @Override
         public StreetLightState getNext() {
@@ -40,17 +35,11 @@ public enum GermanStreetLightBehaviour implements StreetLightState {
 
     };
 
-
-    @Override
-    public StreetLightState getNext() {
-        return null;
-    }
-
     private final int length;
     private final boolean canPass;
     private final String name;
 
-    GermanStreetLightBehaviour(int length, boolean canPass, String name) {
+    SimpleStreetLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;
@@ -71,4 +60,3 @@ public enum GermanStreetLightBehaviour implements StreetLightState {
         return name;
     }
 }
-

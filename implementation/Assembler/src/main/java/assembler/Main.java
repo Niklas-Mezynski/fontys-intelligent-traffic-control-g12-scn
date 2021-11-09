@@ -2,14 +2,10 @@ package assembler;
 
 import interfaces.PedestrianLightState;
 import interfaces.StreetLightState;
-import lightBehaviours.GermanPedestrianLightBehaviour;
-import lightBehaviours.SimpleStreetLightBehaviour;
+import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
+import streetLightBehaviours.SimpleStreetLightBehaviour;
 import trafficLights.SimplePedestrianTrafficLight;
-import interfaces.LightState;
 import trafficLights.SimpleStreetTrafficLight;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 /**
  *

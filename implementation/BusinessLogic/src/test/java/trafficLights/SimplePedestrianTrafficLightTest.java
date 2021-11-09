@@ -1,13 +1,11 @@
 package trafficLights;
 
-import lightBehaviours.GermanPedestrianLightBehaviour;
-import lightBehaviours.SimpleStreetLightBehaviour;
+import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import shapes.DotShape;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class SimplePedestrianTrafficLightTest {
 

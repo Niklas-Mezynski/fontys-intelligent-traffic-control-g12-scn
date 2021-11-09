@@ -1,7 +1,9 @@
-package lightBehaviours;
+package streetLightBehaviours;
 
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+import streetLightBehaviours.GermanStreetLightBehaviour;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 

@@ -1,8 +1,8 @@
 package assembler;
 
 import interfaces.PedestrianLightState;
-import lightBehaviours.DutchPedestrianLightBehaviour;
-import lightBehaviours.GermanPedestrianLightBehaviour;
+import pedestrianLightBehaviours.DutchPedestrianLightBehaviour;
+import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

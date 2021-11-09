@@ -1,4 +1,4 @@
-package lightBehaviours;
+package streetLightBehaviours;
 
 import interfaces.StreetLightState;
 
