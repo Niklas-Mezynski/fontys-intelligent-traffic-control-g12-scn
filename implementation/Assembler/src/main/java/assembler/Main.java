@@ -3,6 +3,7 @@ package assembler;
 import interfaces.PedestrianLightState;
 import interfaces.StreetLightState;
 import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
+import streetLightBehaviours.DutchTrafficLightBehaviour;
 import streetLightBehaviours.SimpleStreetLightBehaviour;
 import trafficLights.SimplePedestrianTrafficLight;
 import trafficLights.SimpleStreetTrafficLight;
@@ -23,6 +24,13 @@ public class Main {
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
                 SimpleStreetTrafficLight test2 = new SimpleStreetTrafficLight(state2);
 
+                /**
+                 * Dutch traffic light test
+                 */
+                DutchTrafficLightBehaviour dtlb = DutchTrafficLightBehaviour.RED_LIGHT;
+                SimpleStreetTrafficLight dutchTrafficLight = new SimpleStreetTrafficLight(dtlb);
+
+                dutchTrafficLight.changeState(DutchTrafficLightBehaviour.GREEN_LIGHT);
 
 
                 //System.out.println(test);
