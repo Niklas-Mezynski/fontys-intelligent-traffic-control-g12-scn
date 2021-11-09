@@ -27,6 +27,8 @@ public class Main {
                 SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
                 SimpleStreetTrafficLight test2 = new SimpleStreetTrafficLight(state2);
 
+
+
                 //System.out.println(test);
                 test2.startTraffic();
 
