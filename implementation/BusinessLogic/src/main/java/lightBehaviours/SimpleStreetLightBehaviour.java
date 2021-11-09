@@ -1,17 +1,17 @@
 package lightBehaviours;
 
-import interfaces.PedestrianLightState;
+import interfaces.StreetLightState;
 
 /**
- * Light behaviour for german pedestrian traffic lights
+ * Light behaviour for simple street traffic lights
  *
  */
-public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
+public enum SimpleStreetLightBehaviour implements StreetLightState {
 
     RED_LIGHT(0, false, "Red Light"){
 
         @Override
-        public PedestrianLightState getNext() {
+        public StreetLightState getNext() {
             return GREEN_LIGHT;
         }
 
@@ -20,7 +20,16 @@ public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
     GREEN_LIGHT(2, true, "Green Light"){
 
         @Override
-        public PedestrianLightState getNext() {
+        public StreetLightState getNext() {
+            return YELLOW_LIGHT;
+        }
+
+    },
+
+    YELLOW_LIGHT(0, true, "Yellow Light"){
+
+        @Override
+        public StreetLightState getNext() {
             return RED_LIGHT;
         }
 
@@ -30,7 +39,7 @@ public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
     private final boolean canPass;
     private final String name;
 
-    GermanPedestrianLightBehaviour(int length, boolean canPass, String name) {
+    SimpleStreetLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;

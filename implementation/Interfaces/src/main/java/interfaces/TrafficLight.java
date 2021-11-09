@@ -6,14 +6,6 @@ package interfaces;
 public interface TrafficLight {
 
     /**
-     * Changes state of the traffic light
-     *
-     * @param state to which the change is transitioning
-     *
-     */
-    void changeState(State state);
-
-    /**
      * Used to loop through all passing states
      *
      */
@@ -29,7 +21,7 @@ public interface TrafficLight {
      * Returns current state
      *
      */
-    State getCurrentState();
+    LightState getCurrentState();
 
     /**
      * Returns current shape

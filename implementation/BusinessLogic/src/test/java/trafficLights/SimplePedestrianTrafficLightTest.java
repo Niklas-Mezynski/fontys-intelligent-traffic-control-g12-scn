@@ -1,11 +1,13 @@
 package trafficLights;
 
 import lightBehaviours.GermanPedestrianLightBehaviour;
+import lightBehaviours.SimpleStreetLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import shapes.DotShape;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatCode;
 
 public class SimplePedestrianTrafficLightTest {
 
@@ -14,7 +16,6 @@ public class SimplePedestrianTrafficLightTest {
     @Test
     void changeState() {
         SoftAssertions softly = new SoftAssertions();
-
         softly.assertThat(trafficLight.getCurrentState()).isEqualTo(GermanPedestrianLightBehaviour.RED_LIGHT);
         trafficLight.changeState(GermanPedestrianLightBehaviour.GREEN_LIGHT);
         softly.assertThat(trafficLight.getCurrentState()).isEqualTo(GermanPedestrianLightBehaviour.GREEN_LIGHT);
@@ -24,7 +25,6 @@ public class SimplePedestrianTrafficLightTest {
     @Test
     void stopTraffic() {
         SoftAssertions softly = new SoftAssertions();
-
         softly.assertThat(trafficLight.getCurrentState()).isEqualTo(GermanPedestrianLightBehaviour.RED_LIGHT);
         trafficLight.startTraffic();
         softly.assertThat(trafficLight.getCurrentState()).isEqualTo(GermanPedestrianLightBehaviour.GREEN_LIGHT);
@@ -36,7 +36,6 @@ public class SimplePedestrianTrafficLightTest {
     @Test
     void startTraffic() {
         SoftAssertions softly = new SoftAssertions();
-
         softly.assertThat(trafficLight.getCurrentState()).isEqualTo(GermanPedestrianLightBehaviour.RED_LIGHT);
         trafficLight.startTraffic();
         softly.assertThat(trafficLight.getCurrentState()).isEqualTo(GermanPedestrianLightBehaviour.GREEN_LIGHT);

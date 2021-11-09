@@ -1,6 +1,6 @@
 package assembler;
 
-import interfaces.State;
+import interfaces.PedestrianLightState;
 import lightBehaviours.DutchPedestrianLightBehaviour;
 import lightBehaviours.GermanPedestrianLightBehaviour;
 import org.assertj.core.api.SoftAssertions;
@@ -33,7 +33,7 @@ public class IntegrationTest {
     public void trafficLightWithDutchPedestrianBehaviourTest(){
         SoftAssertions softly = new SoftAssertions();
 
-        State state = DutchPedestrianLightBehaviour.RED_LIGHT;
+        PedestrianLightState state = DutchPedestrianLightBehaviour.RED_LIGHT;
         SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
         System.out.println(test);
         test.startTraffic();
@@ -52,7 +52,7 @@ public class IntegrationTest {
     public void trafficLightWithGermanPedestrianBehaviourTest(){
         SoftAssertions softly = new SoftAssertions();
 
-        State state = GermanPedestrianLightBehaviour.RED_LIGHT;
+        PedestrianLightState state = GermanPedestrianLightBehaviour.RED_LIGHT;
         SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
         System.out.println(test);
         test.startTraffic();
@@ -70,7 +70,7 @@ public class IntegrationTest {
     public void trafficLightWithLightBehaviourChangeTest(){
         SoftAssertions softly = new SoftAssertions();
 
-        State state = DutchPedestrianLightBehaviour.RED_LIGHT;
+        PedestrianLightState state = DutchPedestrianLightBehaviour.RED_LIGHT;
         SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
         System.out.println(test);
         test.startTraffic();
@@ -101,7 +101,7 @@ public class IntegrationTest {
     public void trafficLightWithShapeChangeTest(){
         SoftAssertions softly = new SoftAssertions();
 
-        State state = DutchPedestrianLightBehaviour.RED_LIGHT;
+        PedestrianLightState state = DutchPedestrianLightBehaviour.RED_LIGHT;
         SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
         test.setShape(new DonkeyShape());
 

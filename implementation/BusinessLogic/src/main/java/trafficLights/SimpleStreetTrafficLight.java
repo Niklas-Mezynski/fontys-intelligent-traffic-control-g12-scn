@@ -1,20 +1,21 @@
 package trafficLights;
 
 import interfaces.*;
+import shapes.DotShape;
 
 /**
- * Instance object implementing PedestrianTrafficLight interface
+ * Instance object implementing StreetTrafficLight interface
  *
  */
-public class SimplePedestrianTrafficLight extends TrafficLightBase implements PedestrianTrafficLight {
-    private PedestrianLightState currentState;
+public class SimpleStreetTrafficLight extends TrafficLightBase implements StreetTrafficLight {
+    private StreetLightState currentState;
 
-    public SimplePedestrianTrafficLight(PedestrianLightState initialState) {
-        currentState = initialState;
+    public SimpleStreetTrafficLight(StreetLightState initialState) {
+        this.currentState = initialState;
     }
 
     @Override
-    public void changeState(PedestrianLightState newState) {
+    public void changeState(StreetLightState newState) {
         currentState = newState;
     }
 
@@ -33,7 +34,7 @@ public class SimplePedestrianTrafficLight extends TrafficLightBase implements Pe
     }
 
     @Override
-    public PedestrianLightState getCurrentState() {
+    public StreetLightState getCurrentState() {
         return currentState;
     }
 }
