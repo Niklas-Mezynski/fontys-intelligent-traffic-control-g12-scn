@@ -129,4 +129,7 @@ hs_err_pid*
 /implementation/Assembler/target/
 /implementation/target/
 /implementation/Assembler/nbproject/
-/design/
+*.BAK
+*.BAK_*
+*.lck
+*.DS_Store
