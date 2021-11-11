@@ -33,7 +33,7 @@ public class AustralianPedestrianBehaviourTest {
     }
 
     @Test
-    void greenBlinkingLightGetNextTest() {
+    void redBlinkingLightGetNextTest() {
         assertThat(redBlinkingLight.getNext()).isEqualTo(redLight);
     }
 
@@ -50,7 +50,7 @@ public class AustralianPedestrianBehaviourTest {
     }
 
     @Test
-    void greenBlinkingLightCheckValues() {
+    void redBlinkingLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
             s.assertThat(redBlinkingLight.canPass()).isTrue();
