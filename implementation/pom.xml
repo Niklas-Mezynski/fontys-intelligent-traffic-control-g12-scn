@@ -21,6 +21,8 @@
     </build>
     <modules>
         <module>Assembler</module>
+        <module>BusinessLogic</module>
+        <module>Interfaces</module>
     </modules>
     <name>TrafficControlSystem</name>
     <dependencyManagement>
