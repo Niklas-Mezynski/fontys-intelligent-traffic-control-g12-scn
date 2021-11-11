@@ -55,4 +55,5 @@ public class GermanStreetLightBehaviourTest {
             softAssertions.assertThat(greenLight.length()).isEqualTo(2);
         });
     }
+
 }
