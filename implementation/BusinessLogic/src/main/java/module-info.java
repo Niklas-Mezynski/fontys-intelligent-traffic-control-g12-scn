@@ -8,4 +8,6 @@ module businesslogic_module {
     exports streetLightBehaviours;
     exports pedestrianLightBehaviours;
     exports shapes;
+    exports crossings;
+    exports factories;
 }

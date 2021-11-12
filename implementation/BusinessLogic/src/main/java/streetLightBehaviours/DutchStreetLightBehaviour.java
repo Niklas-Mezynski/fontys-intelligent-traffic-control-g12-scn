@@ -2,11 +2,7 @@ package streetLightBehaviours;
 
 import interfaces.StreetLightState;
 
-/**
- * Light behaviour for simple street traffic lights
- *
- */
-public enum SimpleStreetLightBehaviour implements StreetLightState {
+public enum DutchStreetLightBehaviour implements StreetLightState {
 
     RED_LIGHT(0, false, "Red Light"){
 
@@ -39,7 +35,7 @@ public enum SimpleStreetLightBehaviour implements StreetLightState {
     private final boolean canPass;
     private final String name;
 
-    SimpleStreetLightBehaviour(int length, boolean canPass, String name) {
+    DutchStreetLightBehaviour(int length, boolean canPass, String name) {
         this.length = length;
         this.canPass = canPass;
         this.name = name;

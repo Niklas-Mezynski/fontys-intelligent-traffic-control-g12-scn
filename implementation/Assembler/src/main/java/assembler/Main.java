@@ -1,12 +1,8 @@
 package assembler;
 
-import interfaces.PedestrianLightState;
-import interfaces.StreetLightState;
-import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
-import streetLightBehaviours.DutchTrafficLightBehaviour;
-import streetLightBehaviours.SimpleStreetLightBehaviour;
-import trafficLights.SimplePedestrianTrafficLight;
-import trafficLights.SimpleStreetTrafficLight;
+import crossings.SimpleCrossing;
+import factories.SimpleTrafficLightFactory;
+import interfaces.*;
 
 /**
  *
@@ -19,32 +15,37 @@ public class Main {
          */
         public static void main(String[] args) {
                 //Timer timer = new Timer();
-                PedestrianLightState state = GermanPedestrianLightBehaviour.RED_LIGHT;
-                StreetLightState state2 = SimpleStreetLightBehaviour.RED_LIGHT;
-                SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
-                SimpleStreetTrafficLight test2 = new SimpleStreetTrafficLight(state2);
+                TrafficLightFactory trafficLightFactory = new SimpleTrafficLightFactory();
 
-                /**
-                 * Dutch traffic light test
-                 */
-                DutchTrafficLightBehaviour dtlb = DutchTrafficLightBehaviour.RED_LIGHT;
-                SimpleStreetTrafficLight dutchTrafficLight = new SimpleStreetTrafficLight(dtlb);
+                PedestrianTrafficLight test = trafficLightFactory.createAustralianPedestrianTrafficLight();
+                PedestrianTrafficLight test2 = trafficLightFactory.createGermanPedestrianTrafficLight();
 
-                dutchTrafficLight.changeState(DutchTrafficLightBehaviour.GREEN_LIGHT);
+                SimpleCrossing cros = new SimpleCrossing();
+                cros.addPedestrianTrafficLightPair(test, test2);
+                cros.activate();
+                //cros.deactivate();
 
-
-                //System.out.println(test);
-                test2.startTraffic();
-
-                System.out.println("----");
-
-                test2.stopTraffic();
-
-                System.out.println("----");
-
-                System.out.println(test2);
-
-                System.out.println(test);
+//                /**
+//                 * Dutch traffic light test
+//                 */
+//                DutchTrafficLightBehaviour dtlb = DutchTrafficLightBehaviour.RED_LIGHT;
+//                SimpleStreetTrafficLight dutchTrafficLight = new SimpleStreetTrafficLight(dtlb);
+//
+//                dutchTrafficLight.changeState(DutchTrafficLightBehaviour.GREEN_LIGHT);
+//
+//
+//                //System.out.println(test);
+//                test2.startTraffic();
+//
+//                System.out.println("----");
+//
+//                test2.stopTraffic();
+//
+//                System.out.println("----");
+//
+//                System.out.println(test2);
+//
+//                System.out.println(test);
 
 
 //                timer.schedule(new TimerTask() {
