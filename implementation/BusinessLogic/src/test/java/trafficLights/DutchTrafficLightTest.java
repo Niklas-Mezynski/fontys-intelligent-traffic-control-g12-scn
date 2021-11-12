@@ -3,37 +3,36 @@ package trafficLights;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import shapes.DotShape;
-import streetLightBehaviours.DutchTrafficLightBehaviour;
-import streetLightBehaviours.SimpleStreetLightBehaviour;
+import streetLightBehaviours.DutchStreetLightBehaviour;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DutchTrafficLightTest {
-    SimpleStreetTrafficLight trafficLight = new SimpleStreetTrafficLight(DutchTrafficLightBehaviour.RED_LIGHT);
+    SimpleStreetTrafficLight trafficLight = new SimpleStreetTrafficLight(DutchStreetLightBehaviour.RED_LIGHT);
 
     @Test
     void changeState() {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchTrafficLightBehaviour.RED_LIGHT);
-        trafficLight.changeState(DutchTrafficLightBehaviour.GREEN_LIGHT);
-        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchTrafficLightBehaviour.GREEN_LIGHT);
+        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchStreetLightBehaviour.RED_LIGHT);
+        trafficLight.changeState(DutchStreetLightBehaviour.GREEN_LIGHT);
+        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchStreetLightBehaviour.GREEN_LIGHT);
         softly.assertAll();
     }
 
     @Test
     void startStopTraffic() {
         SoftAssertions softly = new SoftAssertions();
-        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchTrafficLightBehaviour.RED_LIGHT);
+        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchStreetLightBehaviour.RED_LIGHT);
         trafficLight.startTraffic();
-        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchTrafficLightBehaviour.GREEN_LIGHT);
+        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchStreetLightBehaviour.GREEN_LIGHT);
         trafficLight.stopTraffic();
-        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchTrafficLightBehaviour.RED_LIGHT);
+        softly.assertThat(trafficLight.getCurrentState()).isEqualTo(DutchStreetLightBehaviour.RED_LIGHT);
         softly.assertAll();
     }
 
     @Test
     void getCurrentState() {
-        assertThat(trafficLight.getCurrentState()).isEqualTo(DutchTrafficLightBehaviour.RED_LIGHT);
+        assertThat(trafficLight.getCurrentState()).isEqualTo(DutchStreetLightBehaviour.RED_LIGHT);
     }
 
     @Test
