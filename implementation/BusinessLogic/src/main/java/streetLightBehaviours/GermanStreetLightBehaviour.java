@@ -30,7 +30,7 @@ public enum GermanStreetLightBehaviour implements StreetLightState {
         }
 
     },
-    YELLOW(2, true, "Yellow Light"){
+    YELLOW(0, false, "Yellow Light"){
 
         @Override
         public StreetLightState getNext() {
