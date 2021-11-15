@@ -41,7 +41,7 @@ public class GermanStreetLightBehaviourTest {
         SoftAssertions.assertSoftly(softAssertions -> {
             softAssertions.assertThat(redLight.canPass()).isFalse();
             softAssertions.assertThat(redYellow.canPass()).isFalse();
-            softAssertions.assertThat(yellow.canPass()).isTrue();
+            softAssertions.assertThat(yellow.canPass()).isFalse();
             softAssertions.assertThat(greenLight.canPass()).isTrue();
         });
     }
@@ -51,7 +51,7 @@ public class GermanStreetLightBehaviourTest {
         SoftAssertions.assertSoftly(softAssertions -> {
             softAssertions.assertThat(redLight.length()).isEqualTo(0);
             softAssertions.assertThat(redYellow.length()).isEqualTo(0);
-            softAssertions.assertThat(yellow.length()).isEqualTo(2);
+            softAssertions.assertThat(yellow.length()).isEqualTo(0);
             softAssertions.assertThat(greenLight.length()).isEqualTo(2);
         });
     }
