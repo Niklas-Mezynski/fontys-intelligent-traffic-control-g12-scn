@@ -1,6 +1,7 @@
 package crossings;
 
 import org.junit.jupiter.api.Test;
+import org.mockito.InOrder;
 import org.mockito.Mockito;
 import trafficLights.SimplePedestrianTrafficLight;
 
@@ -13,13 +14,14 @@ public class SimplePedestrianCrossingTest {
         SimpleCrossing simpleCrossing = new SimpleCrossing();
         simpleCrossing.addPedestrianTrafficLightPair(horizontal, vertical);
 
+        InOrder inOrder = Mockito.inOrder(horizontal, vertical);
+
         simpleCrossing.activate(1);
-        Mockito.verify(vertical, Mockito.times(1)).stopTraffic();
-        Mockito.verify(horizontal, Mockito.times(1)).startTraffic();
-        Thread.sleep(10);
+        inOrder.verify(vertical, Mockito.times(1)).stopTraffic();
+        inOrder.verify(horizontal, Mockito.times(1)).startTraffic();
+        inOrder.verify(horizontal, Mockito.times(1)).stopTraffic();
+        inOrder.verify(vertical, Mockito.times(1)).startTraffic();
         simpleCrossing.deactivate();
-        Mockito.verify(horizontal, Mockito.times(1)).stopTraffic();
-        Mockito.verify(vertical, Mockito.times(1)).startTraffic();
     }
 
 }
