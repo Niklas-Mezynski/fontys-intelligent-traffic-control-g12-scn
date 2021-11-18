@@ -8,4 +8,8 @@ public interface Crossing {
     void activate();
 
     void deactivate();
+
+    void startPedestrianHorizontalTraffic();
+
+    void startPedestrianVerticalTraffic();
 }
