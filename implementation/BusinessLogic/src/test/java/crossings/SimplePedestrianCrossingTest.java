@@ -19,11 +19,12 @@ public class SimplePedestrianCrossingTest {
         InOrder inOrder = inOrder(horizontal, vertical);
 
         simpleCrossing.activate(1);
+        Thread.sleep(10);
+        simpleCrossing.deactivate();
         inOrder.verify(vertical, times(1)).stopTraffic();
         inOrder.verify(horizontal, times(1)).startTraffic();
         inOrder.verify(horizontal, times(1)).stopTraffic();
         inOrder.verify(vertical, times(1)).startTraffic();
-        simpleCrossing.deactivate();
     }
 
 }
