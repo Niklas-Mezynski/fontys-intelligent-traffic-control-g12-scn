@@ -28,14 +28,14 @@ public class SimpleCrossing implements Crossing {
     }
 
     @Override
-    public void activate() {
+    public void activate(int length) {
         timer.schedule(new TimerTask() {
 
                         @Override
                         public void run() {
                             startPedestrianHorizontalTraffic();
                         }
-                }, 0, 10000);
+                }, 0, length);
 
         timer.schedule(new TimerTask() {
 
@@ -43,7 +43,7 @@ public class SimpleCrossing implements Crossing {
             public void run() {
                 startPedestrianVerticalTraffic();
             }
-        }, 5000, 10000);
+        }, length/2, length);
 
     }
 

@@ -5,7 +5,7 @@ public interface Crossing {
 
     void removePedestrianTrafficLightPair();
 
-    void activate();
+    void activate(int length);
 
     void deactivate();
 

@@ -19,10 +19,10 @@ public class SimplePedestrianCrossingTest {
         SimpleCrossing simpleCrossing = new SimpleCrossing();
         simpleCrossing.addPedestrianTrafficLightPair(horizontal, vertical);
 
-        simpleCrossing.activate();
+        simpleCrossing.activate(1);
         Mockito.verify(vertical, Mockito.times(1)).stopTraffic();
         Mockito.verify(horizontal, Mockito.times(1)).startTraffic();
-        Thread.sleep(5005);
+        Thread.sleep(10);
         simpleCrossing.deactivate();
         Mockito.verify(horizontal, Mockito.times(1)).stopTraffic();
         Mockito.verify(vertical, Mockito.times(1)).startTraffic();

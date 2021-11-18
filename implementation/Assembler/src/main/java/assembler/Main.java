@@ -22,7 +22,7 @@ public class Main {
 
                 SimpleCrossing cros = new SimpleCrossing();
                 cros.addPedestrianTrafficLightPair(test, test2);
-                cros.activate();
+                cros.activate(10000);
                 //cros.deactivate();
 
 //                /**
