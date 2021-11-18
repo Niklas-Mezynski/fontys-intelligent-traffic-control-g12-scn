@@ -9,7 +9,7 @@ public interface Crossing {
 
     void deactivate();
 
-    void startHorizontal();
+    void startPedestrianHorizontalTraffic();
 
-    void startVertical();
+    void startPedestrianVerticalTraffic();
 }

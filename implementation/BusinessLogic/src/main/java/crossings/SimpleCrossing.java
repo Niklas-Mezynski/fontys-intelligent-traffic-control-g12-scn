@@ -33,7 +33,7 @@ public class SimpleCrossing implements Crossing {
 
                         @Override
                         public void run() {
-                            startHorizontal();
+                            startPedestrianHorizontalTraffic();
                         }
                 }, 0, 10000);
 
@@ -41,7 +41,7 @@ public class SimpleCrossing implements Crossing {
 
             @Override
             public void run() {
-                startVertical();
+                startPedestrianVerticalTraffic();
             }
         }, 5000, 10000);
 
@@ -53,7 +53,7 @@ public class SimpleCrossing implements Crossing {
     }
 
     @Override
-    public void startHorizontal() {
+    public void startPedestrianHorizontalTraffic() {
         System.out.println("vertical stopping ");
         vertical.stopTraffic();
         System.out.println("horizontal starting ");
@@ -62,7 +62,7 @@ public class SimpleCrossing implements Crossing {
     }
 
     @Override
-    public void startVertical() {
+    public void startPedestrianVerticalTraffic() {
         System.out.println("horizontal stopping");
         horizontal.stopTraffic();
         System.out.println("vertical starting");
