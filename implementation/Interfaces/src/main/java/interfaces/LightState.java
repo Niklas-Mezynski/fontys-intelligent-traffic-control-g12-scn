@@ -9,17 +9,18 @@ public interface LightState {
      * Returns boolean indicating whether signal allows passing
      *
      */
-    boolean canPass();
-
-    /**
-     * Returns length of the signal
-     *
-     */
-    int length();
+    LightStateMeaning stateMeaning();
 
     /**
      * Returns name of the signal
      *
      */
     String getName();
+
+    enum LightStateMeaning {
+        PASS,
+        STOP,
+        TRANSITION,
+        EMERGENCY
+    }
 }

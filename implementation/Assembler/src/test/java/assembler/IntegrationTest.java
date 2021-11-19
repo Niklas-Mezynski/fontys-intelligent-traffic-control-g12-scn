@@ -34,7 +34,7 @@ public class IntegrationTest {
         SoftAssertions softly = new SoftAssertions();
 
         PedestrianLightState state = DutchPedestrianLightBehaviour.RED_LIGHT;
-        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state, "test");
         System.out.println(test);
         test.startTraffic();
         test.stopTraffic();
@@ -53,7 +53,7 @@ public class IntegrationTest {
         SoftAssertions softly = new SoftAssertions();
 
         PedestrianLightState state = GermanPedestrianLightBehaviour.RED_LIGHT;
-        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state, "test");
         System.out.println(test);
         test.startTraffic();
         test.stopTraffic();
@@ -71,7 +71,7 @@ public class IntegrationTest {
         SoftAssertions softly = new SoftAssertions();
 
         PedestrianLightState state = DutchPedestrianLightBehaviour.RED_LIGHT;
-        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state, "test");
         System.out.println(test);
         test.startTraffic();
         test.stopTraffic();
@@ -102,7 +102,7 @@ public class IntegrationTest {
         SoftAssertions softly = new SoftAssertions();
 
         PedestrianLightState state = DutchPedestrianLightBehaviour.RED_LIGHT;
-        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state);
+        SimplePedestrianTrafficLight test = new SimplePedestrianTrafficLight(state, "test");
         test.setShape(new DonkeyShape());
 
         System.out.println(test);

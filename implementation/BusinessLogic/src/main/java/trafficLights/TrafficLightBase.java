@@ -9,6 +9,11 @@ import shapes.DotShape;
  */
 public abstract class TrafficLightBase implements TrafficLight {
     private Shape shape = new DotShape();
+    private String name;
+
+    public TrafficLightBase(String name){
+        this.name = name;
+    }
 
     @Override
     public abstract void stopTraffic();
@@ -35,5 +40,10 @@ public abstract class TrafficLightBase implements TrafficLight {
                 " currentState = " + getCurrentState() +
                 ", shape = " + shape +
                 " }";
+    }
+
+    @Override
+    public String getName(){
+        return this.name;
     }
 }

@@ -1,5 +1,6 @@
 package pedestrianLightBehaviours;
 
+import interfaces.LightState;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import pedestrianLightBehaviours.DutchPedestrianLightBehaviour;
@@ -20,9 +21,8 @@ public class DutchPedestrianLightBehaviourTest {
     void redLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
-            s.assertThat(redLight.canPass()).isFalse();
+            s.assertThat(redLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.STOP);
             s.assertThat(redLight.getName()).isEqualTo("Red Light");
-            s.assertThat(redLight.length()).isEqualTo(0);
             s.assertAll();
         });
 
@@ -42,9 +42,8 @@ public class DutchPedestrianLightBehaviourTest {
     void greenLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
-            s.assertThat(greenLight.canPass()).isTrue();
+            s.assertThat(greenLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.PASS);
             s.assertThat(greenLight.getName()).isEqualTo("Green Light");
-            s.assertThat(greenLight.length()).isEqualTo(2);
             s.assertAll();
         });
 
@@ -54,9 +53,8 @@ public class DutchPedestrianLightBehaviourTest {
     void greenBlinkingLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
-            s.assertThat(greenBlinkingLight.canPass()).isTrue();
+            s.assertThat(greenBlinkingLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.TRANSITION);
             s.assertThat(greenBlinkingLight.getName()).isEqualTo("Green Blinking Light");
-            s.assertThat(greenBlinkingLight.length()).isEqualTo(2);
             s.assertAll();
         });
 

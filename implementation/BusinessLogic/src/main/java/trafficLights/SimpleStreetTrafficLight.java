@@ -10,7 +10,8 @@ import shapes.DotShape;
 public class SimpleStreetTrafficLight extends TrafficLightBase implements StreetTrafficLight {
     private StreetLightState currentState;
 
-    public SimpleStreetTrafficLight(StreetLightState initialState) {
+    public SimpleStreetTrafficLight(StreetLightState initialState, String name) {
+        super(name);
         this.currentState = initialState;
     }
 
@@ -21,14 +22,18 @@ public class SimpleStreetTrafficLight extends TrafficLightBase implements Street
 
     @Override
     public void stopTraffic() {
-        while(currentState.canPass()){
+        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
+            return;
+        while(currentState.stateMeaning() != LightState.LightStateMeaning.STOP){
             currentState.changeState(this);
         }
     }
 
     @Override
     public void startTraffic() {
-        while(!currentState.canPass()){
+        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
+            return;
+        while(currentState.stateMeaning() != LightState.LightStateMeaning.PASS){
             currentState.changeState(this);
         }
     }
