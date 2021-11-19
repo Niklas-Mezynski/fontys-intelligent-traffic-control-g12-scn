@@ -10,7 +10,8 @@ import shapes.DotShape;
 public class SimpleStreetTrafficLight extends TrafficLightBase implements StreetTrafficLight {
     private StreetLightState currentState;
 
-    public SimpleStreetTrafficLight(StreetLightState initialState) {
+    public SimpleStreetTrafficLight(StreetLightState initialState, String name) {
+        super(name);
         this.currentState = initialState;
     }
 

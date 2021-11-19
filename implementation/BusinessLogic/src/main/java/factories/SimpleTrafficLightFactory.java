@@ -11,32 +11,32 @@ public class SimpleTrafficLightFactory implements TrafficLightFactory {
     private final LightBehaviourFactory lightBehaviourFactory = new SimpleLightBehaviourFactory();
 
     @Override
-    public PedestrianTrafficLight createDutchPedestrianTrafficLight() {
-        return new SimplePedestrianTrafficLight(lightBehaviourFactory.getInitialDutchPedestrianState());
+    public PedestrianTrafficLight createDutchPedestrianTrafficLight(String name) {
+        return new SimplePedestrianTrafficLight(lightBehaviourFactory.getInitialDutchPedestrianState(), name);
     }
 
     @Override
-    public PedestrianTrafficLight createGermanPedestrianTrafficLight() {
-        return new SimplePedestrianTrafficLight(lightBehaviourFactory.getInitialGermanPedestrianState());
+    public PedestrianTrafficLight createGermanPedestrianTrafficLight(String name) {
+        return new SimplePedestrianTrafficLight(lightBehaviourFactory.getInitialGermanPedestrianState(), name);
     }
 
     @Override
-    public PedestrianTrafficLight createAustralianPedestrianTrafficLight() {
-        return new SimplePedestrianTrafficLight(lightBehaviourFactory.getInitialAustralianPedestrianState());
+    public PedestrianTrafficLight createAustralianPedestrianTrafficLight(String name) {
+        return new SimplePedestrianTrafficLight(lightBehaviourFactory.getInitialAustralianPedestrianState(), name);
     }
 
     @Override
-    public StreetTrafficLight createDutchStreetTrafficLight() {
-        return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialDutchStreetState());
+    public StreetTrafficLight createDutchStreetTrafficLight(String name) {
+        return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialDutchStreetState(), name);
     }
 
     @Override
-    public StreetTrafficLight createGermanStreetTrafficLight() {
-        return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialGermanStreetState());
+    public StreetTrafficLight createGermanStreetTrafficLight(String name) {
+        return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialGermanStreetState(), name);
     }
 
     @Override
-    public StreetTrafficLight createAustralianStreetTrafficLight() {
-        return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialBulgarianStreetState());
+    public StreetTrafficLight createAustralianStreetTrafficLight(String name) {
+        return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialBulgarianStreetState(), name);
     }
 }

@@ -36,4 +36,10 @@ public interface TrafficLight {
      */
     void setShape(Shape newShape);
 
+    /**
+     * Getter for name of trafficLight
+     *
+     */
+    String getName();
+
 }

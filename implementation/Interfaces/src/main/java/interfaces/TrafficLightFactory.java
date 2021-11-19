@@ -1,16 +1,16 @@
 package interfaces;
 
 public interface TrafficLightFactory {
-    PedestrianTrafficLight createDutchPedestrianTrafficLight();
+    PedestrianTrafficLight createDutchPedestrianTrafficLight(String name);
 
-    PedestrianTrafficLight createGermanPedestrianTrafficLight();
+    PedestrianTrafficLight createGermanPedestrianTrafficLight(String name);
 
-    PedestrianTrafficLight createAustralianPedestrianTrafficLight();
+    PedestrianTrafficLight createAustralianPedestrianTrafficLight(String name);
 
-    StreetTrafficLight createDutchStreetTrafficLight();
+    StreetTrafficLight createDutchStreetTrafficLight(String name);
 
-    StreetTrafficLight createGermanStreetTrafficLight();
+    StreetTrafficLight createGermanStreetTrafficLight(String name);
 
-    StreetTrafficLight createAustralianStreetTrafficLight();
+    StreetTrafficLight createAustralianStreetTrafficLight(String name);
 
 }

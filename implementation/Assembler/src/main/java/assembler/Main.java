@@ -17,11 +17,11 @@ public class Main {
                 //Timer timer = new Timer();
                 TrafficLightFactory trafficLightFactory = new SimpleTrafficLightFactory();
 
-                PedestrianTrafficLight test = trafficLightFactory.createAustralianPedestrianTrafficLight();
-                PedestrianTrafficLight test2 = trafficLightFactory.createGermanPedestrianTrafficLight();
+                PedestrianTrafficLight test = trafficLightFactory.createAustralianPedestrianTrafficLight("horizontal pedestrian");
+                PedestrianTrafficLight test2 = trafficLightFactory.createGermanPedestrianTrafficLight("vertical pedestrian");
 
-                StreetTrafficLight germanSt = trafficLightFactory.createGermanStreetTrafficLight();
-                StreetTrafficLight germanSt2 = trafficLightFactory.createGermanStreetTrafficLight();
+                StreetTrafficLight germanSt = trafficLightFactory.createGermanStreetTrafficLight("horizontal street");
+                StreetTrafficLight germanSt2 = trafficLightFactory.createGermanStreetTrafficLight("vertical street");
 
                 SimpleCrossing cros = new SimpleCrossing();
                 cros.addPedestrianTrafficLightPair(test, test2);

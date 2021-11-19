@@ -8,7 +8,7 @@ import streetLightBehaviours.DutchStreetLightBehaviour;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class DutchTrafficLightTest {
-    SimpleStreetTrafficLight trafficLight = new SimpleStreetTrafficLight(DutchStreetLightBehaviour.RED_LIGHT);
+    SimpleStreetTrafficLight trafficLight = new SimpleStreetTrafficLight(DutchStreetLightBehaviour.RED_LIGHT, "test");
 
     @Test
     void changeState() {

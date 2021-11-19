@@ -9,7 +9,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 public class SimpleStreetTrafficLightTest {
 
-    SimpleStreetTrafficLight trafficLight = new SimpleStreetTrafficLight(GermanStreetLightBehaviour.RED_LIGHT);
+    SimpleStreetTrafficLight trafficLight = new SimpleStreetTrafficLight(GermanStreetLightBehaviour.RED_LIGHT, "test");
 
     @Test
     void changeState() {

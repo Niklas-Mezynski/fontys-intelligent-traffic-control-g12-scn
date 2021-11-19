@@ -9,7 +9,8 @@ import interfaces.*;
 public class SimplePedestrianTrafficLight extends TrafficLightBase implements PedestrianTrafficLight {
     private PedestrianLightState currentState;
 
-    public SimplePedestrianTrafficLight(PedestrianLightState initialState) {
+    public SimplePedestrianTrafficLight(PedestrianLightState initialState, String name) {
+        super(name);
         currentState = initialState;
     }
 
