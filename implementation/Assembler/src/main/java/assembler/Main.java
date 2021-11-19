@@ -20,46 +20,15 @@ public class Main {
                 PedestrianTrafficLight test = trafficLightFactory.createAustralianPedestrianTrafficLight();
                 PedestrianTrafficLight test2 = trafficLightFactory.createGermanPedestrianTrafficLight();
 
+                StreetTrafficLight germanSt = trafficLightFactory.createGermanStreetTrafficLight();
+                StreetTrafficLight germanSt2 = trafficLightFactory.createGermanStreetTrafficLight();
+
                 SimpleCrossing cros = new SimpleCrossing();
                 cros.addPedestrianTrafficLightPair(test, test2);
+                cros.addStreetTrafficLightPair(germanSt, germanSt2);
                 cros.activate(10000);
-                //cros.deactivate();
-
-//                /**
-//                 * Dutch traffic light test
-//                 */
-//                DutchTrafficLightBehaviour dtlb = DutchTrafficLightBehaviour.RED_LIGHT;
-//                SimpleStreetTrafficLight dutchTrafficLight = new SimpleStreetTrafficLight(dtlb);
-//
-//                dutchTrafficLight.changeState(DutchTrafficLightBehaviour.GREEN_LIGHT);
-//
-//
-//                //System.out.println(test);
-//                test2.startTraffic();
-//
-//                System.out.println("----");
-//
-//                test2.stopTraffic();
-//
-//                System.out.println("----");
-//
-//                System.out.println(test2);
-//
-//                System.out.println(test);
 
 
-//                timer.schedule(new TimerTask() {
-//
-//                        @Override
-//                        public void run() {
-//                                test.stopTraffic();
-//                                timer.cancel();
-//                        }
-//                }, 2 * 10000);
-
-
-
-                //System.out.println(test);
 
         }
 }
