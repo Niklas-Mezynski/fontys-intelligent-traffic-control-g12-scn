@@ -2,8 +2,10 @@ package crossings;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
-import org.mockito.Mockito;
 import trafficLights.SimplePedestrianTrafficLight;
+
+import java.util.concurrent.CountDownLatch;
+import java.util.concurrent.TimeUnit;
 
 import static org.mockito.Mockito.*;
 
@@ -17,9 +19,10 @@ public class SimplePedestrianCrossingTest {
         simpleCrossing.addPedestrianTrafficLightPair(horizontal, vertical);
 
         InOrder inOrder = inOrder(horizontal, vertical);
-
-        simpleCrossing.activate(1);
-        Thread.sleep(10);
+        CountDownLatch lock = new CountDownLatch(1);
+        int millisSignalLength = 1;
+        simpleCrossing.activate(millisSignalLength);
+        lock.await(millisSignalLength * 50, TimeUnit.MILLISECONDS);
         simpleCrossing.deactivate();
         inOrder.verify(vertical, times(1)).stopTraffic();
         inOrder.verify(horizontal, times(1)).startTraffic();
