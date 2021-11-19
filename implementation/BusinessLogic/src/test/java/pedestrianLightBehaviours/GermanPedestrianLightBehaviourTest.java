@@ -1,5 +1,6 @@
 package pedestrianLightBehaviours;
 
+import interfaces.LightState;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
@@ -21,9 +22,8 @@ public class GermanPedestrianLightBehaviourTest {
     void redLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
-            s.assertThat(redLight.canPass()).isFalse();
+            s.assertThat(redLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.STOP);
             s.assertThat(redLight.getName()).isEqualTo("Red Light");
-            s.assertThat(redLight.length()).isEqualTo(0);
             s.assertAll();
         });
 
@@ -38,9 +38,8 @@ public class GermanPedestrianLightBehaviourTest {
     void greenLightCheckValues() {
 
         SoftAssertions.assertSoftly(s -> {
-            s.assertThat(greenLight.canPass()).isTrue();
+            s.assertThat(greenLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.PASS);
             s.assertThat(greenLight.getName()).isEqualTo("Green Light");
-            s.assertThat(greenLight.length()).isEqualTo(2);
             s.assertAll();
         });
 

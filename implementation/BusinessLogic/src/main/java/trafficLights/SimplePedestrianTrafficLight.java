@@ -21,14 +21,18 @@ public class SimplePedestrianTrafficLight extends TrafficLightBase implements Pe
 
     @Override
     public void stopTraffic() {
-        while(currentState.canPass()){
+        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
+            return;
+        while(currentState.stateMeaning() != LightState.LightStateMeaning.STOP){
             currentState.changeState(this);
         }
     }
 
     @Override
     public void startTraffic() {
-        while(!currentState.canPass()){
+        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
+            return;
+        while(currentState.stateMeaning() != LightState.LightStateMeaning.PASS){
             currentState.changeState(this);
         }
     }

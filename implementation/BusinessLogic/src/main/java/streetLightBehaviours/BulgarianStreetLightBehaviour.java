@@ -8,7 +8,7 @@ import interfaces.StreetLightState;
  */
 public enum BulgarianStreetLightBehaviour implements StreetLightState {
 
-    RED_LIGHT(0, false, "Red Light"){
+    RED_LIGHT(LightStateMeaning.STOP, "Red Light"){
 
         @Override
         public StreetLightState getNext() {
@@ -17,7 +17,7 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
 
     },
 
-    YELLOW_LIGHT_BEFORE_GREEN(1, true, "Yellow Light"){
+    YELLOW_LIGHT_BEFORE_GREEN(LightStateMeaning.TRANSITION, "Yellow Light"){
 
         @Override
         public StreetLightState getNext() {
@@ -26,7 +26,7 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
 
     },
 
-    GREEN_LIGHT(2, true, "Green Light"){
+    GREEN_LIGHT(LightStateMeaning.PASS, "Green Light"){
 
         @Override
         public StreetLightState getNext() {
@@ -35,7 +35,7 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
 
     },
 
-    YELLOW_LIGHT_AFTER_GREEN(1, true, "Yellow Light"){
+    YELLOW_LIGHT_AFTER_GREEN(LightStateMeaning.TRANSITION, "Yellow Light"){
 
         @Override
         public StreetLightState getNext() {
@@ -44,24 +44,18 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
 
     };
 
-    private final int length;
-    private final boolean canPass;
+
+    private final LightStateMeaning stateMeaning;
     private final String name;
 
-    BulgarianStreetLightBehaviour(int length, boolean canPass, String name) {
-        this.length = length;
-        this.canPass = canPass;
+    BulgarianStreetLightBehaviour (LightStateMeaning stateMeaning, String name) {
+        this.stateMeaning = stateMeaning;
         this.name = name;
     }
 
     @Override
-    public boolean canPass() {
-        return canPass;
-    }
-
-    @Override
-    public int length() {
-        return length;
+    public LightStateMeaning stateMeaning() {
+        return stateMeaning;
     }
 
     @Override

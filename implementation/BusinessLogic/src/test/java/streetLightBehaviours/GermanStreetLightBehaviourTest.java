@@ -1,5 +1,6 @@
 package streetLightBehaviours;
 
+import interfaces.LightState;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import streetLightBehaviours.GermanStreetLightBehaviour;
@@ -39,21 +40,10 @@ public class GermanStreetLightBehaviourTest {
     @Test
     public void checkPassTest() {
         SoftAssertions.assertSoftly(softAssertions -> {
-            softAssertions.assertThat(redLight.canPass()).isFalse();
-            softAssertions.assertThat(redYellow.canPass()).isFalse();
-            softAssertions.assertThat(yellow.canPass()).isTrue();
-            softAssertions.assertThat(greenLight.canPass()).isTrue();
+            softAssertions.assertThat(redLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.STOP);
+            softAssertions.assertThat(redYellow.stateMeaning()).isEqualTo(LightState.LightStateMeaning.TRANSITION);
+            softAssertions.assertThat(yellow.stateMeaning()).isEqualTo(LightState.LightStateMeaning.TRANSITION);
+            softAssertions.assertThat(greenLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.PASS);
         });
     }
-
-    @Test
-    public void checkLengthTest(){
-        SoftAssertions.assertSoftly(softAssertions -> {
-            softAssertions.assertThat(redLight.length()).isEqualTo(0);
-            softAssertions.assertThat(redYellow.length()).isEqualTo(0);
-            softAssertions.assertThat(yellow.length()).isEqualTo(2);
-            softAssertions.assertThat(greenLight.length()).isEqualTo(2);
-        });
-    }
-
 }
