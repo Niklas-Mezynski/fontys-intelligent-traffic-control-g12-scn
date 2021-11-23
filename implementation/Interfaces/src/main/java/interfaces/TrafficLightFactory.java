@@ -11,6 +11,7 @@ public interface TrafficLightFactory {
 
     StreetTrafficLight createGermanStreetTrafficLight(String name);
 
-    StreetTrafficLight createAustralianStreetTrafficLight(String name);
+    StreetTrafficLight createBulgarianStreetTrafficLight(String name);
 
+    LightBehaviourFactory getLightBehaviourFactory();
 }
