@@ -72,21 +72,33 @@ public class SimpleCrossing implements Crossing {
 
     @Override
     public void startHorizontalTrafficLights() {
-        System.out.println("start horizontal: ");
+        System.out.println();
+        System.out.println("Starting horizontal traffic: ");
+        System.out.println("1. Stop vertical traffic");
         this.verticalPedestrianTrafficLight.stopTraffic();
         this.verticalStreetTrafficLight.stopTraffic();
         System.out.println("--");
+        System.out.println("2. Start horizontal traffic");
         this.horizontalPedestrianTrafficLight.startTraffic();
         this.horizontalStreetTrafficLight.startTraffic();
+        System.out.println("--");
+        System.out.println("Horizontal traffic started!");
+        System.out.println();
     }
 
     @Override
     public void startVerticalTrafficLights() {
-        System.out.println("start Vertical: ");
+        System.out.println();
+        System.out.println("Starting vertical traffic: ");
+        System.out.println("1. Stop horizontal traffic");
         this.horizontalPedestrianTrafficLight.stopTraffic();
         this.horizontalStreetTrafficLight.stopTraffic();
-        System.out.println("!!");
+        System.out.println("--");
+        System.out.println("2. Start vertical traffic");
         this.verticalPedestrianTrafficLight.startTraffic();
         this.verticalStreetTrafficLight.startTraffic();
+        System.out.println("--");
+        System.out.println("Vertical traffic started!");
+        System.out.println();
     }
 }

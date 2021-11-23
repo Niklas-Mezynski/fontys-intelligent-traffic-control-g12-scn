@@ -18,7 +18,7 @@ public interface PedestrianLightState extends LightState {
      *
      */
     default void changeState(PedestrianTrafficLight light) {
-        System.out.println("Changing from " + light.getCurrentState() + " -> " + getNext()  + " for " + light.getName() + " traffic light ");
+        System.out.println("Changing from " + light.getCurrentState() + " -> " + getNext()  + " for " + light.getName() + " traffic light ( " + light.getShape().getName() + " )");
         light.changeState(getNext());
     }
 }
