@@ -1,7 +1,6 @@
 package crossings;
 
 import interfaces.Crossing;
-import interfaces.LightObserver;
 import interfaces.PedestrianTrafficLight;
 import interfaces.StreetTrafficLight;
 
