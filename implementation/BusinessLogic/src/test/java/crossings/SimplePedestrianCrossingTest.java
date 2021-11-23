@@ -1,5 +1,6 @@
 package crossings;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import trafficLights.SimplePedestrianTrafficLight;
@@ -12,6 +13,7 @@ import static org.mockito.Mockito.*;
 
 public class SimplePedestrianCrossingTest {
 
+    @Disabled
     @Test
     void t01testCrossingSequence() throws InterruptedException {
         SimplePedestrianTrafficLight horizontal = mock(SimplePedestrianTrafficLight.class);
