@@ -16,7 +16,7 @@ public abstract class ShapeBase implements Shape {
 
     @Override
     public String getName() {
-        return name;
+        return name + " Shape";
     }
 
     @Override
@@ -34,6 +34,6 @@ public abstract class ShapeBase implements Shape {
 
     @Override
     public String toString() {
-        return getName() + " Shape";
+        return getName();
     }
 }
