@@ -1,55 +1,50 @@
 package crossings;
 
 import interfaces.Crossing;
+import interfaces.LightObserver;
 import interfaces.PedestrianTrafficLight;
 import interfaces.StreetTrafficLight;
-import interfaces.TrafficLight;
 
 import java.util.*;
 
 public class SimpleCrossing implements Crossing {
     Timer timer;
-    List<TrafficLight> verticalTrafficlightList = new ArrayList<>();
-    List<TrafficLight> horizontalTrafficlightList = new ArrayList<>();
+    PedestrianTrafficLight horizontalPedestrianTrafficLight;
+    PedestrianTrafficLight verticalPedestrianTrafficLight;
+    StreetTrafficLight horizontalStreetTrafficLight;
+    StreetTrafficLight verticalStreetTrafficLight;
 
     public SimpleCrossing() {
-        timer = new Timer();
+        resetTimer();
     }
 
     @Override
     public void addPedestrianTrafficLightPair(PedestrianTrafficLight horizontal, PedestrianTrafficLight vertical) {
-        this.verticalTrafficlightList.add(vertical);
-        this.horizontalTrafficlightList.add(horizontal);
+        this.horizontalPedestrianTrafficLight = horizontal;
+        this.verticalPedestrianTrafficLight = vertical;
     }
 
     @Override
     public void addStreetTrafficLightPair(StreetTrafficLight horizontal, StreetTrafficLight vertical) {
-        this.verticalTrafficlightList.add(vertical);
-        this.horizontalTrafficlightList.add(horizontal);
+        this.horizontalStreetTrafficLight = horizontal;
+        this.verticalStreetTrafficLight = vertical;
     }
 
     @Override
-    public void removePedestrianTrafficLightPair(PedestrianTrafficLight horizontal, PedestrianTrafficLight vertical) {
-        try {
-            this.verticalTrafficlightList.remove(vertical);
-            this.horizontalTrafficlightList.remove(horizontal);
-        }catch (Exception e){
-            throw new NoSuchElementException("Could not find light: " + e.getMessage());
-        }
+    public void removePedestrianTrafficLightPair() {
+        this.horizontalPedestrianTrafficLight = null;
+        this.verticalPedestrianTrafficLight = null;
     }
 
     @Override
-    public void removeStreetTrafficLightPair(StreetTrafficLight horizontal, StreetTrafficLight vertical) {
-        try {
-            this.verticalTrafficlightList.remove(vertical);
-            this.horizontalTrafficlightList.remove(horizontal);
-        }catch (Exception e){
-            throw new NoSuchElementException("Could not find light: " + e.getMessage());
-        }
+    public void removeStreetTrafficLightPair() {
+        this.horizontalStreetTrafficLight = null;
+        this.verticalStreetTrafficLight = null;
     }
 
     @Override
     public void activate(int length) {
+        resetTimer();
         timer.schedule(new TimerTask() {
 
                         @Override
@@ -57,7 +52,6 @@ public class SimpleCrossing implements Crossing {
                             startHorizontalTrafficLights();
                         }
                 }, 0, length);
-
         timer.schedule(new TimerTask() {
 
             @Override
@@ -73,21 +67,27 @@ public class SimpleCrossing implements Crossing {
         timer.cancel();
     }
 
+    private void resetTimer(){
+        timer = new Timer();
+    }
+
     @Override
     public void startHorizontalTrafficLights() {
         System.out.println("start horizontal: ");
-        this.verticalTrafficlightList.forEach(TrafficLight::stopTraffic);
+        this.verticalPedestrianTrafficLight.stopTraffic();
+        this.verticalStreetTrafficLight.stopTraffic();
         System.out.println("--");
-        this.horizontalTrafficlightList.forEach(TrafficLight::startTraffic);
+        this.horizontalPedestrianTrafficLight.startTraffic();
+        this.horizontalStreetTrafficLight.startTraffic();
     }
 
     @Override
     public void startVerticalTrafficLights() {
         System.out.println("start Vertical: ");
-        this.horizontalTrafficlightList.forEach(TrafficLight::stopTraffic);
+        this.horizontalPedestrianTrafficLight.stopTraffic();
+        this.horizontalStreetTrafficLight.stopTraffic();
         System.out.println("!!");
-        this.verticalTrafficlightList.forEach(TrafficLight::startTraffic);
+        this.verticalPedestrianTrafficLight.startTraffic();
+        this.verticalStreetTrafficLight.startTraffic();
     }
-
-
 }

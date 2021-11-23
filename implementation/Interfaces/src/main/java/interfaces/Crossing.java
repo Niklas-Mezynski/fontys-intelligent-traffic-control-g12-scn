@@ -4,9 +4,9 @@ public interface Crossing {
     void addPedestrianTrafficLightPair(PedestrianTrafficLight a, PedestrianTrafficLight b);
     void addStreetTrafficLightPair(StreetTrafficLight a, StreetTrafficLight b);
 
-    void removePedestrianTrafficLightPair(PedestrianTrafficLight horizontal, PedestrianTrafficLight vertical);
+    void removePedestrianTrafficLightPair();
 
-    void removeStreetTrafficLightPair(StreetTrafficLight horizontal, StreetTrafficLight vertical);
+    void removeStreetTrafficLightPair();
 
     void activate(int length);
 
@@ -15,5 +15,4 @@ public interface Crossing {
     void startHorizontalTrafficLights();
 
     void startVerticalTrafficLights();
-
 }
