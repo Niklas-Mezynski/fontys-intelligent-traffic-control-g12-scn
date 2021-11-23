@@ -3,7 +3,7 @@ package interfaces;
  * Interface for TrafficLight
  *
  */
-public interface TrafficLight {
+public interface TrafficLight extends ObservableTrafficLight {
 
     /**
      * Used to loop through all passing states
