@@ -9,15 +9,24 @@ import interfaces.PedestrianLightState;
 public enum GermanPedestrianLightBehaviour implements PedestrianLightState {
 
     RED_LIGHT(LightStateMeaning.STOP, "Red Light"){
+        @Override
+        public String getColorHex() {
+            return "#EE0000";
+        }
 
         @Override
         public PedestrianLightState getNext() {
             return GREEN_LIGHT;
         }
 
+
     },
 
     GREEN_LIGHT(LightStateMeaning.PASS, "Green Light"){
+        @Override
+        public String getColorHex() {
+            return "#00FF12";
+        }
 
         @Override
         public PedestrianLightState getNext() {

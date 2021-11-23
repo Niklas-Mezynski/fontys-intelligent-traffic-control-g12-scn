@@ -9,6 +9,10 @@ import interfaces.StreetLightState;
 public enum BulgarianStreetLightBehaviour implements StreetLightState {
 
     RED_LIGHT(LightStateMeaning.STOP, "Red Light"){
+        @Override
+        public String getColorHex() {
+            return "#EE0000";
+        }
 
         @Override
         public StreetLightState getNext() {
@@ -18,6 +22,10 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
     },
 
     YELLOW_LIGHT_BEFORE_GREEN(LightStateMeaning.TRANSITION, "Yellow Light"){
+        @Override
+        public String getColorHex() {
+            return "#FFFE00";
+        }
 
         @Override
         public StreetLightState getNext() {
@@ -27,6 +35,10 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
     },
 
     GREEN_LIGHT(LightStateMeaning.PASS, "Green Light"){
+        @Override
+        public String getColorHex() {
+            return "#00FF12";
+        }
 
         @Override
         public StreetLightState getNext() {
@@ -36,6 +48,10 @@ public enum BulgarianStreetLightBehaviour implements StreetLightState {
     },
 
     YELLOW_LIGHT_AFTER_GREEN(LightStateMeaning.TRANSITION, "Yellow Light"){
+        @Override
+        public String getColorHex() {
+            return "#FFFE00";
+        }
 
         @Override
         public StreetLightState getNext() {
