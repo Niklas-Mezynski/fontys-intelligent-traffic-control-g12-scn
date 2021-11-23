@@ -17,6 +17,8 @@ public interface TrafficLight {
      */
     void startTraffic();
 
+    void changeToNextState();
+
     /**
      * Returns current state
      *

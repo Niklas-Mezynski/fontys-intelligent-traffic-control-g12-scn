@@ -38,6 +38,12 @@ public class SimplePedestrianTrafficLight extends TrafficLightBase implements Pe
     }
 
     @Override
+    public void changeToNextState() {
+        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY) return;
+        currentState.changeState(this);
+    }
+
+    @Override
     public PedestrianLightState getCurrentState() {
         return currentState;
     }

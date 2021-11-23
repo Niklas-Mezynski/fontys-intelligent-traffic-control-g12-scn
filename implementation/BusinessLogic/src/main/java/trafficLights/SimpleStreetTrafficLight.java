@@ -39,6 +39,12 @@ public class SimpleStreetTrafficLight extends TrafficLightBase implements Street
     }
 
     @Override
+    public void changeToNextState() {
+        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY) return;
+            currentState.changeState(this);
+    }
+
+    @Override
     public StreetLightState getCurrentState() {
         return currentState;
     }
