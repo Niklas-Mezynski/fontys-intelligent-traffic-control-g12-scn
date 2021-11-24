@@ -1,7 +1,7 @@
 package frontend.controllers;
 
 import frontend.SceneManager;
-import frontend.helpers.CircleLightObserver;
+import frontend.helpers.FXShapeLightObserver;
 import interfaces.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -72,10 +72,11 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
         shapeToURLMap.put("Donkey Shape", "/frontend/shapes/donkeyShape.png");
         shapeToURLMap.put("Man Shape", "/frontend/shapes/manShape.png");
 
-        List<String> shapes = List.of("Dot Shape", "Man Shape", "Donkey Shape");
+        List<String> shapes = new ArrayList<>(stringToShapeMap.keySet());
+        shapes.addAll(stringToShapeMap.keySet());
         shapeBox.setItems(entitiesToObservableListDistinct(shapes));
 
-        List<String> behaviours = List.of("German Street Behaviour", "Dutch Street Behaviour", "Bulgarian Street Behaviour");
+        List<String> behaviours = new ArrayList<>(behaviourMap.keySet());
         behaviourBox.setItems(entitiesToObservableListDistinct(behaviours));
 
         List<Integer> lengths = List.of(1, 2, 3, 4, 5);
@@ -87,7 +88,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
         behaviourBox.setValue("German Street Behaviour");
         lengthBox.setValue(5);
 
-        currentTrafficLight.addLightObserver(new CircleLightObserver(lightCircle));
+        currentTrafficLight.addLightObserver(new FXShapeLightObserver(lightCircle));
         setCurrentShape("Dot Shape");
     }
 

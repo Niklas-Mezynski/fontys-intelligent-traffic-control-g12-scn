@@ -1,9 +1,7 @@
 package frontend.controllers;
 
-import frontend.helpers.CircleLightObserver;
 import frontend.SceneManager;
-import frontend.helpers.RectangleObserver;
-import interfaces.Crossing;
+import frontend.helpers.FXShapeLightObserver;
 import interfaces.ObservableCrossing;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -41,21 +39,21 @@ public class SingleCrossingSimulationController extends ControllerBase implement
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isActive = false;
         resetLights();
-        crossing.addHorizontalPedestrianLightObserver(new CircleLightObserver(horizontalCircle1));
-        crossing.addHorizontalPedestrianLightObserver(new CircleLightObserver(horizontalCircle2));
-        crossing.addHorizontalPedestrianLightObserver(new CircleLightObserver(horizontalCircle3));
-        crossing.addHorizontalPedestrianLightObserver(new CircleLightObserver(horizontalCircle4));
+        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle1));
+        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle2));
+        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle3));
+        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle4));
 
-        crossing.addVerticalPedestrianLightObserver(new CircleLightObserver(verticalCircle1));
-        crossing.addVerticalPedestrianLightObserver(new CircleLightObserver(verticalCircle2));
-        crossing.addVerticalPedestrianLightObserver(new CircleLightObserver(verticalCircle3));
-        crossing.addVerticalPedestrianLightObserver(new CircleLightObserver(verticalCircle4));
+        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle1));
+        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle2));
+        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle3));
+        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle4));
 
-        crossing.addHorizontalStreetLightObserver(new RectangleObserver(horizontalRectangle1));
-        crossing.addHorizontalStreetLightObserver(new RectangleObserver(horizontalRectangle2));
+        crossing.addHorizontalStreetLightObserver(new FXShapeLightObserver(horizontalRectangle1));
+        crossing.addHorizontalStreetLightObserver(new FXShapeLightObserver(horizontalRectangle2));
 
-        crossing.addVerticalStreetLightObserver(new RectangleObserver(verticalRectangle1));
-        crossing.addVerticalStreetLightObserver(new RectangleObserver(verticalRectangle2));
+        crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle1));
+        crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle2));
     }
 
     private void resetLights(){
