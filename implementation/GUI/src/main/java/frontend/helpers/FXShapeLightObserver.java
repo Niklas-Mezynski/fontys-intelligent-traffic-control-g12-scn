@@ -13,6 +13,6 @@ public class FXShapeLightObserver implements interfaces.LightObserver {
     }
     @Override
     public void update(LightState state) {
-        shape.setFill(Paint.valueOf(newState.getColorHex()));
+        shape.setFill(Paint.valueOf(state.getColorHex()));
     }
 }
