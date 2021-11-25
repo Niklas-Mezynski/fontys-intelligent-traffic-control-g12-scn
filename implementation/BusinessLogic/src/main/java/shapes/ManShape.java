@@ -1,6 +1,8 @@
 package shapes;
 
-public class ManShape extends ShapeBase{
+import interfaces.PedestrianShape;
+
+public class ManShape extends ShapeBase implements PedestrianShape {
     public ManShape() {
         super("Man");
     }

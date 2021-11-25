@@ -12,9 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import shapes.DonkeyShape;
-import shapes.DotShape;
-import shapes.ManShape;
+import shapes.*;
 
 import java.net.URL;
 import java.util.*;
@@ -27,7 +25,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     TrafficLightFactory trafficLightFactory;
     LightBehaviourFactory lightBehaviourFactory;
     StreetTrafficLight currentTrafficLight;
-    Map<String, Shape> stringToShapeMap;
+    Map<String, StreetShape> stringToShapeMap;
     Map<String, String> shapeToURLMap;
     Map<String, StreetLightState> behaviourMap;
     boolean isSimulationStarted;
@@ -61,17 +59,17 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resetLight();
 
-        stringToShapeMap.put("Dot Shape", new DotShape());
-        stringToShapeMap.put("Man Shape", new ManShape());
-        stringToShapeMap.put("Donkey Shape", new DonkeyShape());
+        stringToShapeMap.put("Arrow Forward Shape", new ArrowForwardShape());
+        stringToShapeMap.put("Arrow Left Shape", new ArrowLeftShape());
+        stringToShapeMap.put("Arrow Right Shape", new ArrowRightShape());
 
         behaviourMap.put("German Street Behaviour", lightBehaviourFactory.getInitialGermanStreetState());
         behaviourMap.put("Dutch Street Behaviour", lightBehaviourFactory.getInitialDutchStreetState());
         behaviourMap.put("Bulgarian Street Behaviour", lightBehaviourFactory.getInitialBulgarianStreetState());
 
-        shapeToURLMap.put("Dot Shape", "/frontend/shapes/dotShape.png");
-        shapeToURLMap.put("Donkey Shape", "/frontend/shapes/donkeyShape.png");
-        shapeToURLMap.put("Man Shape", "/frontend/shapes/manShape.png");
+        shapeToURLMap.put("Arrow Forward Shape", "/frontend/shapes/arrowForward.png");
+        shapeToURLMap.put("Arrow Left Shape", "/frontend/shapes/arrowLeft.png");
+        shapeToURLMap.put("Arrow Right Shape", "/frontend/shapes/arrowRight.png");
 
         List<String> shapes = new ArrayList<>(stringToShapeMap.keySet());
         shapes.addAll(stringToShapeMap.keySet());
@@ -85,14 +83,14 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
 
         currentTrafficLight = trafficLightFactory.createGermanStreetTrafficLight("currentTrafficLight");
 
-        shapeBox.setValue("Dot Shape");
+        shapeBox.setValue("Arrow Forward Shape");
         behaviourBox.setValue("German Street Behaviour");
         lengthBox.setValue(5);
 
         currentTrafficLight.addLightObserver(new FXShapeLightObserver(lightCircle));
         currentTrafficLight.addShapeObserver(new CircleShapeObserver(innerCircle, shapeToURLMap));
 
-        currentTrafficLight.setShape(new DotShape());
+        currentTrafficLight.setShape(new ArrowForwardShape());
     }
 
     private void resetLight(){

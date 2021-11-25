@@ -2,6 +2,8 @@ package trafficLights;
 
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
+import shapes.ArrowForwardShape;
+import shapes.ArrowLeftShape;
 import shapes.DotShape;
 import streetLightBehaviours.DutchStreetLightBehaviour;
 
@@ -37,17 +39,17 @@ public class DutchTrafficLightTest {
 
     @Test
     void testToString() {
-        assertThat(trafficLight.toString()).isEqualTo("SimpleStreetTrafficLight{ currentState = RED_LIGHT, shape = Dot Shape }");
+        assertThat(trafficLight.toString()).isEqualTo("SimpleStreetTrafficLight{ currentState = RED_LIGHT, shape = Arrow Forward Shape }");
     }
 
     @Test
     void getShape() {
-        assertThat(trafficLight.getShape()).isEqualTo(new DotShape());
+        assertThat(trafficLight.getShape()).isEqualTo(new ArrowForwardShape());
     }
 
     @Test
     void setShape() {
-        var shape = new DotShape();
+        var shape = new ArrowLeftShape();
         trafficLight.setShape(shape);
         assertThat(trafficLight.getShape()).isEqualTo(shape);
     }
