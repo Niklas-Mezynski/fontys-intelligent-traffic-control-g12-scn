@@ -16,6 +16,4 @@ public interface PedestrianPlatform {
 
     public void attachPedestrian(Pedestrian pedestrian);
 
-    public void removePedestrian(Pedestrian pedestrian);
-
 }

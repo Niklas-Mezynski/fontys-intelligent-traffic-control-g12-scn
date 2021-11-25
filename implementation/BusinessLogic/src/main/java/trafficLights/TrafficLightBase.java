@@ -68,7 +68,7 @@ public abstract class TrafficLightBase implements TrafficLight {
 
     @Override
     public void informForLightChange() {
-        lightObservers.forEach(s -> s.update(getCurrentState().getColorHex()));
+        lightObservers.forEach(s -> s.update(getCurrentState()));
     }
 
     @Override

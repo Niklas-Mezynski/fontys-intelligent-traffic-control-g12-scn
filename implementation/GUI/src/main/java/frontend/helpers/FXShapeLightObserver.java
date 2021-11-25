@@ -1,5 +1,6 @@
 package frontend.helpers;
 
+import interfaces.LightState;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.Shape;
@@ -11,7 +12,7 @@ public class FXShapeLightObserver implements interfaces.LightObserver {
         this.shape = rec;
     }
     @Override
-    public void update(String colorHexCode) {
-        shape.setFill(Paint.valueOf(colorHexCode));
+    public void update(LightState state) {
+        shape.setFill(Paint.valueOf(newState.getColorHex()));
     }
 }

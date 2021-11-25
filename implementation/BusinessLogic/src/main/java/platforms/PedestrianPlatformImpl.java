@@ -1,7 +1,11 @@
 package platforms;
 
+import interfaces.LightState;
 import interfaces.Pedestrian;
 import interfaces.PedestrianPlatform;
+
+import java.util.PriorityQueue;
+import java.util.Queue;
 
 public class PedestrianPlatformImpl implements PedestrianPlatform {
 
@@ -9,6 +13,7 @@ public class PedestrianPlatformImpl implements PedestrianPlatform {
     private final int y;
     private PedestrianPlatform hPartner;
     private PedestrianPlatform vPartner;
+    private PriorityQueue<Pedestrian> pedestrians = new PriorityQueue<>();
 
     @Override
     public void addHorizontalPartner(PedestrianPlatform platform) {
@@ -32,26 +37,21 @@ public class PedestrianPlatformImpl implements PedestrianPlatform {
 
     @Override
     public PedestrianPlatform getVerticalPartner() {
-        return null;
+        return vPartner;
     }
 
     @Override
     public int getX() {
-        return 0;
+        return x;
     }
 
     @Override
     public int getY() {
-        return 0;
+        return y;
     }
 
     @Override
     public void attachPedestrian(Pedestrian pedestrian) {
-
-    }
-
-    @Override
-    public void removePedestrian(Pedestrian pedestrian) {
-
+        pedestrians.add(pedestrian);
     }
 }
