@@ -1,14 +1,13 @@
 package crossings;
 
-import interfaces.Crossing;
-import interfaces.PedestrianTrafficLight;
-import interfaces.StreetTrafficLight;
+import interfaces.*;
 import platforms.PedestrianPlatformImpl;
 
 import java.util.*;
 
-public class SimpleCrossing implements Crossing {
+public class SimpleCrossing implements Crossing, CrossingSubject {
     Timer timer;
+    List<CrossingObserver> observers = new ArrayList<>();
     PedestrianTrafficLight horizontalPedestrianTrafficLight;
     PedestrianTrafficLight verticalPedestrianTrafficLight;
     StreetTrafficLight horizontalStreetTrafficLight;
@@ -108,6 +107,16 @@ public class SimpleCrossing implements Crossing {
         System.out.println();
     }
 
+    @Override
+    public PedestrianTrafficLight getHorizontalPedestrianLight() {
+        return horizontalPedestrianTrafficLight;
+    }
+
+    @Override
+    public PedestrianTrafficLight getVerticalPedestrianLight() {
+        return verticalPedestrianTrafficLight;
+    }
+
     private void createPedestrianPlatforms() {
         pp11 = new PedestrianPlatformImpl(1, 1);
         pp12 = new PedestrianPlatformImpl(1, 2);
@@ -125,5 +134,22 @@ public class SimpleCrossing implements Crossing {
 
         pp22.addHorizontalPartner(pp12);
         pp22.addVerticalPartner(pp21);
+
+        addCrossingObservers(pp11, pp12, pp21, pp22);
+    }
+
+    @Override
+    public void addCrossingObservers(CrossingObserver... observer) {
+        observers.addAll(Arrays.asList(observer));
+    }
+
+    @Override
+    public void removeCrossingObserver(CrossingObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void updateObservers() {
+        observers.forEach(observer -> observer.update(this));
     }
 }

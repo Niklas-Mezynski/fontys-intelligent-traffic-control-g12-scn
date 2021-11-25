@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface PedestrianPlatform {
+public interface PedestrianPlatform extends Platform{
 
     public void addHorizontalPartner(PedestrianPlatform platform);
 
@@ -9,10 +9,6 @@ public interface PedestrianPlatform {
     public PedestrianPlatform getHorizontalPartner();
 
     public PedestrianPlatform getVerticalPartner();
-
-    public int getX();
-
-    public int getY();
 
     public void attachPedestrian(Pedestrian pedestrian);
 

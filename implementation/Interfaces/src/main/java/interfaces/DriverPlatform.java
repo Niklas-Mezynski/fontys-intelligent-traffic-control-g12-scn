@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface DriverPlatform {
+public interface DriverPlatform extends Platform{
 
     public void addHorizontalPartner(DriverPlatform platform);
 
@@ -9,10 +9,6 @@ public interface DriverPlatform {
     public DriverPlatform getHorizontalPartner();
 
     public DriverPlatform getVerticalPartner();
-
-    public int getX();
-
-    public int getY();
 
     public void attachDriver(Driver driver);
 

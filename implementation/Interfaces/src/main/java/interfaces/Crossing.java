@@ -15,4 +15,8 @@ public interface Crossing {
     void startHorizontalTrafficLights();
 
     void startVerticalTrafficLights();
+
+    PedestrianTrafficLight getHorizontalPedestrianLight();
+
+    PedestrianTrafficLight getVerticalPedestrianLight();
 }
