@@ -12,12 +12,12 @@ public class PedestrianPlatformImpl implements PedestrianPlatform {
 
     @Override
     public void addHorizontalPartner(PedestrianPlatform platform) {
-        
+        hPartner = platform;
     }
 
     @Override
     public void addVerticalPartner(PedestrianPlatform platform) {
-
+        vPartner = platform;
     }
 
     public PedestrianPlatformImpl(int x, int y) {
@@ -27,7 +27,7 @@ public class PedestrianPlatformImpl implements PedestrianPlatform {
 
     @Override
     public PedestrianPlatform getHorizontalPartner() {
-        return null;
+        return hPartner;
     }
 
     @Override
