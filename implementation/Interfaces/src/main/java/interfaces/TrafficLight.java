@@ -25,18 +25,6 @@ public interface TrafficLight extends ObservableTrafficLight {
      */
     LightState getCurrentState();
 
-    /**
-     * Returns current shape
-     *
-     */
-    Shape getShape();
-
-    /**
-     * Setter for current shape
-     *
-     * @param newShape to replace the current shape
-     */
-    void setShape(Shape newShape);
 
     /**
      * Getter for name of trafficLight

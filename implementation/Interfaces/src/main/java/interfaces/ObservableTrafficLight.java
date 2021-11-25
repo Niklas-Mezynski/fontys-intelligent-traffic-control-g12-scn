@@ -11,7 +11,7 @@ public interface ObservableTrafficLight {
 
     void removeShapeObserver(ShapeObserver o);
 
-    void informForShapeChange();
+    void informForShapeChange(Shape shape);
 }
 
 

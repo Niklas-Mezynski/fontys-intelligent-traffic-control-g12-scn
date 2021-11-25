@@ -11,14 +11,12 @@ import java.util.List;
  *
  */
 public abstract class TrafficLightBase implements TrafficLight {
-    private Shape shape;
     private final String name;
     private final List<LightObserver> lightObservers;
     private final List<ShapeObserver> shapeObservers;
 
     public TrafficLightBase(String name){
         this.name = name;
-        shape = new DotShape();
         lightObservers = new ArrayList<>();
         shapeObservers = new ArrayList<>();
     }
@@ -31,25 +29,6 @@ public abstract class TrafficLightBase implements TrafficLight {
 
     @Override
     public abstract LightState getCurrentState();
-
-    @Override
-    public Shape getShape() {
-        return shape;
-    }
-
-    @Override
-    public void setShape(Shape newShape) {
-        this.shape = newShape;
-        informForShapeChange();
-    }
-
-    @Override
-    public String toString() {
-        return getClass().getSimpleName() + "{" +
-                " currentState = " + getCurrentState() +
-                ", shape = " + shape +
-                " }";
-    }
 
     @Override
     public String getName() {
@@ -82,7 +61,7 @@ public abstract class TrafficLightBase implements TrafficLight {
     }
 
     @Override
-    public void informForShapeChange() {
-        shapeObservers.forEach(s -> s.update(getShape()));
+    public void informForShapeChange(Shape shape) {
+        shapeObservers.forEach(s -> s.update(shape));
     }
 }

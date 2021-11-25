@@ -1,6 +1,8 @@
 package shapes;
 
-public class DonkeyShape extends ShapeBase{
+import interfaces.PedestrianShape;
+
+public class DonkeyShape extends ShapeBase implements PedestrianShape {
     public DonkeyShape() {
         super("Donkey");
     }

@@ -13,4 +13,8 @@ public interface PedestrianTrafficLight extends TrafficLight{
      */
     void changeState(PedestrianLightState state);
 
+    PedestrianShape getShape();
+
+    void setShape(PedestrianShape newShape);
+
 }
