@@ -2,6 +2,10 @@ package interfaces;
 
 public interface DriverPlatform {
 
+    public void addHorizontalPartner(DriverPlatform platform);
+
+    public void addVerticalPartner(DriverPlatform platform);
+
     public DriverPlatform getHorizontalPartner();
 
     public DriverPlatform getVerticalPartner();
