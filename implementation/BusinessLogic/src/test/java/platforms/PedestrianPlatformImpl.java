@@ -1,12 +1,28 @@
-package Plattforms;
+package platforms;
 
 import interfaces.Pedestrian;
 import interfaces.PedestrianPlatform;
 
 public class PedestrianPlatformImpl implements PedestrianPlatform {
 
-    public PedestrianPlatformImpl(int x, int y) {
+    private final int x;
+    private final int y;
+    private PedestrianPlatform hPartner;
+    private PedestrianPlatform vPartner;
+
+    @Override
+    public void addHorizontalPartner(PedestrianPlatform platform) {
         
+    }
+
+    @Override
+    public void addVerticalPartner(PedestrianPlatform platform) {
+
+    }
+
+    public PedestrianPlatformImpl(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
     @Override

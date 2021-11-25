@@ -2,6 +2,10 @@ package interfaces;
 
 public interface PedestrianPlatform {
 
+    public void addHorizontalPartner(PedestrianPlatform platform);
+
+    public void addVerticalPartner(PedestrianPlatform platform);
+
     public PedestrianPlatform getHorizontalPartner();
 
     public PedestrianPlatform getVerticalPartner();
