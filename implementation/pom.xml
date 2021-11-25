@@ -23,6 +23,7 @@
         <module>Assembler</module>
         <module>BusinessLogic</module>
         <module>Interfaces</module>
+        <module>GUI</module>
     </modules>
     <name>TrafficControlSystem</name>
     <dependencyManagement>
