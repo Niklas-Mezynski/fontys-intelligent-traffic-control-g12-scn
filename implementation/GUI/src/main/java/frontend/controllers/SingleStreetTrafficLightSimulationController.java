@@ -1,6 +1,7 @@
 package frontend.controllers;
 
 import frontend.SceneManager;
+import frontend.helpers.CircleShapeObserver;
 import frontend.helpers.FXShapeLightObserver;
 import interfaces.*;
 import javafx.fxml.FXML;
@@ -89,12 +90,9 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
         lengthBox.setValue(5);
 
         currentTrafficLight.addLightObserver(new FXShapeLightObserver(lightCircle));
-        setCurrentShape("Dot Shape");
-    }
+        currentTrafficLight.addShapeObserver(new CircleShapeObserver(innerCircle, shapeToURLMap));
 
-    private void setCurrentShape(String shape){
-        currentShape = new Image(getClass().getResource(shapeToURLMap.get(shape)).toExternalForm());
-        innerCircle.setFill(new ImagePattern(currentShape));
+        currentTrafficLight.setShape(new DotShape());
     }
 
     private void resetLight(){
@@ -153,7 +151,6 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     @FXML
     public void changeShape() {
         currentTrafficLight.setShape(stringToShapeMap.get(shapeBox.getValue()));
-        setCurrentShape(shapeBox.getValue());
     }
 
     /**

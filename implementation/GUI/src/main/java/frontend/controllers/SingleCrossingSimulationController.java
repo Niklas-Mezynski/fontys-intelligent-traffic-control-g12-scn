@@ -5,13 +5,17 @@ import frontend.helpers.FXShapeLightObserver;
 import interfaces.ObservableCrossing;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.ComboBox;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
+
+import static frontend.helpers.ObservableListHelper.entitiesToObservableListDistinct;
 
 /**
  * Controller for Single Crossing Simulation JavaFX scene.
@@ -29,6 +33,9 @@ public class SingleCrossingSimulationController extends ControllerBase implement
 
     @FXML
     Rectangle horizontalRectangle1, horizontalRectangle2, verticalRectangle1, verticalRectangle2;
+
+    @FXML
+    ComboBox<Integer> lengthBox;
 
     public SingleCrossingSimulationController(Supplier<SceneManager> sceneManager, ObservableCrossing crossing) {
         super(sceneManager);
@@ -54,6 +61,11 @@ public class SingleCrossingSimulationController extends ControllerBase implement
 
         crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle1));
         crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle2));
+
+        List<Integer> lengths = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+        lengthBox.setItems(entitiesToObservableListDistinct(lengths));
+
+        lengthBox.setValue(5);
     }
 
     private void resetLights(){
@@ -99,7 +111,7 @@ public class SingleCrossingSimulationController extends ControllerBase implement
     public void startSimulation() {
         changeColorOfAllLights("red");
         if(!isActive) {
-            crossing.activate(10000);
+            crossing.activate(lengthBox.getValue() * 1000);
             isActive = true;
         }
     }
@@ -113,6 +125,17 @@ public class SingleCrossingSimulationController extends ControllerBase implement
             crossing.deactivate();
             resetLights();
             isActive = false;
+        }
+    }
+
+    /**
+     * Changes length of the light signal.
+     */
+    @FXML
+    public void changeLength() {
+        if(isActive) {
+            endSimulation();
+            startSimulation();
         }
     }
 }

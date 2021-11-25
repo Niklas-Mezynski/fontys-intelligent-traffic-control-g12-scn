@@ -54,8 +54,6 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     @FXML
     TextField stateField;
 
-    Image currentShape;
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resetLight();
@@ -149,13 +147,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     @FXML
     public void changeShape() {
         currentTrafficLight.setShape(stringToShapeMap.get(shapeBox.getValue()));
-        //setCurrentShape(shapeBox.getValue());
     }
-
-//    private void setCurrentShape(String shape){
-//        currentShape = new Image(getClass().getResource(shapeToURLMap.get(shape)).toExternalForm());
-//        innerCircle.setFill(new ImagePattern(currentShape));
-//    }
 
     /**
      * Changes light behaviour of the current traffic light.
