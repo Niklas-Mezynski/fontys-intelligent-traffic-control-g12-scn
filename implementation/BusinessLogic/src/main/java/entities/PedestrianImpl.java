@@ -1,16 +1,17 @@
 package entities;
 
-import interfaces.LightState;
 import interfaces.Pedestrian;
 import interfaces.PedestrianPlatform;
 
 public class PedestrianImpl implements Pedestrian {
     private final String name;
-    private final PedestrianPlatform dest;
+    private final PedestrianPlatform start;
+    private final PedestrianPlatform end;
 
-    public PedestrianImpl(String name, PedestrianPlatform dest) {
+    public PedestrianImpl(String name, PedestrianPlatform start, PedestrianPlatform end) {
         this.name = name;
-        this.dest = dest;
+        this.start = start;
+        this.end = end;
     }
 
     @Override
@@ -19,8 +20,13 @@ public class PedestrianImpl implements Pedestrian {
     }
 
     @Override
+    public PedestrianPlatform getStartingPoint() {
+        return start;
+    }
+
+    @Override
     public PedestrianPlatform getDestination() {
-        return dest;
+        return end;
     }
 
     @Override

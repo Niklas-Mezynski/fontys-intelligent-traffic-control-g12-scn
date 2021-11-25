@@ -16,5 +16,5 @@ public interface DriverPlatform {
 
     public void attachDriver(Driver driver);
 
-    public void removeDriver(Driver driver);
+    int getCount();
 }

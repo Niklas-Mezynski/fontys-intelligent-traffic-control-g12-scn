@@ -3,7 +3,8 @@ package platforms;
 import interfaces.Driver;
 import interfaces.DriverPlatform;
 
-import java.util.PriorityQueue;
+import java.util.ArrayList;
+import java.util.List;
 
 public class DriverPlatformImpl implements DriverPlatform {
 
@@ -13,7 +14,15 @@ public class DriverPlatformImpl implements DriverPlatform {
     private DriverPlatform hPartner;
     private DriverPlatform vPartner;
 
-    private PriorityQueue<Driver> driverPriorityQueue = new PriorityQueue<>();
+    private final List<Driver> driverPriorityQueue;
+    private int count;
+
+    public DriverPlatformImpl(int x, int y) {
+        this.x = x;
+        this.y = y;
+        this.driverPriorityQueue = new ArrayList<>();
+    }
+
 
 
     @Override
@@ -49,10 +58,10 @@ public class DriverPlatformImpl implements DriverPlatform {
     @Override
     public void attachDriver(Driver driver) {
             driverPriorityQueue.add(driver);
+            count++;
     }
 
-    @Override
-    public void removeDriver(Driver driver) {
-
+    public int getCount() {
+        return count;
     }
 }
