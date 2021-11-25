@@ -26,7 +26,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     TrafficLightFactory trafficLightFactory;
     LightBehaviourFactory lightBehaviourFactory;
     PedestrianTrafficLight currentTrafficLight;
-    Map<String, Shape> stringToShapeMap;
+    Map<String, PedestrianShape> stringToShapeMap;
     Map<String, String> shapeToURLMap;
     Map<String, PedestrianLightState> behaviourMap;
     boolean isSimulationStarted;

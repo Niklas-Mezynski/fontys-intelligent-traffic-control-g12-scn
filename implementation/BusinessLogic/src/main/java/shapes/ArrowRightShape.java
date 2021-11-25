@@ -4,6 +4,6 @@ import interfaces.StreetShape;
 
 public class ArrowRightShape extends ShapeBase implements StreetShape {
     public ArrowRightShape() {
-        super("Arrow to the right");
+        super("Arrow Right");
     }
 }

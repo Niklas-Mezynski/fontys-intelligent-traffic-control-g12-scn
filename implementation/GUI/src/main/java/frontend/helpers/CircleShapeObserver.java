@@ -18,6 +18,7 @@ public class CircleShapeObserver implements ShapeObserver {
     }
     @Override
     public void update(Shape newShape) {
+        System.out.println(newShape.getName());
         circle.setFill(new ImagePattern(new Image(getClass().getResource(shapeToURLMap.get(newShape.getName())).toExternalForm())));
     }
 }
