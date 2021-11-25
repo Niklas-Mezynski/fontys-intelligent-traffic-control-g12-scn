@@ -17,6 +17,9 @@ public interface TrafficLight extends ObservableTrafficLight {
      */
     void startTraffic();
 
+    /**
+     * Change to next state
+     */
     void changeToNextState();
 
     /**
