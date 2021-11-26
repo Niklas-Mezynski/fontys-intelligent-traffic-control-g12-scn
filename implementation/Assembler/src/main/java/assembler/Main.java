@@ -2,7 +2,6 @@ package assembler;
 
 import businessLogic.BusinessLogicAPI;
 import frontend.Simulation;
-
 /**
  *
  * @author Daniel Sevov {@code z.sevov@student.fontys.nl}

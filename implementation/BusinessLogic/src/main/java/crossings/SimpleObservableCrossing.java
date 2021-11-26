@@ -6,8 +6,8 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class SimpleObservableCrossing extends SimpleCrossing implements ObservableCrossing {
-    public SimpleObservableCrossing() {
-        super();
+    public SimpleObservableCrossing(PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
+        super(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight, horizontalStraight, verticalStraight);
     }
 
     @Override
@@ -22,12 +22,12 @@ public class SimpleObservableCrossing extends SimpleCrossing implements Observab
 
     @Override
     public void addHorizontalStreetLightObserver(LightObserver observer) {
-        super.horizontalStreetTrafficLight.addLightObserver(observer);
+        super.horizontalStreetTrafficLightStraight.addLightObserver(observer);
     }
 
     @Override
     public void addVerticalStreetLightObserver(LightObserver observer) {
-        super.verticalStreetTrafficLight.addLightObserver(observer);
+        super.verticalStreetTrafficLightStraight.addLightObserver(observer);
     }
 
     @Override
@@ -42,11 +42,11 @@ public class SimpleObservableCrossing extends SimpleCrossing implements Observab
 
     @Override
     public void removeHorizontalStreetLightObserver(LightObserver observer) {
-        super.horizontalStreetTrafficLight.removeLightObserver(observer);
+        super.horizontalStreetTrafficLightStraight.removeLightObserver(observer);
     }
 
     @Override
     public void removeVerticalStreetLightObserver(LightObserver observer) {
-        super.verticalStreetTrafficLight.removeLightObserver(observer);
+        super.verticalStreetTrafficLightStraight.removeLightObserver(observer);
     }
 }

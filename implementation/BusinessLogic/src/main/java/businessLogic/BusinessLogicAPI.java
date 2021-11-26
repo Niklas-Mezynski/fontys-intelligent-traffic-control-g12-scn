@@ -13,15 +13,13 @@ public class BusinessLogicAPI {
     }
 
     public ObservableCrossing createSimpleObservableCrossing(){
-        ObservableCrossing newCrossing = new SimpleObservableCrossing();
+
         var horPed = trafficLightFactory.createGermanPedestrianTrafficLight("german pedestrian light : horizontal");
         var verPed = trafficLightFactory.createGermanPedestrianTrafficLight("german pedestrian light : vertical");
 
         var horStr = trafficLightFactory.createGermanStreetTrafficLight("german street light : horizontal");
         var verStr = trafficLightFactory.createGermanStreetTrafficLight("german street light : vertical");
-
-        newCrossing.addPedestrianTrafficLightPair(horPed, verPed);
-        newCrossing.addStreetTrafficLightPair(horStr, verStr);
+        ObservableCrossing newCrossing = new SimpleObservableCrossing(horPed, verPed, horStr, verStr);
 
         return newCrossing;
     }

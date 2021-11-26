@@ -3,9 +3,9 @@ package crossings;
 import interfaces.PedestrianTrafficLight;
 import interfaces.StreetTrafficLight;
 
-public class SimpleCrossing extends CrossingBase{
+public class GermanCrossing extends CrossingBase{
 
-    public SimpleCrossing(PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
+    public GermanCrossing(PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
         super(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight, horizontalStraight, verticalStraight);
     }
 
@@ -16,6 +16,13 @@ public class SimpleCrossing extends CrossingBase{
 
         // Start horizontal Pedestrian
         startHorizontalStraight();
+
+        // Stop pedestrian horizontal
+        startHorizontalRight();
+
+        stopAllHorizontal();
+        startHorizontalLeft();
+        System.out.println();
     }
 
     @Override
@@ -23,5 +30,11 @@ public class SimpleCrossing extends CrossingBase{
         stopAllHorizontal();
 
         startVerticalStraight();
+
+        startVerticalRight();
+
+        stopAllVertical();
+        startVerticalLeft();
+        System.out.println();
     }
 }
