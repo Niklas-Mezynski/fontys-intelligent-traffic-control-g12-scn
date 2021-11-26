@@ -11,6 +11,7 @@ public class SimpleCrossing implements Crossing {
     StreetTrafficLight horizontalStreetTrafficLight;
     StreetTrafficLight verticalStreetTrafficLight;
 
+
     public SimpleCrossing() {
         resetTimer();
     }
