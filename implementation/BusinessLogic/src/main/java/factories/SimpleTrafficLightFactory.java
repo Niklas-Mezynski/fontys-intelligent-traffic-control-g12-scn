@@ -36,7 +36,12 @@ public class SimpleTrafficLightFactory implements TrafficLightFactory {
     }
 
     @Override
-    public StreetTrafficLight createAustralianStreetTrafficLight(String name) {
+    public StreetTrafficLight createBulgarianStreetTrafficLight(String name) {
         return new SimpleStreetTrafficLight(lightBehaviourFactory.getInitialBulgarianStreetState(), name);
+    }
+
+    @Override
+    public LightBehaviourFactory getLightBehaviourFactory() {
+        return lightBehaviourFactory;
     }
 }

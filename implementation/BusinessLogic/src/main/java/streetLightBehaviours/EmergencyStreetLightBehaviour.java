@@ -4,6 +4,10 @@ import interfaces.StreetLightState;
 
 public enum EmergencyStreetLightBehaviour implements StreetLightState {
     YELLOW_BLINKING_LIGHT(LightStateMeaning.EMERGENCY, "Emergency Light"){
+        @Override
+        public String getColorHex() {
+            return "#FFFE00";
+        }
 
         @Override
         public StreetLightState getNext() {

@@ -5,6 +5,10 @@ import interfaces.PedestrianLightState;
 public enum AustralianPedestrianLightBehaviour  implements PedestrianLightState {
 
     RED_LIGHT(LightStateMeaning.STOP, "Red Light"){
+        @Override
+        public String getColorHex() {
+            return "#EE0000";
+        }
 
         @Override
         public PedestrianLightState getNext() {
@@ -14,6 +18,10 @@ public enum AustralianPedestrianLightBehaviour  implements PedestrianLightState 
     },
 
     GREEN_LIGHT(LightStateMeaning.PASS, "Green Light"){
+        @Override
+        public String getColorHex() {
+            return "#00FF12";
+        }
 
         @Override
         public PedestrianLightState getNext() {
@@ -23,6 +31,10 @@ public enum AustralianPedestrianLightBehaviour  implements PedestrianLightState 
     },
 
     RED_BLINKING_LIGHT(LightStateMeaning.TRANSITION, "Red Blinking Light"){
+        @Override
+        public String getColorHex() {
+            return "#6c0000";
+        }
 
         @Override
         public PedestrianLightState getNext() {

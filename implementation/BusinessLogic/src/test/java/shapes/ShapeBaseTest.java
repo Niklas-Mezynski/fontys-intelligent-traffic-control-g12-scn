@@ -10,7 +10,7 @@ class ShapeBaseTest {
 
     @Test
     void getName() {
-        assertThat(base.getName()).isEqualTo("Star");
+        assertThat(base.getName()).isEqualTo("Star Shape");
     }
 
     @Test

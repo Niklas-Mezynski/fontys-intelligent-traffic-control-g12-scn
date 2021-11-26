@@ -3,8 +3,7 @@ package interfaces;
  * Interface for TrafficLight
  *
  */
-public interface TrafficLight {
-
+public interface TrafficLight extends ObservableTrafficLight {
     /**
      * Used to loop through all passing states
      *
@@ -18,23 +17,16 @@ public interface TrafficLight {
     void startTraffic();
 
     /**
+     * Change to next state
+     */
+    void changeToNextState();
+
+    /**
      * Returns current state
      *
      */
     LightState getCurrentState();
 
-    /**
-     * Returns current shape
-     *
-     */
-    Shape getShape();
-
-    /**
-     * Setter for current shape
-     *
-     * @param newShape to replace the current shape
-     */
-    void setShape(Shape newShape);
 
     /**
      * Getter for name of trafficLight

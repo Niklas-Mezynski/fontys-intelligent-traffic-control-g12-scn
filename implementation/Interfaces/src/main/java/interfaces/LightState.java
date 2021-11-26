@@ -23,4 +23,10 @@ public interface LightState {
         TRANSITION,
         EMERGENCY
     }
+
+    /**
+     * Returns hex code of the signal color.
+     *
+     */
+    String getColorHex();
 }

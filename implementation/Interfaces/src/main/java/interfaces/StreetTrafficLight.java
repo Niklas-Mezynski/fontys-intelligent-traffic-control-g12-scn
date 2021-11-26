@@ -13,4 +13,16 @@ public interface StreetTrafficLight extends TrafficLight{
      */
     void changeState(StreetLightState state);
 
+    /**
+     * Get StreetShape
+     * @return StreetShape
+     */
+    StreetShape getShape();
+
+    /**
+     * Sets StreetShape
+     * @param newShape shape to change to
+     */
+    void setShape(StreetShape newShape);
+
 }

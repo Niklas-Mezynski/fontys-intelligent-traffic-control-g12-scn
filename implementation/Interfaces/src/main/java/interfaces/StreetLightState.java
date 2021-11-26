@@ -18,7 +18,8 @@ public interface StreetLightState extends LightState {
      *
      */
     default void changeState(StreetTrafficLight light) {
-        System.out.println("Changing from " + light.getCurrentState() + " -> " + getNext() + " for " + light.getName() + " traffic light ");
+        System.out.println("Changing from " + light.getCurrentState() + " -> " + getNext() + " for " + light.getName() + " traffic light ( " + light.getShape() + " )");
         light.changeState(getNext());
+        light.informForLightChange();
     }
 }

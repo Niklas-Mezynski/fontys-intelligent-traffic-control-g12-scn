@@ -1,7 +1,9 @@
 package shapes;
 
-public class ArrowLeftShape extends ShapeBase{
+import interfaces.StreetShape;
+
+public class ArrowLeftShape extends ShapeBase implements StreetShape {
     public ArrowLeftShape() {
-        super("Arrow to the left");
+        super("Arrow Left");
     }
 }
