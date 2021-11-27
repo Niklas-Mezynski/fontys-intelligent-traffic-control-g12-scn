@@ -2,7 +2,7 @@ package frontend.controllers;
 
 import frontend.SceneManager;
 import frontend.helpers.FXShapeLightObserver;
-import interfaces.ObservableCrossing;
+import interfaces.SimpleObservableCrossing;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -20,13 +20,13 @@ import java.util.function.Supplier;
 import static frontend.helpers.ObservableListHelper.entitiesToObservableListDistinct;
 
 /**
- * Controller for Single Crossing Simulation JavaFX scene.
+ * Controller for Simple Crossing Simulation JavaFX scene.
  * <p>
  * The controller is used for managing the scene and processing the raw input
  * from the app user.
  */
 public class SimpleCrossingSimulationController extends ControllerBase implements Initializable{
-    ObservableCrossing crossing;
+    SimpleObservableCrossing crossing;
     boolean isActive;
 
     @FXML
@@ -40,7 +40,7 @@ public class SimpleCrossingSimulationController extends ControllerBase implement
     @FXML
     ComboBox<Integer> lengthBox;
 
-    public SimpleCrossingSimulationController(Supplier<SceneManager> sceneManager, ObservableCrossing crossing) {
+    public SimpleCrossingSimulationController(Supplier<SceneManager> sceneManager, SimpleObservableCrossing crossing) {
         super(sceneManager);
         this.crossing = crossing;
     }

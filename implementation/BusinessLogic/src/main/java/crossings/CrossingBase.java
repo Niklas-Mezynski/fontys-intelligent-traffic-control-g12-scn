@@ -138,7 +138,6 @@ public abstract class CrossingBase implements Crossing {
                 startVerticalTrafficLights();
             }
         }, length/2, length);
-
     }
 
     @Override

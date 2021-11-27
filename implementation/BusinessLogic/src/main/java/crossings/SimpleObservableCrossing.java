@@ -2,10 +2,7 @@ package crossings;
 
 import interfaces.*;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-public class SimpleObservableCrossing extends SimpleCrossing implements ObservableCrossing {
+public class SimpleObservableCrossing extends SimpleCrossing implements interfaces.SimpleObservableCrossing {
     public SimpleObservableCrossing(PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
         super(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight, horizontalStraight, verticalStraight);
     }

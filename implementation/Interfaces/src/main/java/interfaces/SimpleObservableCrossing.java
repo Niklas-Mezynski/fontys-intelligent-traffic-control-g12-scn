@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface ObservableCrossing extends Crossing{
+public interface SimpleObservableCrossing extends Crossing{
     void addHorizontalPedestrianLightObserver(LightObserver observer);
 
     void addVerticalPedestrianLightObserver(LightObserver observer);

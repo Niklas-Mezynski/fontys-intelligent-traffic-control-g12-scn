@@ -48,10 +48,18 @@ public class SimulationDashboardController extends ControllerBase implements Ini
     }
 
     /**
-     * Starts crossing simulation.
+     * Starts simple crossing simulation.
      */
     @FXML
     public void simpleCrossingSimulation() {
         sceneManager.get().changeScene("simpleCrossingSimulation");
+    }
+
+    /**
+     * Starts advanced crossing simulation.
+     */
+    @FXML
+    public void advancedCrossingSimulation() {
+        sceneManager.get().changeScene("advancedCrossingSimulation");
     }
 }
