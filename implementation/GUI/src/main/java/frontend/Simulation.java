@@ -2,7 +2,7 @@ package frontend;
 
 import businessLogic.BusinessLogicAPI;
 import frontend.controllers.SimulationDashboardController;
-import frontend.controllers.SingleCrossingSimulationController;
+import frontend.controllers.SimpleCrossingSimulationController;
 import frontend.controllers.SinglePedestrianTrafficLightSimulationController;
 import frontend.controllers.SingleStreetTrafficLightSimulationController;
 import javafx.application.Application;
@@ -22,8 +22,8 @@ public class Simulation extends Application {
         if (c.getName().equals("frontend.controllers.SimulationDashboardController")) {
             return new SimulationDashboardController(this::getSceneManager);
         }
-        if (c.getName().equals("frontend.controllers.SingleCrossingSimulationController")) {
-            return new SingleCrossingSimulationController(this::getSceneManager, businessLogicAPI.createSimpleObservableCrossing());
+        if (c.getName().equals("frontend.controllers.SimpleCrossingSimulationController")) {
+            return new SimpleCrossingSimulationController(this::getSceneManager, businessLogicAPI.createSimpleObservableCrossing());
         }
         if (c.getName().equals("frontend.controllers.SinglePedestrianTrafficLightSimulationController")) {
             return new SinglePedestrianTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getTrafficLightFactory());

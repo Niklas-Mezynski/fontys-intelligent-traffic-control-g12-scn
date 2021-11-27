@@ -23,7 +23,7 @@ import static frontend.helpers.ObservableListHelper.entitiesToObservableListDist
  * The controller is used for managing the scene and processing the raw input
  * from the app user.
  */
-public class SingleCrossingSimulationController extends ControllerBase implements Initializable{
+public class SimpleCrossingSimulationController extends ControllerBase implements Initializable{
     ObservableCrossing crossing;
     boolean isActive;
 
@@ -37,7 +37,7 @@ public class SingleCrossingSimulationController extends ControllerBase implement
     @FXML
     ComboBox<Integer> lengthBox;
 
-    public SingleCrossingSimulationController(Supplier<SceneManager> sceneManager, ObservableCrossing crossing) {
+    public SimpleCrossingSimulationController(Supplier<SceneManager> sceneManager, ObservableCrossing crossing) {
         super(sceneManager);
         this.crossing = crossing;
     }
