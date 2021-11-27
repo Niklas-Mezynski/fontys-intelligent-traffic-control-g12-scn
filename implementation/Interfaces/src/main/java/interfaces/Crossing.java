@@ -1,16 +1,10 @@
 package interfaces;
 
-import java.util.Optional;
-
 public interface Crossing {
 
     void activate(int length);
 
     void deactivate();
-
-    void startHorizontalTrafficLights();
-
-    void startVerticalTrafficLights();
 
     PedestrianTrafficLight getHorizontalPedestrianLight();
 

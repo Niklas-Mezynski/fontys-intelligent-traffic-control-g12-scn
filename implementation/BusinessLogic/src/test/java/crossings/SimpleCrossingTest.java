@@ -1,13 +1,9 @@
 package crossings;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import trafficLights.SimplePedestrianTrafficLight;
 import trafficLights.SimpleStreetTrafficLight;
-
-import java.util.concurrent.CountDownLatch;
-import java.util.concurrent.TimeUnit;
 
 import static org.mockito.Mockito.*;
 
@@ -22,13 +18,15 @@ public class SimpleCrossingTest {
         SimpleCrossing simpleCrossing = new SimpleCrossing(horizontal, vertical, horizontalStreet, verticalStreet);
 
         InOrder inOrder = inOrder(horizontal, vertical, verticalStreet, horizontalStreet);
-        simpleCrossing.startHorizontalTrafficLights();
+        simpleCrossing.stopAllVertical();
+        simpleCrossing.startHorizontalStraight();
         inOrder.verify(verticalStreet).stopTraffic();
         inOrder.verify(vertical, times(2)).stopTraffic();
         inOrder.verify(horizontal).startTraffic();
         inOrder.verify(horizontalStreet).startTraffic();
 
-        simpleCrossing.startVerticalTrafficLights();
+        simpleCrossing.stopAllHorizontal();
+        simpleCrossing.startVerticalStraight();
         inOrder.verify(horizontalStreet).stopTraffic();
         inOrder.verify(horizontal, times(2)).stopTraffic();
         inOrder.verify(vertical).startTraffic();

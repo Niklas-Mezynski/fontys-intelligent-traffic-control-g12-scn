@@ -7,7 +7,6 @@ import interfaces.TrafficLight;
 
 import java.util.Optional;
 import java.util.Timer;
-import java.util.TimerTask;
 
 public abstract class CrossingBase implements Crossing {
     Timer timer;
@@ -122,38 +121,16 @@ public abstract class CrossingBase implements Crossing {
     }
 
     @Override
-    public void activate(int length) {
-        resetTimer();
-        timer.schedule(new TimerTask() {
-
-                        @Override
-                        public void run() {
-                            startHorizontalTrafficLights();
-                        }
-                }, 0, length);
-        timer.schedule(new TimerTask() {
-
-            @Override
-            public void run() {
-                startVerticalTrafficLights();
-            }
-        }, length/2, length);
-    }
+    public abstract void activate(int length);
 
     @Override
     public void deactivate() {
         timer.cancel();
     }
 
-    private void resetTimer(){
+    protected void resetTimer(){
         timer = new Timer();
     }
-
-    @Override
-    public abstract void startHorizontalTrafficLights();
-
-    @Override
-    public abstract void startVerticalTrafficLights();
 
     @Override
     public PedestrianTrafficLight getHorizontalPedestrianLight() {
