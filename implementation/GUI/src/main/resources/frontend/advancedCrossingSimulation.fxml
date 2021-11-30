@@ -29,7 +29,7 @@
         <padding>
             <Insets left="150.0" />
         </padding>
-        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="446.0" text="Single Crossing Simulation" textAlignment="CENTER">
+        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="27.0" prefWidth="446.0" text="Advanced Crossing Simulation" textAlignment="CENTER">
             <font>
                 <Font name="Arial Bold" size="23.0" />
             </font>

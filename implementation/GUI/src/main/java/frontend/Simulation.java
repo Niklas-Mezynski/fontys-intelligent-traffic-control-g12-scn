@@ -19,8 +19,8 @@ public class Simulation extends Application {
         if (c.getName().equals("frontend.controllers.SimulationDashboardController")) {
             return new SimulationDashboardController(this::getSceneManager);
         }
-        if (c.getName().equals("frontend.controllers.SimpleCrossingSimulationController")) {
-            return new SimpleCrossingSimulationController(this::getSceneManager, businessLogicAPI.createBasicObservableCrossing());
+        if (c.getName().equals("frontend.controllers.BasicCrossingSimulationController")) {
+            return new BasicCrossingSimulationController(this::getSceneManager, businessLogicAPI.createBasicObservableCrossing());
         }
         if (c.getName().equals("frontend.controllers.AdvancedCrossingSimulationController")) {
             return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.createAdvancedObservableCrossing());

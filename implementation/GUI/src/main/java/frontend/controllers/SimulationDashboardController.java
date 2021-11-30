@@ -52,7 +52,7 @@ public class SimulationDashboardController extends ControllerBase implements Ini
      */
     @FXML
     public void simpleCrossingSimulation() {
-        sceneManager.get().changeScene("simpleCrossingSimulation");
+        sceneManager.get().changeScene("basicCrossingSimulation");
     }
 
     /**
