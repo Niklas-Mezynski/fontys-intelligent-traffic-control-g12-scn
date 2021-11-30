@@ -29,4 +29,6 @@ public interface Crossing {
     void startVerticalRight();
 
     void startVerticalLeft();
+
+    void setMode(CrossingMode newMode);
 }

@@ -6,4 +6,6 @@ public interface BusinessLogicAPI {
     BasicObservableCrossing createBasicObservableCrossing();
 
     AdvancedObservableCrossing createAdvancedObservableCrossing();
+
+    CrossingModeFactory getCrossingModeFactory();
 }

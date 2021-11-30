@@ -118,6 +118,11 @@ public class SimpleCrossing implements Crossing {
     }
 
     @Override
+    public void setMode(CrossingMode newMode) {
+        this.currentMode = newMode;
+    }
+
+    @Override
     public void activate(int length){
         currentMode.activate(this, length);
     }

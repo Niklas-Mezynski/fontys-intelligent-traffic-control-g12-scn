@@ -23,7 +23,7 @@ public class Simulation extends Application {
             return new BasicCrossingSimulationController(this::getSceneManager, businessLogicAPI.createBasicObservableCrossing());
         }
         if (c.getName().equals("frontend.controllers.AdvancedCrossingSimulationController")) {
-            return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.createAdvancedObservableCrossing());
+            return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.createAdvancedObservableCrossing(), businessLogicAPI.getCrossingModeFactory());
         }
         if (c.getName().equals("frontend.controllers.SinglePedestrianTrafficLightSimulationController")) {
             return new SinglePedestrianTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getTrafficLightFactory());

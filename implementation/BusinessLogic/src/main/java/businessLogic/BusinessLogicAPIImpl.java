@@ -50,4 +50,9 @@ public class BusinessLogicAPIImpl implements BusinessLogicAPI {
 
         return newCrossing;
     }
+
+    @Override
+    public CrossingModeFactory getCrossingModeFactory() {
+        return crossingModeFactory;
+    }
 }

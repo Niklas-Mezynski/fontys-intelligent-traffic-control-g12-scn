@@ -3,6 +3,8 @@ package frontend.controllers;
 import frontend.SceneManager;
 import frontend.helpers.FXShapeLightObserver;
 import interfaces.AdvancedObservableCrossing;
+import interfaces.CrossingMode;
+import interfaces.CrossingModeFactory;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -13,7 +15,9 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.ResourceBundle;
 import java.util.function.Supplier;
 
@@ -27,7 +31,9 @@ import static frontend.helpers.ObservableListHelper.entitiesToObservableListDist
  */
 public class AdvancedCrossingSimulationController extends ControllerBase implements Initializable{
     AdvancedObservableCrossing crossing;
+    CrossingModeFactory crossingModeFactory;
     boolean isActive;
+    Map<String, CrossingMode> stringCrossingModeMap;
 
     @FXML
     Circle horizontalCircle1, horizontalCircle2, horizontalCircle3, horizontalCircle4,
@@ -57,9 +63,14 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
     @FXML
     ComboBox<Integer> lengthBox;
 
-    public AdvancedCrossingSimulationController(Supplier<SceneManager> sceneManager, AdvancedObservableCrossing crossing) {
+    @FXML
+    ComboBox<String> modeBox;
+
+    public AdvancedCrossingSimulationController(Supplier<SceneManager> sceneManager, AdvancedObservableCrossing crossing, CrossingModeFactory crossingModeFactory) {
         super(sceneManager);
         this.crossing = crossing;
+        this.crossingModeFactory = crossingModeFactory;
+        this.stringCrossingModeMap = new HashMap<>();
     }
 
     @Override
@@ -113,6 +124,14 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
         lengthBox.setItems(entitiesToObservableListDistinct(lengths));
 
         lengthBox.setValue(5);
+
+        stringCrossingModeMap.put("Simple Crossing Mode", crossingModeFactory.createSimpleCrossingMode());
+        stringCrossingModeMap.put("German Crossing Mode", crossingModeFactory.createGermanCrossingMode());
+
+        List<String> modes = List.of("Simple Crossing Mode", "German Crossing Mode");
+        modeBox.setItems(entitiesToObservableListDistinct(modes));
+
+        modeBox.setValue("German Crossing Mode");
     }
 
     private void resetLights(){
@@ -208,5 +227,18 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
             endSimulation();
             startSimulation();
         }
+    }
+
+    /**
+     * Changes mode of the crossing.
+     */
+    @FXML
+    public void changeMode() {
+        if(isActive) {
+            endSimulation();
+            crossing.setMode(stringCrossingModeMap.get(modeBox.getValue()));
+            startSimulation();
+        }
+        else crossing.setMode(stringCrossingModeMap.get(modeBox.getValue()));
     }
 }
