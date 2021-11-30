@@ -1,13 +1,10 @@
 package crossings;
 
-import interfaces.LightObserver;
-import interfaces.SimpleObservableCrossing;
-import interfaces.PedestrianTrafficLight;
-import interfaces.StreetTrafficLight;
+import interfaces.*;
 
-public class AdvancedObservableCrossing extends GermanCrossing implements interfaces.AdvancedObservableCrossing {
-    public AdvancedObservableCrossing(PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
-        super(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight, horizontalStraight, verticalStraight);
+public class AdvancedObservableCrossing extends SimpleCrossing implements interfaces.AdvancedObservableCrossing {
+    public AdvancedObservableCrossing(CrossingMode initialMode, PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
+        super(initialMode, horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight, horizontalStraight, verticalStraight);
     }
 
     @Override

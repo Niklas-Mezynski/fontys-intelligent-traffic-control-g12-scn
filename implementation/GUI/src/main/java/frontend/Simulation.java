@@ -1,7 +1,7 @@
 package frontend;
 
-import businessLogic.BusinessLogicAPI;
 import frontend.controllers.*;
+import interfaces.BusinessLogicAPI;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -20,7 +20,7 @@ public class Simulation extends Application {
             return new SimulationDashboardController(this::getSceneManager);
         }
         if (c.getName().equals("frontend.controllers.SimpleCrossingSimulationController")) {
-            return new SimpleCrossingSimulationController(this::getSceneManager, businessLogicAPI.createSimpleObservableCrossing());
+            return new SimpleCrossingSimulationController(this::getSceneManager, businessLogicAPI.createBasicObservableCrossing());
         }
         if (c.getName().equals("frontend.controllers.AdvancedCrossingSimulationController")) {
             return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.createAdvancedObservableCrossing());

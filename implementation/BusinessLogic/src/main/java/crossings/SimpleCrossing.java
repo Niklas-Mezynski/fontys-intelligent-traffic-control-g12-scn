@@ -1,47 +1,129 @@
 package crossings;
 
-import interfaces.PedestrianTrafficLight;
-import interfaces.StreetTrafficLight;
+import interfaces.*;
 
-import java.util.TimerTask;
+import java.util.Optional;
 
-public class SimpleCrossing extends CrossingBase{
+public class SimpleCrossing implements Crossing {
+    CrossingMode currentMode;
 
-    public SimpleCrossing(PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
-        super(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight, horizontalStraight, verticalStraight);
+    PedestrianTrafficLight horizontalPedestrianTrafficLight;
+    PedestrianTrafficLight verticalPedestrianTrafficLight;
+
+    StreetTrafficLight horizontalStreetTrafficLightStraight;
+    StreetTrafficLight verticalStreetTrafficLightStraight;
+
+    Optional<StreetTrafficLight> horizontalStreetTrafficLightLeft;
+    Optional<StreetTrafficLight> verticalStreetTrafficLightLeft;
+
+    Optional<StreetTrafficLight> horizontalStreetTrafficLightRight;
+    Optional<StreetTrafficLight> verticalStreetTrafficLightRight;
+
+    public SimpleCrossing(CrossingMode initialMode, PedestrianTrafficLight horizontalPedestrianTrafficLight, PedestrianTrafficLight verticalPedestrianTrafficLight, StreetTrafficLight horizontalStraight, StreetTrafficLight verticalStraight) {
+        currentMode = initialMode;
+        this.verticalPedestrianTrafficLight = verticalPedestrianTrafficLight;
+        this.horizontalPedestrianTrafficLight = horizontalPedestrianTrafficLight;
+        this.horizontalStreetTrafficLightStraight = horizontalStraight;
+        this.verticalStreetTrafficLightStraight = verticalStraight;
+        this.horizontalStreetTrafficLightLeft = Optional.empty();
+        this.verticalStreetTrafficLightLeft = Optional.empty();
+        this.horizontalStreetTrafficLightRight = Optional.empty();
+        this.verticalStreetTrafficLightRight = Optional.empty();
     }
 
     @Override
-    public void activate(int length) {
-        resetTimer();
-        timer.schedule(new TimerTask() {
+    public void addHorizontalLeft(StreetTrafficLight light){
+        this.horizontalStreetTrafficLightLeft = Optional.of(light);
+    }
 
-            @Override
-            public void run() {
-                System.out.println("\n--- Starting horizontal traffic ---\n");
-                // Stop all vertical
-                System.out.println("1. Stopping vertical traffic");
-                stopAllVertical();
+    @Override
+    public void addHorizontalRight(StreetTrafficLight light){
+        this.horizontalStreetTrafficLightRight = Optional.of(light);
+    }
 
-                // Start horizontal traffic
-                System.out.println("\n2. Starting horizontal traffic");
-                startHorizontalStraight();
-                System.out.println("\n--- Horizontal traffic started!---\n");
-            }
-        }, 0, length);
-        timer.schedule(new TimerTask() {
+    @Override
+    public void addVerticalLeft(StreetTrafficLight light){
+        this.verticalStreetTrafficLightLeft = Optional.of(light);
+    }
 
-            @Override
-            public void run() {
-                System.out.println("\n--- Starting vertical traffic ---\n");
+    @Override
+    public void addVerticalRight(StreetTrafficLight light){
+        this.verticalStreetTrafficLightRight = Optional.of(light);
+    }
 
-                System.out.println("1. Stopping horizontal traffic");
-                stopAllHorizontal();
+    @Override
+    public void stopAllVertical(){
+        this.verticalStreetTrafficLightStraight.stopTraffic();
+        this.verticalStreetTrafficLightLeft.ifPresent(TrafficLight::stopTraffic);
+        this.verticalStreetTrafficLightRight.ifPresent(TrafficLight::stopTraffic);
+        this.verticalPedestrianTrafficLight.stopTraffic();
+    }
 
-                System.out.println("\n2. Starting vertical traffic");
-                startVerticalStraight();
-                System.out.println("\n--- Vertical traffic started!---\n");
-            }
-        }, length/2, length);
+    @Override
+    public void stopAllHorizontal(){
+        this.horizontalStreetTrafficLightStraight.stopTraffic();
+        this.horizontalStreetTrafficLightLeft.ifPresent(TrafficLight::stopTraffic);
+        this.horizontalStreetTrafficLightRight.ifPresent(TrafficLight::stopTraffic);
+        this.horizontalPedestrianTrafficLight.stopTraffic();
+    }
+
+    @Override
+    public void startHorizontalStraight(){
+        this.verticalPedestrianTrafficLight.stopTraffic();
+        this.horizontalPedestrianTrafficLight.startTraffic();
+        this.horizontalStreetTrafficLightStraight.startTraffic();
+    }
+
+    @Override
+    public void startVerticalStraight(){
+        this.horizontalPedestrianTrafficLight.stopTraffic();
+        this.verticalPedestrianTrafficLight.startTraffic();
+        this.verticalStreetTrafficLightStraight.startTraffic();
+    }
+
+    @Override
+    public void startHorizontalRight(){
+        if(this.horizontalStreetTrafficLightRight.isPresent()){
+            this.horizontalPedestrianTrafficLight.stopTraffic();
+            this.verticalPedestrianTrafficLight.stopTraffic();
+            this.horizontalStreetTrafficLightRight.get().startTraffic();
+        }
+    }
+
+    @Override
+    public void startHorizontalLeft(){
+        if(this.horizontalStreetTrafficLightLeft.isPresent()){
+            this.horizontalPedestrianTrafficLight.stopTraffic();
+            this.verticalPedestrianTrafficLight.stopTraffic();
+            this.horizontalStreetTrafficLightLeft.get().startTraffic();
+        }
+    }
+
+    @Override
+    public void startVerticalRight(){
+        if(this.verticalStreetTrafficLightRight.isPresent()){
+            this.horizontalPedestrianTrafficLight.stopTraffic();
+            this.verticalPedestrianTrafficLight.stopTraffic();
+            this.verticalStreetTrafficLightRight.get().startTraffic();
+        }
+    }
+
+    @Override
+    public void startVerticalLeft(){
+        if(this.verticalStreetTrafficLightLeft.isPresent()){
+            this.horizontalPedestrianTrafficLight.stopTraffic();
+            this.verticalPedestrianTrafficLight.stopTraffic();
+            this.verticalStreetTrafficLightLeft.get().startTraffic();
+        }
+    }
+
+    @Override
+    public void activate(int length){
+        currentMode.activate(this, length);
+    }
+
+    @Override
+    public void deactivate() {
+        currentMode.deactivate();
     }
 }

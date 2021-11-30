@@ -6,10 +6,6 @@ public interface Crossing {
 
     void deactivate();
 
-    PedestrianTrafficLight getHorizontalPedestrianLight();
-
-    PedestrianTrafficLight getVerticalPedestrianLight();
-
     void addHorizontalLeft(StreetTrafficLight light);
 
     void addHorizontalRight(StreetTrafficLight light);
