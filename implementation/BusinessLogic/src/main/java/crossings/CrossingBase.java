@@ -155,14 +155,4 @@ public abstract class CrossingBase implements Crossing {
 
     @Override
     public abstract void startVerticalTrafficLights();
-
-    @Override
-    public PedestrianTrafficLight getHorizontalPedestrianLight() {
-        return horizontalPedestrianTrafficLight;
-    }
-
-    @Override
-    public PedestrianTrafficLight getVerticalPedestrianLight() {
-        return verticalPedestrianTrafficLight;
-    }
 }

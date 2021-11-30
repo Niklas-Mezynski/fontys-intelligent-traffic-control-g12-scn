@@ -1,5 +1,9 @@
 package interfaces;
 
+/**
+ * A factory for creating the traffic lights with different behaviours.
+ * The initial state for each traffic light should be the "stop" state
+ * */
 public interface TrafficLightFactory {
     PedestrianTrafficLight createDutchPedestrianTrafficLight(String name);
 
