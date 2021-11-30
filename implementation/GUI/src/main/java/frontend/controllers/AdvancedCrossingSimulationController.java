@@ -116,22 +116,7 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
     }
 
     private void resetLights(){
-        horizontalRectangle1Straight.setStroke(Paint.valueOf("white"));
-        horizontalRectangle1Right.setStroke(Paint.valueOf("white"));
-        horizontalRectangle1Left.setStroke(Paint.valueOf("white"));
-
-        horizontalRectangle2Straight.setStroke(Paint.valueOf("white"));
-        horizontalRectangle2Right.setStroke(Paint.valueOf("white"));
-        horizontalRectangle2Left.setStroke(Paint.valueOf("white"));
-
-        verticalRectangle1Straight.setStroke(Paint.valueOf("white"));
-        verticalRectangle1Left.setStroke(Paint.valueOf("white"));
-        verticalRectangle1Right.setStroke(Paint.valueOf("white"));
-
-        verticalRectangle2Straight.setStroke(Paint.valueOf("white"));
-        verticalRectangle2Right.setStroke(Paint.valueOf("white"));
-        verticalRectangle2Left.setStroke(Paint.valueOf("white"));
-
+        changeStrokeOfAllLights("white");
         changeColorOfAllLights("black");
     }
     
@@ -161,6 +146,24 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
         verticalRectangle2Straight.setFill(Paint.valueOf(colorCode));
         verticalRectangle2Right.setFill(Paint.valueOf(colorCode));
         verticalRectangle2Left.setFill(Paint.valueOf(colorCode));
+    }
+
+    private void changeStrokeOfAllLights(String colorCode){
+        horizontalRectangle1Straight.setStroke(Paint.valueOf(colorCode));
+        horizontalRectangle1Right.setStroke(Paint.valueOf(colorCode));
+        horizontalRectangle1Left.setStroke(Paint.valueOf(colorCode));
+
+        horizontalRectangle2Straight.setStroke(Paint.valueOf(colorCode));
+        horizontalRectangle2Right.setStroke(Paint.valueOf(colorCode));
+        horizontalRectangle2Left.setStroke(Paint.valueOf(colorCode));
+
+        verticalRectangle1Straight.setStroke(Paint.valueOf(colorCode));
+        verticalRectangle1Left.setStroke(Paint.valueOf(colorCode));
+        verticalRectangle1Right.setStroke(Paint.valueOf(colorCode));
+
+        verticalRectangle2Straight.setStroke(Paint.valueOf(colorCode));
+        verticalRectangle2Right.setStroke(Paint.valueOf(colorCode));
+        verticalRectangle2Left.setStroke(Paint.valueOf(colorCode));
     }
 
     /**
