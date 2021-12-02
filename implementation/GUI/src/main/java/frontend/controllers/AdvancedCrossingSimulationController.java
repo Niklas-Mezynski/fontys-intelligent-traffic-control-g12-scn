@@ -125,6 +125,7 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
         stringCrossingModeMap.put("Simple Crossing Mode", crossingModeFactory.createSimpleCrossingMode());
         stringCrossingModeMap.put("German Crossing Mode", crossingModeFactory.createGermanCrossingMode());
         stringCrossingModeMap.put("Emergency Crossing Mode", crossingModeFactory.createEmergencyCrossingMode());
+        stringCrossingModeMap.put("Dutch Crossing Mode", crossingModeFactory.createDutchCrossingMode());
 
         List<String> modes = new ArrayList<>(stringCrossingModeMap.keySet());
         modeBox.setItems(entitiesToObservableListDistinct(modes));
