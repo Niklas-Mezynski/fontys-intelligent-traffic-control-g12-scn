@@ -1,6 +1,6 @@
 package crossings;
 
-import crossingModes.SimpleCrossingMode;
+import crossingModes.SimpleGermanCrossingMode;
 import interfaces.CrossingMode;
 import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
@@ -17,7 +17,7 @@ public class SimpleCrossingTest {
         SimplePedestrianTrafficLight vertical = mock(SimplePedestrianTrafficLight.class);
         SimpleStreetTrafficLight horizontalStreet = mock(SimpleStreetTrafficLight.class);
         SimpleStreetTrafficLight verticalStreet = mock(SimpleStreetTrafficLight.class);
-        CrossingMode newMode = new SimpleCrossingMode();
+        CrossingMode newMode = new SimpleGermanCrossingMode();
         SimpleCrossing simpleCrossing = new SimpleCrossing(newMode, horizontal, vertical, horizontalStreet, verticalStreet);
 
         InOrder inOrder = inOrder(horizontal, vertical, verticalStreet, horizontalStreet);

@@ -13,4 +13,6 @@ public interface CrossingModeFactory {
      *
      */
     CrossingMode createGermanCrossingMode();
+
+    CrossingMode createEmergencyCrossingMode();
 }

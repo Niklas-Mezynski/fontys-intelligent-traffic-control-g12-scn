@@ -2,6 +2,8 @@ package crossings;
 
 import interfaces.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 public class SimpleCrossing implements Crossing {
@@ -130,5 +132,28 @@ public class SimpleCrossing implements Crossing {
     @Override
     public void deactivate() {
         currentMode.deactivate();
+    }
+
+    @Override
+    public void changeLightBehaviour(StreetLightState streetState, PedestrianLightState pedestrianState) {
+        getAllPedestrianLights().forEach(pedestrianTrafficLight -> pedestrianTrafficLight.changeState(pedestrianState));
+        getAllStreetLights().forEach(streetTrafficLight -> streetTrafficLight.changeState(streetState));
+    }
+
+    @Override
+    public List<StreetTrafficLight> getAllStreetLights() {
+        List<StreetTrafficLight> allStreetLights = new ArrayList<>();
+        allStreetLights.add(horizontalStreetTrafficLightStraight);
+        allStreetLights.add(verticalStreetTrafficLightStraight);
+        this.horizontalStreetTrafficLightRight.ifPresent(allStreetLights::add);
+        this.horizontalStreetTrafficLightLeft.ifPresent(allStreetLights::add);
+        this.verticalStreetTrafficLightRight.ifPresent(allStreetLights::add);
+        this.verticalStreetTrafficLightLeft.ifPresent(allStreetLights::add);
+        return allStreetLights;
+    }
+
+    @Override
+    public List<PedestrianTrafficLight> getAllPedestrianLights() {
+        return List.of(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight);
     }
 }

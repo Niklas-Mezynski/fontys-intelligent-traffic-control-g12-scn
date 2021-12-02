@@ -12,4 +12,8 @@ public interface CrossingMode {
      *
      */
     void deactivate();
+
+    StreetLightState getStreetLightBehaviour();
+
+    PedestrianLightState getPedestrianLightBehaviour();
 }

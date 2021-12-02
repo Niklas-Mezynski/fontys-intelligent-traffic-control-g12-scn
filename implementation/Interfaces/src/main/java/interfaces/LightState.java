@@ -20,8 +20,7 @@ public interface LightState {
     enum LightStateMeaning {
         PASS,
         STOP,
-        TRANSITION,
-        EMERGENCY
+        TRANSITION
     }
 
     /**

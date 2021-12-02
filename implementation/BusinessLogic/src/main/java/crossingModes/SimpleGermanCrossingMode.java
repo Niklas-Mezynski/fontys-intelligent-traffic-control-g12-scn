@@ -2,14 +2,28 @@ package crossingModes;
 
 import interfaces.Crossing;
 import interfaces.CrossingMode;
+import interfaces.PedestrianLightState;
+import interfaces.StreetLightState;
+import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
+import streetLightBehaviours.GermanStreetLightBehaviour;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class SimpleCrossingMode implements CrossingMode {
+public class SimpleGermanCrossingMode implements CrossingMode {
     Timer timer;
 
-    public SimpleCrossingMode(){
+    @Override
+    public StreetLightState getStreetLightBehaviour() {
+        return GermanStreetLightBehaviour.RED_LIGHT;
+    }
+
+    @Override
+    public PedestrianLightState getPedestrianLightBehaviour() {
+        return GermanPedestrianLightBehaviour.RED_LIGHT;
+    }
+
+    public SimpleGermanCrossingMode(){
         resetTimer();
     }
 
@@ -20,6 +34,7 @@ public class SimpleCrossingMode implements CrossingMode {
     @Override
     public void activate(Crossing crossing, int length) {
         resetTimer();
+        crossing.changeLightBehaviour(getStreetLightBehaviour(), getPedestrianLightBehaviour());
         timer.schedule(new TimerTask() {
 
             @Override

@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 public interface Crossing {
 
     void activate(int length);
@@ -31,4 +33,10 @@ public interface Crossing {
     void startVerticalLeft();
 
     void setMode(CrossingMode newMode);
+
+    void changeLightBehaviour(StreetLightState streetState, PedestrianLightState pedestrianState);
+
+    List<StreetTrafficLight> getAllStreetLights();
+
+    List<PedestrianTrafficLight> getAllPedestrianLights();
 }

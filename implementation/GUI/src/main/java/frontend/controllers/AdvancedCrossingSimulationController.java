@@ -15,10 +15,7 @@ import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
 
 import java.net.URL;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.ResourceBundle;
+import java.util.*;
 import java.util.function.Supplier;
 
 import static frontend.helpers.ObservableListHelper.entitiesToObservableListDistinct;
@@ -127,8 +124,9 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
 
         stringCrossingModeMap.put("Simple Crossing Mode", crossingModeFactory.createSimpleCrossingMode());
         stringCrossingModeMap.put("German Crossing Mode", crossingModeFactory.createGermanCrossingMode());
+        stringCrossingModeMap.put("Emergency Crossing Mode", crossingModeFactory.createEmergencyCrossingMode());
 
-        List<String> modes = List.of("Simple Crossing Mode", "German Crossing Mode");
+        List<String> modes = new ArrayList<>(stringCrossingModeMap.keySet());
         modeBox.setItems(entitiesToObservableListDistinct(modes));
 
         modeBox.setValue("German Crossing Mode");
