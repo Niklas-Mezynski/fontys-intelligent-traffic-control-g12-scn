@@ -51,3 +51,11 @@
 4.	Update GUI to accommodate new shapes (Patrik and Daniel)
 ---
 
+
+## Sprint 5:
+### Use case 9 – Add additional modes for the crossing
+
+---
+
+---
+
