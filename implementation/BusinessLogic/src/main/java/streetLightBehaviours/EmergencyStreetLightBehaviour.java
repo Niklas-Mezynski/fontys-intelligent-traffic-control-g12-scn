@@ -11,12 +11,12 @@ public enum EmergencyStreetLightBehaviour implements StreetLightState {
 
         @Override
         public StreetLightState getNext() {
-            return BLACK_LIGHT ;
+            return NO_LIGHT;
         }
 
     },
 
-    BLACK_LIGHT(LightStateMeaning.STOP, "Emergency Light"){
+    NO_LIGHT(LightStateMeaning.STOP, "Emergency Light"){
         @Override
         public String getColorHex() {
             return "#000000";

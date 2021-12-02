@@ -20,7 +20,7 @@ public class EmergencyStreetLightBehaviourTest {
             germanStreetTrafficLight.startTraffic();
             softAssertions.assertThat(germanStreetTrafficLight.getCurrentState()).isEqualTo(EmergencyStreetLightBehaviour.YELLOW_BLINKING_LIGHT);
             germanStreetTrafficLight.stopTraffic();
-            softAssertions.assertThat(germanStreetTrafficLight.getCurrentState()).isEqualTo(EmergencyStreetLightBehaviour.YELLOW_BLINKING_LIGHT);
+            softAssertions.assertThat(germanStreetTrafficLight.getCurrentState()).isEqualTo(EmergencyStreetLightBehaviour.NO_LIGHT);
         } );
 
 
