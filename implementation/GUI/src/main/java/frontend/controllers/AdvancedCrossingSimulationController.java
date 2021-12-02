@@ -199,8 +199,8 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
      */
     @FXML
     public void startSimulation() {
-        changeColorOfAllLights("red");
         if(!isActive) {
+            changeColorOfAllLights("red");
             crossing.activate(lengthBox.getValue() * 1000);
             isActive = true;
         }

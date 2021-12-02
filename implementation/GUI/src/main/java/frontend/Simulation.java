@@ -79,7 +79,7 @@ public class Simulation extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        sceneManager.displayOn(stage, 950, 700, "Simulation");
+        sceneManager.displayOn(stage, 950, 800, "Simulation");
     }
 
     /**
