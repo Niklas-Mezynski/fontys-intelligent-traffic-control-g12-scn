@@ -6,10 +6,10 @@
 <head>
   <title>Coverage Report > Main</title>
   <style type="text/css">
-    @import "../../.css/coverage.css";
-    @import "../../.css/highlight-idea.css";
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
   </style>
-  <script type="text/javascript" src="../../.js/highlight.pack.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
 </head>
 
 <body>
@@ -75,7 +75,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package assembler;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import businessLogic.BusinessLogicAPI;
+<i class="no-highlight">3</i>&nbsp;import businessLogic.BusinessLogicImplProvider;
 <i class="no-highlight">4</i>&nbsp;import frontend.Simulation;
 <i class="no-highlight">5</i>&nbsp;/**
 <i class="no-highlight">6</i>&nbsp; *
@@ -87,7 +87,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 <i class="no-highlight">12</i>&nbsp;         * @param args the command line arguments
 <i class="no-highlight">13</i>&nbsp;         */
 <i class="no-highlight">14</i>&nbsp;        public static void main(String[] args) {
-<b class="nc"><i class="no-highlight">15</i>&nbsp;                new Simulation(new BusinessLogicAPI()).show();</b>
+<b class="nc"><i class="no-highlight">15</i>&nbsp;                new Simulation(BusinessLogicImplProvider.getImplementation()).show();</b>
 <i class="no-highlight">16</i>&nbsp;        }
 <i class="no-highlight">17</i>&nbsp;}
 </div>
@@ -116,7 +116,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-12-03 09:20</div>
+    <div style="float:right;">generated on 2021-12-03 11:59</div>
 </div>
 </body>
 </html>

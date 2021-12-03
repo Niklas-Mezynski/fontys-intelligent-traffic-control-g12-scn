@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > Shape</title>
+  <title>Coverage Report > BusinessLogicAPI</title>
   <style type="text/css">
-    @import "../../.css/coverage.css";
-    @import "../../.css/highlight-idea.css";
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
   </style>
-  <script type="text/javascript" src="../../.js/highlight.pack.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
 </head>
 
 <body>
@@ -20,14 +20,14 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">interfaces</a>
 </div>
 
-<h1>Coverage Summary for Class: Shape (interfaces)</h1>
+<h1>Coverage Summary for Class: BusinessLogicAPI (interfaces)</h1>
 
 <table class="coverageStats">
 <tr>
   <th class="name">Class</th>
 </tr>
 <tr>
-  <td class="name">Shape</td>
+  <td class="name">BusinessLogicAPI</td>
 </tr>
 
 </table>
@@ -39,17 +39,15 @@ Current scope:     <a href="../../index.html">all classes</a>
 <pre>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package interfaces;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;/**
-<i class="no-highlight">4</i>&nbsp; * Interface for Shape
-<i class="no-highlight">5</i>&nbsp; *
-<i class="no-highlight">6</i>&nbsp; */
-<i class="no-highlight">7</i>&nbsp;public interface Shape {
-<i class="no-highlight">8</i>&nbsp;    /**
-<i class="no-highlight">9</i>&nbsp;     * Getter for Shape name
-<i class="no-highlight">10</i>&nbsp;     *
-<i class="no-highlight">11</i>&nbsp;     */
-<i class="no-highlight">12</i>&nbsp;    String getName();
-<i class="no-highlight">13</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;public interface BusinessLogicAPI {
+<i class="no-highlight">4</i>&nbsp;    TrafficLightFactory getTrafficLightFactory();
+<i class="no-highlight">5</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;    BasicObservableCrossing createBasicObservableCrossing();
+<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">8</i>&nbsp;    AdvancedObservableCrossing createAdvancedObservableCrossing();
+<i class="no-highlight">9</i>&nbsp;
+<i class="no-highlight">10</i>&nbsp;    CrossingModeFactory getCrossingModeFactory();
+<i class="no-highlight">11</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -76,7 +74,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-12-03 09:20</div>
+    <div style="float:right;">generated on 2021-12-03 11:59</div>
 </div>
 </body>
 </html>

@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > PedestrianShape</title>
+  <title>Coverage Report > LightObserver</title>
   <style type="text/css">
-    @import "../../.css/coverage.css";
-    @import "../../.css/highlight-idea.css";
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
   </style>
-  <script type="text/javascript" src="../../.js/highlight.pack.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
 </head>
 
 <body>
@@ -20,14 +20,14 @@ Current scope:     <a href="../../index.html">all classes</a>
     <a href="../index.html">interfaces</a>
 </div>
 
-<h1>Coverage Summary for Class: PedestrianShape (interfaces)</h1>
+<h1>Coverage Summary for Class: LightObserver (interfaces)</h1>
 
 <table class="coverageStats">
 <tr>
   <th class="name">Class</th>
 </tr>
 <tr>
-  <td class="name">PedestrianShape</td>
+  <td class="name">LightObserver</td>
 </tr>
 
 </table>
@@ -40,10 +40,10 @@ Current scope:     <a href="../../index.html">all classes</a>
 <div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package interfaces;
 <i class="no-highlight">2</i>&nbsp;
 <i class="no-highlight">3</i>&nbsp;/**
-<i class="no-highlight">4</i>&nbsp; * Shape for Pedestrian traffic lights.
+<i class="no-highlight">4</i>&nbsp; * Observer used to update JavaFX elements based on the traffic light state
 <i class="no-highlight">5</i>&nbsp; */
-<i class="no-highlight">6</i>&nbsp;public interface PedestrianShape extends Shape {
-<i class="no-highlight">7</i>&nbsp;
+<i class="no-highlight">6</i>&nbsp;public interface LightObserver {
+<i class="no-highlight">7</i>&nbsp;    void update(LightState state);
 <i class="no-highlight">8</i>&nbsp;}
 </div>
 </pre>
@@ -71,7 +71,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-12-03 09:20</div>
+    <div style="float:right;">generated on 2021-12-03 11:59</div>
 </div>
 </body>
 </html>

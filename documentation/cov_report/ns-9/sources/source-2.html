@@ -4,12 +4,12 @@
 <!DOCTYPE html>
 <html id="htmlId">
 <head>
-  <title>Coverage Report > ArrowLeftShape</title>
+  <title>Coverage Report > PedestrianLightState</title>
   <style type="text/css">
-    @import "../../.css/coverage.css";
-    @import "../../.css/highlight-idea.css";
+    @import "../../css/coverage.css";
+    @import "../../css/highlight-idea.css";
   </style>
-  <script type="text/javascript" src="../../.js/highlight.pack.js"></script>
+  <script type="text/javascript" src="../../js/highlight.pack.js"></script>
 </head>
 
 <body>
@@ -17,10 +17,10 @@
 <div class="breadCrumbs">
 Current scope:     <a href="../../index.html">all classes</a>
     <span class="separator">|</span>
-    <a href="../index.html">shapes</a>
+    <a href="../index.html">interfaces</a>
 </div>
 
-<h1>Coverage Summary for Class: ArrowLeftShape (shapes)</h1>
+<h1>Coverage Summary for Class: PedestrianLightState (interfaces)</h1>
 
 <table class="coverageStats">
 <tr>
@@ -39,7 +39,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 </th>
 </tr>
 <tr>
-  <td class="name">ArrowLeftShape</td>
+  <td class="name">PedestrianLightState</td>
 <td class="coverageStat">
   <span class="percent">
     100%
@@ -61,7 +61,7 @@ Current scope:     <a href="../../index.html">all classes</a>
     100%
   </span>
   <span class="absValue">
-    (2/2)
+    (3/3)
   </span>
 </td>
 </tr>
@@ -73,15 +73,31 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 
 <pre>
-<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package shapes;
+<div class="sourceCode" id="sourceCode"><i class="no-highlight">1</i>&nbsp;package interfaces;
 <i class="no-highlight">2</i>&nbsp;
-<i class="no-highlight">3</i>&nbsp;import interfaces.StreetShape;
-<i class="no-highlight">4</i>&nbsp;
-<i class="no-highlight">5</i>&nbsp;public class ArrowLeftShape extends ShapeBase implements StreetShape {
-<i class="no-highlight">6</i>&nbsp;    public ArrowLeftShape() {
-<b class="fc"><i class="no-highlight">7</i>&nbsp;        super(&quot;Arrow Left&quot;);</b>
-<b class="fc"><i class="no-highlight">8</i>&nbsp;    }</b>
-<i class="no-highlight">9</i>&nbsp;}
+<i class="no-highlight">3</i>&nbsp;/**
+<i class="no-highlight">4</i>&nbsp; * Interface for PedestrianLightState
+<i class="no-highlight">5</i>&nbsp; *
+<i class="no-highlight">6</i>&nbsp; */
+<i class="no-highlight">7</i>&nbsp;public interface PedestrianLightState extends LightState {
+<i class="no-highlight">8</i>&nbsp;    /**
+<i class="no-highlight">9</i>&nbsp;     * Getter for the next state
+<i class="no-highlight">10</i>&nbsp;     *
+<i class="no-highlight">11</i>&nbsp;     */
+<i class="no-highlight">12</i>&nbsp;    PedestrianLightState getNext();
+<i class="no-highlight">13</i>&nbsp;
+<i class="no-highlight">14</i>&nbsp;    /**
+<i class="no-highlight">15</i>&nbsp;     * Used to change the state of the traffic light
+<i class="no-highlight">16</i>&nbsp;     *
+<i class="no-highlight">17</i>&nbsp;     * @param light traffic light to change the state of
+<i class="no-highlight">18</i>&nbsp;     *
+<i class="no-highlight">19</i>&nbsp;     */
+<i class="no-highlight">20</i>&nbsp;    default void changeState(PedestrianTrafficLight light) {
+<b class="fc"><i class="no-highlight">21</i>&nbsp;        System.out.println(&quot;Changing from &quot; + light.getCurrentState() + &quot; -&gt; &quot; + getNext()  + &quot; for &quot; + light.getName() + &quot; traffic light ( &quot; + light.getShape() + &quot; )&quot;);</b>
+<b class="fc"><i class="no-highlight">22</i>&nbsp;        light.changeState(getNext());</b>
+<b class="fc"><i class="no-highlight">23</i>&nbsp;        light.informForLightChange();</b>
+<i class="no-highlight">24</i>&nbsp;    }
+<i class="no-highlight">25</i>&nbsp;}
 </div>
 </pre>
 </div>
@@ -108,7 +124,7 @@ Current scope:     <a href="../../index.html">all classes</a>
 
 <div class="footer">
     
-    <div style="float:right;">generated on 2021-12-03 09:20</div>
+    <div style="float:right;">generated on 2021-12-03 11:59</div>
 </div>
 </body>
 </html>
