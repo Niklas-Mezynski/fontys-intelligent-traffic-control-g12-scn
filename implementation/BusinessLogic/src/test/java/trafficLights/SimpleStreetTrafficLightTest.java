@@ -63,4 +63,11 @@ public class SimpleStreetTrafficLightTest {
         trafficLight.setShape(shape);
         assertThat(trafficLight.getShape()).isEqualTo(shape);
     }
+
+    @Test
+    void changeToNextState() {
+      trafficLight.stopTraffic();
+      trafficLight.changeToNextState();
+      assertThat(trafficLight.getCurrentState()).isEqualTo(GermanStreetLightBehaviour.RED_YELLOW);
+    }
 }

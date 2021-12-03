@@ -6,6 +6,8 @@ import interfaces.TrafficLightFactory;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+
 public class DutchStreetLightBehaviourTest {
     DutchStreetLightBehaviour redLight = DutchStreetLightBehaviour.RED_LIGHT;
     DutchStreetLightBehaviour yellowLight = DutchStreetLightBehaviour.YELLOW_LIGHT;
@@ -38,6 +40,17 @@ public class DutchStreetLightBehaviourTest {
             softAssertions.assertThat(yellowLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.TRANSITION);
             softAssertions.assertThat(greenLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.PASS);
         });
+    }
+
+    @Test
+    void testColorCode() {
+        SoftAssertions s = new SoftAssertions();
+
+        Arrays.stream(DutchStreetLightBehaviour.values()).forEach(dutchStreetLightBehaviour -> {
+            String colorHex = dutchStreetLightBehaviour.getColorHex();
+            s.assertThat(colorHex.length()).isEqualTo(7);
+        });
+        s.assertAll();
     }
 
 }

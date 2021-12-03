@@ -5,6 +5,8 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import streetLightBehaviours.BulgarianStreetLightBehaviour;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 public class BulgarianStreetLightBehaviourTest {
@@ -77,5 +79,16 @@ public class BulgarianStreetLightBehaviourTest {
             s.assertAll();
         });
 
+    }
+
+    @Test
+    void testColorCode() {
+        SoftAssertions s = new SoftAssertions();
+
+      Arrays.stream(BulgarianStreetLightBehaviour.values()).forEach(bulgarianStreetLightBehaviour -> {
+          String colorHex = bulgarianStreetLightBehaviour.getColorHex();
+          s.assertThat(colorHex.length()).isEqualTo(7);
+      });
+      s.assertAll();
     }
 }

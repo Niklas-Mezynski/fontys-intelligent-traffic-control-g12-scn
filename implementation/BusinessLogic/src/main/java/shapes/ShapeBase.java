@@ -28,11 +28,6 @@ public abstract class ShapeBase implements Shape {
     }
 
     @Override
-    public int hashCode() {
-        return Objects.hash(name);
-    }
-
-    @Override
     public String toString() {
         return getName();
     }
