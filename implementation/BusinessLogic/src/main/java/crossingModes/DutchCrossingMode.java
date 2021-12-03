@@ -21,9 +21,17 @@ public class DutchCrossingMode implements CrossingMode {
         timer = new Timer();
     }
 
+    // Used for tests
+    public void setTimer(Timer timer) {
+        this.timer = timer;
+    }
+
     @Override
     public void activate(Crossing crossing, int length) {
+        // Make sure that the crossing is on the correct mode.
         crossing.changeLightBehaviour(getStreetLightBehaviour(), getPedestrianLightBehaviour());
+
+        // Change states
         timer.schedule(new TimerTask() {
 
             @Override

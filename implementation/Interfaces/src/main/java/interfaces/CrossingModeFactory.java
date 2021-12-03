@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 public interface CrossingModeFactory {
     /**
      * Creates a crossing with simple crossing logic (Controls only the two main street traffic lights).
@@ -17,4 +19,6 @@ public interface CrossingModeFactory {
     CrossingMode createEmergencyCrossingMode();
 
     CrossingMode createDutchCrossingMode();
+
+    List<CrossingMode> getAllCrossingModes();
 }

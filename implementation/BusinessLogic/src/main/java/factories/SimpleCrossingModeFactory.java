@@ -7,6 +7,9 @@ import crossingModes.SimpleGermanCrossingMode;
 import interfaces.CrossingMode;
 import interfaces.CrossingModeFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class SimpleCrossingModeFactory implements CrossingModeFactory {
     @Override
     public CrossingMode createSimpleCrossingMode() {
@@ -27,4 +30,18 @@ public class SimpleCrossingModeFactory implements CrossingModeFactory {
     public CrossingMode createDutchCrossingMode() {
         return new DutchCrossingMode();
     }
+
+    @Override
+    public List<CrossingMode> getAllCrossingModes() {
+
+        ArrayList<CrossingMode> list = new ArrayList<>();
+        list.add(new SimpleGermanCrossingMode());
+        list.add(new GermanCrossingMode());
+        list.add(new EmergyencyCrossingMode());
+        list.add(new DutchCrossingMode());
+
+        return list;
+    }
+
+
 }
