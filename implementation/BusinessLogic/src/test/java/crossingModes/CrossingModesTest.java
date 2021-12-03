@@ -1,17 +1,8 @@
 package crossingModes;
 
-import crossings.SimpleCrossing;
-import factories.SimpleCrossingModeFactory;
 import interfaces.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
-import pedestrianLightBehaviours.DutchPedestrianLightBehaviour;
-import streetLightBehaviours.DutchStreetLightBehaviour;
-import streetLightBehaviours.GermanStreetLightBehaviour;
-
-import java.time.LocalDateTime;
-import java.util.*;
 
 import static org.mockito.Mockito.*;
 
@@ -47,8 +38,8 @@ public class CrossingModesTest {
     CrossingMode sut;
 
     // List of all available SUTs
-    SimpleCrossingModeFactory factory = new SimpleCrossingModeFactory();
-    List<CrossingMode> modes = factory.getAllCrossingModes();
+    //SimpleCrossingModeFactoryTest factory = new SimpleCrossingModeFactoryTest();
+    //List<CrossingMode> modes = factory.getAllCrossingModes();
 
     Crossing mockedCrossing;
 
@@ -136,7 +127,7 @@ public class CrossingModesTest {
     @Test
     void activateEmergencyCrossingModeTest() throws InterruptedException {
 
-        sut = new EmergyencyCrossingMode();
+        sut = new EmergencyCrossingMode();
         mockedCrossing.setMode(sut);
 //        Thread.sleep(2000);
         sut.activate(mockedCrossing, 1);

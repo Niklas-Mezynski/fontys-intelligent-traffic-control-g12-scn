@@ -1,7 +1,6 @@
 package crossings;
 
-import crossingModes.EmergyencyCrossingMode;
-import crossingModes.SimpleGermanCrossingMode;
+import crossingModes.EmergencyCrossingMode;
 import interfaces.Crossing;
 import interfaces.CrossingMode;
 import interfaces.PedestrianTrafficLight;
@@ -12,8 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InOrder;
 import pedestrianLightBehaviours.EmergencyPedestrianLightBehaviour;
 import streetLightBehaviours.EmergencyStreetLightBehaviour;
-import trafficLights.SimplePedestrianTrafficLight;
-import trafficLights.SimpleStreetTrafficLight;
 
 import java.util.List;
 
@@ -181,7 +178,7 @@ public class CrossingTest {
     @Test
     void changeLightBehaviour() {
         addOptionalTrafficLights();
-        crossing.setMode(new EmergyencyCrossingMode());
+        crossing.setMode(new EmergencyCrossingMode());
         crossing.activate(1000);
         crossing.deactivate();
         verify(horizontalPed).changeState(EmergencyPedestrianLightBehaviour.YELLOW_BLINKING_LIGHT);

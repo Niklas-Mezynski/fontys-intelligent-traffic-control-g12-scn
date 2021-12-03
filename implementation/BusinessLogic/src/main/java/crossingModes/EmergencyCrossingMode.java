@@ -8,11 +8,11 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class EmergyencyCrossingMode implements CrossingMode {
+public class EmergencyCrossingMode implements CrossingMode {
 
     Timer timer;
 
-    public EmergyencyCrossingMode(){
+    public EmergencyCrossingMode(){
         resetTimer();
     }
 
