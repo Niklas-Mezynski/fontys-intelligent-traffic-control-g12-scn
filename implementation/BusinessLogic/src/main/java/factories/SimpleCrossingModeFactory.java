@@ -1,5 +1,6 @@
 package factories;
 
+import crossingModes.DutchCrossingMode;
 import crossingModes.EmergyencyCrossingMode;
 import crossingModes.GermanCrossingMode;
 import crossingModes.SimpleGermanCrossingMode;
@@ -20,5 +21,10 @@ public class SimpleCrossingModeFactory implements CrossingModeFactory {
     @Override
     public CrossingMode createEmergencyCrossingMode() {
         return new EmergyencyCrossingMode();
+    }
+
+    @Override
+    public CrossingMode createDutchCrossingMode() {
+        return new DutchCrossingMode();
     }
 }
