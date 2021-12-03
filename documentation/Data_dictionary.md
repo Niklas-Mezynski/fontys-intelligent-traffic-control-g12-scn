@@ -8,3 +8,5 @@
 |Light state meaning|Each traffic light state has a meaning which provides the information what to do when the traffic light is in this state (stop/pass/transition/emergency)|
 |Traffic light shape|The shape determines how the traffic lights actually look like, light states are not affected by that|
 |Crossing|A crossing contains multiple traffic lights for the different roads/pedestrian crossings. It follows straight rules which determine how the different traffic lights have to work together|
+|Trafficlight behaviour|The object holding the lightstate transition logic of the trafficlight|
+|Crossing mode|The object holding the crossing logic. The mode defines the way how trafficlights change states and interact with each other|
