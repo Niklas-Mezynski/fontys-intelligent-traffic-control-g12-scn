@@ -5,6 +5,8 @@ import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.Test;
 import streetLightBehaviours.GermanStreetLightBehaviour;
 
+import java.util.Arrays;
+
 import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 
 
@@ -45,5 +47,16 @@ public class GermanStreetLightBehaviourTest {
             softAssertions.assertThat(yellow.stateMeaning()).isEqualTo(LightState.LightStateMeaning.TRANSITION);
             softAssertions.assertThat(greenLight.stateMeaning()).isEqualTo(LightState.LightStateMeaning.PASS);
         });
+    }
+
+    @Test
+    void testColorCode() {
+        SoftAssertions s = new SoftAssertions();
+
+        Arrays.stream(GermanStreetLightBehaviour.values()).forEach(germanStreetLightBehaviour -> {
+            String colorHex = germanStreetLightBehaviour.getColorHex();
+            s.assertThat(colorHex.length()).isEqualTo(7);
+        });
+        s.assertAll();
     }
 }

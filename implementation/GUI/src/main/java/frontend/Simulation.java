@@ -1,10 +1,7 @@
 package frontend;
 
-import businessLogic.BusinessLogicAPI;
-import frontend.controllers.SimulationDashboardController;
-import frontend.controllers.SingleCrossingSimulationController;
-import frontend.controllers.SinglePedestrianTrafficLightSimulationController;
-import frontend.controllers.SingleStreetTrafficLightSimulationController;
+import frontend.controllers.*;
+import interfaces.BusinessLogicAPI;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.stage.Stage;
@@ -22,8 +19,11 @@ public class Simulation extends Application {
         if (c.getName().equals("frontend.controllers.SimulationDashboardController")) {
             return new SimulationDashboardController(this::getSceneManager);
         }
-        if (c.getName().equals("frontend.controllers.SingleCrossingSimulationController")) {
-            return new SingleCrossingSimulationController(this::getSceneManager, businessLogicAPI.createSimpleObservableCrossing());
+        if (c.getName().equals("frontend.controllers.BasicCrossingSimulationController")) {
+            return new BasicCrossingSimulationController(this::getSceneManager, businessLogicAPI.createBasicObservableCrossing());
+        }
+        if (c.getName().equals("frontend.controllers.AdvancedCrossingSimulationController")) {
+            return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.createAdvancedObservableCrossing(), businessLogicAPI.getCrossingModeFactory());
         }
         if (c.getName().equals("frontend.controllers.SinglePedestrianTrafficLightSimulationController")) {
             return new SinglePedestrianTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getTrafficLightFactory());
@@ -79,7 +79,7 @@ public class Simulation extends Application {
      */
     @Override
     public void start(Stage stage) throws IOException {
-        sceneManager.displayOn(stage, 950, 700, "Simulation");
+        sceneManager.displayOn(stage, 950, 800, "Simulation");
     }
 
     /**

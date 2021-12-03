@@ -55,13 +55,6 @@ public enum GermanStreetLightBehaviour implements StreetLightState {
 
     };
 
-
-    @Override
-    public StreetLightState getNext() {
-        return null;
-    }
-
-
     private final LightStateMeaning stateMeaning;
     private final String name;
 

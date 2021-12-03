@@ -7,6 +7,7 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -154,4 +155,9 @@
          <Insets top="50.0" />
       </VBox.margin>
    </HBox>
+   <TextArea fx:id="textArea" prefHeight="200.0" prefWidth="200.0">
+      <VBox.margin>
+         <Insets top="-30.0" />
+      </VBox.margin>
+   </TextArea>
 </VBox>

@@ -1,7 +1,6 @@
 package trafficLights;
 
 import interfaces.*;
-import shapes.DotShape;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,11 +52,6 @@ public abstract class TrafficLightBase implements TrafficLight {
     @Override
     public void addShapeObserver(ShapeObserver o) {
         shapeObservers.add(o);
-    }
-
-    @Override
-    public void removeShapeObserver(ShapeObserver o) {
-        shapeObservers.remove(o);
     }
 
     @Override

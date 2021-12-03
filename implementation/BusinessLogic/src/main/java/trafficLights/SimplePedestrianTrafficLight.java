@@ -5,11 +5,11 @@ import shapes.DotShape;
 
 /**
  * Instance object implementing PedestrianTrafficLight interface
- *
  */
 public class SimplePedestrianTrafficLight extends TrafficLightBase implements PedestrianTrafficLight {
     private PedestrianLightState currentState;
     private PedestrianShape shape;
+
     public SimplePedestrianTrafficLight(PedestrianLightState initialState, String name) {
         super(name);
         currentState = initialState;
@@ -23,25 +23,20 @@ public class SimplePedestrianTrafficLight extends TrafficLightBase implements Pe
 
     @Override
     public void stopTraffic() {
-        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
-            return;
-        while(currentState.stateMeaning() != LightState.LightStateMeaning.STOP){
+        while (currentState.stateMeaning() != LightState.LightStateMeaning.STOP) {
             currentState.changeState(this);
         }
     }
 
     @Override
     public void startTraffic() {
-        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
-            return;
-        while(currentState.stateMeaning() != LightState.LightStateMeaning.PASS){
+        while (currentState.stateMeaning() != LightState.LightStateMeaning.PASS) {
             currentState.changeState(this);
         }
     }
 
     @Override
     public void changeToNextState() {
-        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY) return;
         currentState.changeState(this);
     }
 

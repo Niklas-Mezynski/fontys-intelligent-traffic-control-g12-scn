@@ -8,15 +8,18 @@ import static frontend.helpers.ObservableListHelper.entitiesToObservableListDist
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import shapes.DonkeyShape;
 import shapes.DotShape;
 import shapes.ManShape;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.net.URL;
 import java.util.*;
 import java.util.function.Supplier;
@@ -30,6 +33,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     Map<String, String> shapeToURLMap;
     Map<String, PedestrianLightState> behaviourMap;
     boolean isSimulationStarted;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     public SinglePedestrianTrafficLightSimulationController(Supplier<SceneManager> sceneManager, TrafficLightFactory factory) {
         super(sceneManager);
@@ -53,6 +57,9 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
 
     @FXML
     TextField stateField;
+
+    @FXML
+    TextArea textArea;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -89,6 +96,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
         currentTrafficLight.addShapeObserver(new CircleShapeObserver(innerCircle, shapeToURLMap));
 
         currentTrafficLight.setShape(new DotShape());
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     private void resetLight(){
@@ -104,6 +112,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     public void exit() {
         endSimulation();
         sceneManager.get().changeScene("simulationDashboard");
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
     }
 
     /**
@@ -119,6 +128,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
                     public void run() {
                         currentTrafficLight.changeToNextState();
                         stateField.setText(currentTrafficLight.getCurrentState().getName());
+                        textArea.setText(outputStreamCaptor.toString());
                     }
                 }, 0, lengthBox.getValue() * 1000);
         }
@@ -139,6 +149,8 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
         isSimulationStarted = false;
         timer.cancel();
         resetLight();
+        outputStreamCaptor.reset();
+        textArea.clear();
     }
 
     /**

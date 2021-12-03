@@ -1,6 +1,6 @@
 package assembler;
 
-import businessLogic.BusinessLogicAPI;
+import businessLogic.BusinessLogicImplProvider;
 import frontend.Simulation;
 /**
  *
@@ -12,6 +12,6 @@ public class Main {
          * @param args the command line arguments
          */
         public static void main(String[] args) {
-                new Simulation(new BusinessLogicAPI()).show();
+                new Simulation(BusinessLogicImplProvider.getImplementation()).show();
         }
 }

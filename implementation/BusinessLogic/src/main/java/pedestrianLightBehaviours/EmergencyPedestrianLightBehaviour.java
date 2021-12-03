@@ -1,8 +1,10 @@
-package streetLightBehaviours;
+package pedestrianLightBehaviours;
 
+import interfaces.PedestrianLightState;
 import interfaces.StreetLightState;
 
-public enum EmergencyStreetLightBehaviour implements StreetLightState {
+public enum EmergencyPedestrianLightBehaviour implements PedestrianLightState {
+
     YELLOW_BLINKING_LIGHT(LightStateMeaning.PASS, "Emergency Light"){
         @Override
         public String getColorHex() {
@@ -10,8 +12,8 @@ public enum EmergencyStreetLightBehaviour implements StreetLightState {
         }
 
         @Override
-        public StreetLightState getNext() {
-            return NO_LIGHT;
+        public PedestrianLightState getNext() {
+            return NO_LIGHT ;
         }
 
     },
@@ -23,7 +25,7 @@ public enum EmergencyStreetLightBehaviour implements StreetLightState {
         }
 
         @Override
-        public StreetLightState getNext() {
+        public PedestrianLightState getNext() {
             return YELLOW_BLINKING_LIGHT ;
         }
 
@@ -32,7 +34,7 @@ public enum EmergencyStreetLightBehaviour implements StreetLightState {
     private final LightStateMeaning stateMeaning;
     private final String name;
 
-    EmergencyStreetLightBehaviour (LightStateMeaning stateMeaning, String name) {
+    EmergencyPedestrianLightBehaviour (LightStateMeaning stateMeaning, String name) {
         this.stateMeaning = stateMeaning;
         this.name = name;
     }
@@ -46,5 +48,5 @@ public enum EmergencyStreetLightBehaviour implements StreetLightState {
     public String getName() {
         return name;
     }
-    }
+}
 

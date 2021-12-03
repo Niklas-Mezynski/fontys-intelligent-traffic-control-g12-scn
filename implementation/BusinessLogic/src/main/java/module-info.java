@@ -6,6 +6,7 @@ module businesslogic_module {
     opens shapes;
     opens crossings;
     opens businessLogic;
+    opens crossingModes;
     exports trafficLights;
     exports streetLightBehaviours;
     exports pedestrianLightBehaviours;
@@ -13,4 +14,5 @@ module businesslogic_module {
     exports crossings;
     exports factories;
     exports businessLogic;
+    exports crossingModes;
 }

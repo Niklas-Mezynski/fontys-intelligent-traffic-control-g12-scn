@@ -2,10 +2,12 @@ package frontend.controllers;
 
 import frontend.SceneManager;
 import frontend.helpers.FXShapeLightObserver;
-import interfaces.ObservableCrossing;
+import interfaces.BasicObservableCrossing;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
@@ -18,13 +20,13 @@ import java.util.function.Supplier;
 import static frontend.helpers.ObservableListHelper.entitiesToObservableListDistinct;
 
 /**
- * Controller for Single Crossing Simulation JavaFX scene.
+ * Controller for Simple Crossing Simulation JavaFX scene.
  * <p>
  * The controller is used for managing the scene and processing the raw input
  * from the app user.
  */
-public class SingleCrossingSimulationController extends ControllerBase implements Initializable{
-    ObservableCrossing crossing;
+public class BasicCrossingSimulationController extends ControllerBase implements Initializable{
+    BasicObservableCrossing crossing;
     boolean isActive;
 
     @FXML
@@ -32,12 +34,13 @@ public class SingleCrossingSimulationController extends ControllerBase implement
             verticalCircle1, verticalCircle2, verticalCircle3, verticalCircle4;
 
     @FXML
-    Rectangle horizontalRectangle1, horizontalRectangle2, verticalRectangle1, verticalRectangle2;
+    Rectangle horizontalRectangle1, horizontalRectangle2, verticalRectangle1, verticalRectangle2,
+            innerHorizontalRectangle1, innerHorizontalRectangle2, innerVerticalRectangle1, innerVerticalRectangle2;
 
     @FXML
     ComboBox<Integer> lengthBox;
 
-    public SingleCrossingSimulationController(Supplier<SceneManager> sceneManager, ObservableCrossing crossing) {
+    public BasicCrossingSimulationController(Supplier<SceneManager> sceneManager, BasicObservableCrossing crossing) {
         super(sceneManager);
         this.crossing = crossing;
     }
@@ -61,6 +64,11 @@ public class SingleCrossingSimulationController extends ControllerBase implement
 
         crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle1));
         crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle2));
+
+        innerHorizontalRectangle1.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowRight.png").toExternalForm())));
+        innerHorizontalRectangle2.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowLeft.png").toExternalForm())));
+        innerVerticalRectangle1.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowBackward.png").toExternalForm())));
+        innerVerticalRectangle2.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowForward.png").toExternalForm())));
 
         List<Integer> lengths = List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         lengthBox.setItems(entitiesToObservableListDistinct(lengths));
@@ -109,8 +117,8 @@ public class SingleCrossingSimulationController extends ControllerBase implement
      */
     @FXML
     public void startSimulation() {
-        changeColorOfAllLights("red");
         if(!isActive) {
+            changeColorOfAllLights("red");
             crossing.activate(lengthBox.getValue() * 1000);
             isActive = true;
         }

@@ -7,13 +7,16 @@ import interfaces.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.paint.ImagePattern;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import shapes.*;
 
+import java.io.ByteArrayOutputStream;
+import java.io.FileDescriptor;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.net.URL;
 import java.util.*;
 import java.util.function.Supplier;
@@ -29,6 +32,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     Map<String, String> shapeToURLMap;
     Map<String, StreetLightState> behaviourMap;
     boolean isSimulationStarted;
+    private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
     public SingleStreetTrafficLightSimulationController(Supplier<SceneManager> sceneManager, TrafficLightFactory factory) {
         super(sceneManager);
@@ -53,7 +57,8 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     @FXML
     TextField stateField;
 
-    Image currentShape;
+    @FXML
+    TextArea textArea;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -91,6 +96,8 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
         currentTrafficLight.addShapeObserver(new CircleShapeObserver(innerCircle, shapeToURLMap));
 
         currentTrafficLight.setShape(new ArrowForwardShape());
+
+        System.setOut(new PrintStream(outputStreamCaptor));
     }
 
     private void resetLight(){
@@ -106,6 +113,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     public void exit() {
         endSimulation();
         sceneManager.get().changeScene("simulationDashboard");
+        System.setOut(new PrintStream(new FileOutputStream(FileDescriptor.out)));
     }
 
     /**
@@ -121,6 +129,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
                     public void run() {
                         currentTrafficLight.changeToNextState();
                         stateField.setText(currentTrafficLight.getCurrentState().getName());
+                        textArea.setText(outputStreamCaptor.toString());
                     }
                 }, 0, lengthBox.getValue() * 1000);
         }
@@ -141,6 +150,8 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
         isSimulationStarted = false;
         timer.cancel();
         resetLight();
+        outputStreamCaptor.reset();
+        textArea.clear();
     }
 
     /**

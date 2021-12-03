@@ -6,7 +6,6 @@ import shapes.DotShape;
 
 /**
  * Instance object implementing StreetTrafficLight interface
- *
  */
 public class SimpleStreetTrafficLight extends TrafficLightBase implements StreetTrafficLight {
     private StreetLightState currentState;
@@ -25,26 +24,21 @@ public class SimpleStreetTrafficLight extends TrafficLightBase implements Street
 
     @Override
     public void stopTraffic() {
-        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
-            return;
-        while(currentState.stateMeaning() != LightState.LightStateMeaning.STOP){
+        while (currentState.stateMeaning() != LightState.LightStateMeaning.STOP) {
             currentState.changeState(this);
         }
     }
 
     @Override
     public void startTraffic() {
-        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY)
-            return;
-        while(currentState.stateMeaning() != LightState.LightStateMeaning.PASS){
+        while (currentState.stateMeaning() != LightState.LightStateMeaning.PASS) {
             currentState.changeState(this);
         }
     }
 
     @Override
     public void changeToNextState() {
-        if (currentState.stateMeaning() == LightState.LightStateMeaning.EMERGENCY) return;
-            currentState.changeState(this);
+        currentState.changeState(this);
     }
 
     @Override
@@ -62,6 +56,7 @@ public class SimpleStreetTrafficLight extends TrafficLightBase implements Street
         this.shape = newShape;
         informForShapeChange(newShape);
     }
+
     @Override
     public String toString() {
         return getClass().getSimpleName() + "{" +
