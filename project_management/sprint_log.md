@@ -63,3 +63,14 @@
 5.	Test the crossing and extend the general coverage(Niklas)
 ---
 
+## Sprint 6:
+### Create poster and video
+
+---
+1.	Ideas for poster
+    - Design of the trafficlight --> Strategy and State pattern (Class diagram, state machine)
+2. Ideas for video
+    - Show the GUI
+
+---
+
