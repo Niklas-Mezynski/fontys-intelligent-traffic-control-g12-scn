@@ -1,9 +1,6 @@
 package factories;
 
-import crossingModes.DutchCrossingMode;
-import crossingModes.EmergyencyCrossingMode;
-import crossingModes.GermanCrossingMode;
-import crossingModes.SimpleGermanCrossingMode;
+import crossingModes.*;
 import interfaces.CrossingMode;
 import interfaces.CrossingModeFactory;
 
@@ -32,6 +29,11 @@ public class SimpleCrossingModeFactory implements CrossingModeFactory {
     }
 
     @Override
+    public CrossingMode createBulgarianCrossingMode() {
+        return new BulgarianCrossingMode();
+    }
+
+    @Override
     public List<CrossingMode> getAllCrossingModes() {
 
         ArrayList<CrossingMode> list = new ArrayList<>();
@@ -39,6 +41,7 @@ public class SimpleCrossingModeFactory implements CrossingModeFactory {
         list.add(new GermanCrossingMode());
         list.add(new EmergyencyCrossingMode());
         list.add(new DutchCrossingMode());
+        list.add(new BulgarianCrossingMode());
 
         return list;
     }

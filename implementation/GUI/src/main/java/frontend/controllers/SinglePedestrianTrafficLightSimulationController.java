@@ -72,6 +72,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
         behaviourMap.put("German Pedestrian Behaviour", lightBehaviourFactory.getInitialGermanPedestrianState());
         behaviourMap.put("Dutch Pedestrian Behaviour", lightBehaviourFactory.getInitialDutchPedestrianState());
         behaviourMap.put("Australian Pedestrian Behaviour", lightBehaviourFactory.getInitialAustralianPedestrianState());
+        behaviourMap.put("Bulgarian Pedestrian Behaviour", lightBehaviourFactory.getInitialBulgarianPedestrianState());
 
         shapeToURLMap.put("Dot Shape", "/frontend/shapes/dotShape.png");
         shapeToURLMap.put("Donkey Shape", "/frontend/shapes/donkeyShape.png");
@@ -129,6 +130,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
                         currentTrafficLight.changeToNextState();
                         stateField.setText(currentTrafficLight.getCurrentState().getName());
                         textArea.setText(outputStreamCaptor.toString());
+                        textArea.appendText("\n");
                     }
                 }, 0, lengthBox.getValue() * 1000);
         }

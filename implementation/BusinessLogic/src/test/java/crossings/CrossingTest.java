@@ -79,20 +79,6 @@ public class CrossingTest {
     }
 
     @Test
-    void addAndGetMethods() {
-        SoftAssertions s = new SoftAssertions();
-        addOptionalTrafficLights();
-        List<PedestrianTrafficLight> pedestrians = List.of(this.horizontalPed, verticalPed);
-        List<StreetTrafficLight> streetLights = List.of(
-                this.horizontalStreet, horizontalStreetLeft, horizontalStreetRight,
-                verticalStreet, verticalStreetLeft, verticalStreetRight
-        );
-        s.assertThat(crossing.getAllPedestrianLights()).containsExactlyInAnyOrderElementsOf(pedestrians);
-        s.assertThat(crossing.getAllStreetLights()).containsExactlyInAnyOrderElementsOf(streetLights);
-        s.assertAll();
-    }
-
-    @Test
     void stopAllVerticalEasyCase() {
         crossing.stopAllVertical();
         inOrder.verify(verticalStreet).stopTraffic();

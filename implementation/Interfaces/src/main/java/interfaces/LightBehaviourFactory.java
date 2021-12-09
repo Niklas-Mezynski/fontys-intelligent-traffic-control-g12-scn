@@ -12,4 +12,6 @@ public interface LightBehaviourFactory {
     StreetLightState getInitialGermanStreetState();
 
     StreetLightState getInitialBulgarianStreetState();
+
+    PedestrianLightState getInitialBulgarianPedestrianState();
 }

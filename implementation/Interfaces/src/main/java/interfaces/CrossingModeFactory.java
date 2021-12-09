@@ -20,5 +20,7 @@ public interface CrossingModeFactory {
 
     CrossingMode createDutchCrossingMode();
 
+    CrossingMode createBulgarianCrossingMode();
+
     List<CrossingMode> getAllCrossingModes();
 }

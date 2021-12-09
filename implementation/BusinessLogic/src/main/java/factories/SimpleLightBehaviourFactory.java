@@ -4,6 +4,7 @@ import interfaces.LightBehaviourFactory;
 import interfaces.PedestrianLightState;
 import interfaces.StreetLightState;
 import pedestrianLightBehaviours.AustralianPedestrianLightBehaviour;
+import pedestrianLightBehaviours.BulgarianPedestrianLightBehaviour;
 import pedestrianLightBehaviours.DutchPedestrianLightBehaviour;
 import pedestrianLightBehaviours.GermanPedestrianLightBehaviour;
 import streetLightBehaviours.BulgarianStreetLightBehaviour;
@@ -39,5 +40,10 @@ public class SimpleLightBehaviourFactory implements LightBehaviourFactory {
     @Override
     public StreetLightState getInitialBulgarianStreetState() {
         return BulgarianStreetLightBehaviour.RED_LIGHT;
+    }
+
+    @Override
+    public PedestrianLightState getInitialBulgarianPedestrianState() {
+        return BulgarianPedestrianLightBehaviour.RED_LIGHT;
     }
 }

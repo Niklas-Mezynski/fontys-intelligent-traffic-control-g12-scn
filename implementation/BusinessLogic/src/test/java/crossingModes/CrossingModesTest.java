@@ -97,6 +97,27 @@ public class CrossingModesTest {
     }
 
     @Test
+    void activateBulgarianModeTest() throws InterruptedException {
+
+        sut = new BulgarianCrossingMode();
+        mockedCrossing.setMode(sut);
+//        Thread.sleep(2000);
+        sut.activate(mockedCrossing, 1);
+
+        verify(mockedCrossing, atLeast(0)).stopAllHorizontal();
+        verify(mockedCrossing, atLeast(0)).stopAllVertical();
+        verify(mockedCrossing, atLeast(0)).startHorizontalRight();
+        verify(mockedCrossing, atLeast(0)).stopAllHorizontal();
+        verify(mockedCrossing, atLeast(0)).startHorizontalLeft();
+        verify(mockedCrossing, atLeast(0)).startVerticalStraight();
+        verify(mockedCrossing, atLeast(0)).startVerticalRight();
+        verify(mockedCrossing, atLeast(0)).startVerticalLeft();
+        verify(mockedCrossing, atLeast(0)).startPedestrianVertical();
+        verify(mockedCrossing, atLeast(0)).startPedestrianHorizontal();
+
+    }
+
+    @Test
     void activateDutchModeTest() throws InterruptedException {
 
         sut = new DutchCrossingMode();

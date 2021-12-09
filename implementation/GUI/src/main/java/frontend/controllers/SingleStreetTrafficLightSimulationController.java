@@ -130,6 +130,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
                         currentTrafficLight.changeToNextState();
                         stateField.setText(currentTrafficLight.getCurrentState().getName());
                         textArea.setText(outputStreamCaptor.toString());
+                        textArea.appendText("\n");
                     }
                 }, 0, lengthBox.getValue() * 1000);
         }
