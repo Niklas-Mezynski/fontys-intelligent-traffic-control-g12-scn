@@ -18,6 +18,8 @@ Hello guys, this is group 12. We would like to show you several features which w
 
 We would like to start off with showcasing the pedestrian traffic light logic where you can change the shape and behavior and execute the state-logic.
 
+In the video you'll see the console on the right side and the GUI on the left. All events that appear on the GUI are also displayed on the console.
+
 [Screen 1]
 The pedestrian traffic light can support different light behaviors and light shapes, which can be changed in runtime.
 
