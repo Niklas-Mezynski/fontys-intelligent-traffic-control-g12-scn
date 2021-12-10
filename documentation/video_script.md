@@ -38,3 +38,8 @@ To extend the basic crossing we have implemented an advanced crossing. In this c
 In order to control the crossing we've implemented different crossing modes which all have a different crossing logic. The crossing mode can control either the main traffic light or more. Crossing modes can be changed during runtime.
 
 (Showcase simple crossing mode, showcase dutch/german and how they can be changed within runtime)
+
+
+[outro]
+
+THANK YOU FOR WATCHING DONT FORGET TO LIKE SUBSCRIBE AND HIT THAT BELL ICON SO YOU WILL GET NOTIFIED EVERY TIME WE UPLOAD A VIDEO!!!!!!!!!!!!!
