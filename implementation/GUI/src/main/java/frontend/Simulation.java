@@ -20,16 +20,16 @@ public class Simulation extends Application {
             return new SimulationDashboardController(this::getSceneManager);
         }
         if (c.getName().equals("frontend.controllers.BasicCrossingSimulationController")) {
-            return new BasicCrossingSimulationController(this::getSceneManager, businessLogicAPI.createBasicObservableCrossing());
+            return new BasicCrossingSimulationController(this::getSceneManager, businessLogicAPI.getBasicCrossingSimulationManager());
         }
         if (c.getName().equals("frontend.controllers.AdvancedCrossingSimulationController")) {
-            return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.createAdvancedObservableCrossing(), businessLogicAPI.getCrossingModeFactory());
+            return new AdvancedCrossingSimulationController(this::getSceneManager, businessLogicAPI.getAdvancedCrossingSimulationManager());
         }
         if (c.getName().equals("frontend.controllers.SinglePedestrianTrafficLightSimulationController")) {
-            return new SinglePedestrianTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getTrafficLightFactory());
+            return new SinglePedestrianTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getPedestrianLightSimulationManager());
         }
         if (c.getName().equals("frontend.controllers.SingleStreetTrafficLightSimulationController")) {
-            return new SingleStreetTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getTrafficLightFactory());
+            return new SingleStreetTrafficLightSimulationController(this::getSceneManager, businessLogicAPI.getStreetLightSimulationManager());
         }
         return null;
 

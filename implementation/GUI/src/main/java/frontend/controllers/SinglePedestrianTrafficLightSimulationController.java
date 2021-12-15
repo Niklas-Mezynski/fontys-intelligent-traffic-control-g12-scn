@@ -12,9 +12,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import shapes.DonkeyShape;
-import shapes.DotShape;
-import shapes.ManShape;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
@@ -26,21 +23,15 @@ import java.util.function.Supplier;
 
 public class SinglePedestrianTrafficLightSimulationController extends ControllerBase implements Initializable {
     Timer timer;
-    TrafficLightFactory trafficLightFactory;
-    LightBehaviourFactory lightBehaviourFactory;
-    PedestrianTrafficLight currentTrafficLight;
-    Map<String, PedestrianShape> stringToShapeMap;
+
     Map<String, String> shapeToURLMap;
-    Map<String, PedestrianLightState> behaviourMap;
     boolean isSimulationStarted;
+    private final PedestrianTrafficLightSimulationManager simulationManager;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 
-    public SinglePedestrianTrafficLightSimulationController(Supplier<SceneManager> sceneManager, TrafficLightFactory factory) {
+    public SinglePedestrianTrafficLightSimulationController(Supplier<SceneManager> sceneManager, PedestrianTrafficLightSimulationManager businessLogicAPI) {
         super(sceneManager);
-        this.trafficLightFactory = factory;
-        this.lightBehaviourFactory = factory.getLightBehaviourFactory();
-        stringToShapeMap = new HashMap<>();
-        behaviourMap = new HashMap<>();
+        this.simulationManager = businessLogicAPI;
         shapeToURLMap = new HashMap<>();
         isSimulationStarted = false;
         resetTimer();
@@ -65,38 +56,24 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resetLight();
 
-        stringToShapeMap.put("Dot Shape", new DotShape());
-        stringToShapeMap.put("Man Shape", new ManShape());
-        stringToShapeMap.put("Donkey Shape", new DonkeyShape());
-
-        behaviourMap.put("German Pedestrian Behaviour", lightBehaviourFactory.getInitialGermanPedestrianState());
-        behaviourMap.put("Dutch Pedestrian Behaviour", lightBehaviourFactory.getInitialDutchPedestrianState());
-        behaviourMap.put("Australian Pedestrian Behaviour", lightBehaviourFactory.getInitialAustralianPedestrianState());
-        behaviourMap.put("Bulgarian Pedestrian Behaviour", lightBehaviourFactory.getInitialBulgarianPedestrianState());
-
         shapeToURLMap.put("Dot Shape", "/frontend/shapes/dotShape.png");
         shapeToURLMap.put("Donkey Shape", "/frontend/shapes/donkeyShape.png");
         shapeToURLMap.put("Man Shape", "/frontend/shapes/manShape.png");
 
-        List<String> shapes = new ArrayList<>(stringToShapeMap.keySet());
-        shapeBox.setItems(entitiesToObservableListDistinct(shapes));
+        shapeBox.setItems(entitiesToObservableListDistinct(simulationManager.getAllPedestrianShapesStrings()));
 
-        List<String> behaviours = new ArrayList<>(behaviourMap.keySet());
-        behaviourBox.setItems(entitiesToObservableListDistinct(behaviours));
+        behaviourBox.setItems(entitiesToObservableListDistinct(simulationManager.getAllPedestrianLightBehaviourStrings()));
 
         List<Integer> lengths = List.of(1, 2, 3, 4, 5);
         lengthBox.setItems(entitiesToObservableListDistinct(lengths));
-
-        currentTrafficLight = trafficLightFactory.createGermanPedestrianTrafficLight("currentTrafficLight");
 
         shapeBox.setValue("Dot Shape");
         behaviourBox.setValue("German Pedestrian Behaviour");
         lengthBox.setValue(5);
 
-        currentTrafficLight.addLightObserver(new FXShapeLightObserver(lightCircle));
-        currentTrafficLight.addShapeObserver(new CircleShapeObserver(innerCircle, shapeToURLMap));
+        simulationManager.addObserversToPedestrianTrafficLight(new FXShapeLightObserver(lightCircle), new CircleShapeObserver(innerCircle, shapeToURLMap));
 
-        currentTrafficLight.setShape(new DotShape());
+        simulationManager.setShapeOfPedestrianTrafficLight("Dot Shape");
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -127,8 +104,8 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
             timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        currentTrafficLight.changeToNextState();
-                        stateField.setText(currentTrafficLight.getCurrentState().getName());
+                        simulationManager.changeStateToNextForPedestrianTrafficLight();
+                        stateField.setText(simulationManager.getNameOfCurrentStateOfPedestrianTrafficLight());
                         textArea.setText(outputStreamCaptor.toString());
                         textArea.appendText("\n");
                     }
@@ -160,7 +137,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
      */
     @FXML
     public void changeShape() {
-        currentTrafficLight.setShape(stringToShapeMap.get(shapeBox.getValue()));
+        simulationManager.setShapeOfPedestrianTrafficLight(shapeBox.getValue());
     }
 
     /**
@@ -170,11 +147,11 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     public void changeBehaviour() {
         if(isSimulationStarted) {
             endSimulation();
-            currentTrafficLight.changeState(behaviourMap.get(behaviourBox.getValue()));
+            simulationManager.setLightBehaviourOfPedestrianTrafficLight(behaviourBox.getValue());
             startSimulation();
         }
         else {
-            currentTrafficLight.changeState(behaviourMap.get(behaviourBox.getValue()));
+            simulationManager.setLightBehaviourOfPedestrianTrafficLight(behaviourBox.getValue());
         }
     }
 

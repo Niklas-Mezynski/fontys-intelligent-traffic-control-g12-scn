@@ -2,9 +2,7 @@ package frontend.controllers;
 
 import frontend.SceneManager;
 import frontend.helpers.FXShapeLightObserver;
-import interfaces.AdvancedObservableCrossing;
-import interfaces.CrossingMode;
-import interfaces.CrossingModeFactory;
+import interfaces.*;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -27,10 +25,8 @@ import static frontend.helpers.ObservableListHelper.entitiesToObservableListDist
  * from the app user.
  */
 public class AdvancedCrossingSimulationController extends ControllerBase implements Initializable{
-    AdvancedObservableCrossing crossing;
-    CrossingModeFactory crossingModeFactory;
+    AdvancedCrossingSimulationManager simulationManager;
     boolean isActive;
-    Map<String, CrossingMode> stringCrossingModeMap;
 
     @FXML
     Circle horizontalCircle1, horizontalCircle2, horizontalCircle3, horizontalCircle4,
@@ -63,11 +59,9 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
     @FXML
     ComboBox<String> modeBox;
 
-    public AdvancedCrossingSimulationController(Supplier<SceneManager> sceneManager, AdvancedObservableCrossing crossing, CrossingModeFactory crossingModeFactory) {
+    public AdvancedCrossingSimulationController(Supplier<SceneManager> sceneManager, AdvancedCrossingSimulationManager manager) {
         super(sceneManager);
-        this.crossing = crossing;
-        this.crossingModeFactory = crossingModeFactory;
-        this.stringCrossingModeMap = new HashMap<>();
+        this.simulationManager = manager;
     }
 
     @Override
@@ -75,31 +69,43 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
         isActive = false;
         resetLights();
 
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle1));
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle2));
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle3));
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle4));
+        List<LightObserver> horizontalPedestrian = List.of(
+                new FXShapeLightObserver(horizontalCircle1),
+                new FXShapeLightObserver(horizontalCircle2),
+                new FXShapeLightObserver(horizontalCircle3),
+                new FXShapeLightObserver(horizontalCircle4));
 
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle1));
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle2));
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle3));
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle4));
+        List<LightObserver> verticalPedestrian = List.of(
+                new FXShapeLightObserver(verticalCircle1),
+                new FXShapeLightObserver(verticalCircle2),
+                new FXShapeLightObserver(verticalCircle3),
+                new FXShapeLightObserver(verticalCircle4));
 
-        crossing.addHorizontalStraightStreetLightObserver(new FXShapeLightObserver(horizontalRectangle1Straight));
-        crossing.addHorizontalLeftStreetLightObserver(new FXShapeLightObserver(horizontalRectangle1Left));
-        crossing.addHorizontalRightStreetLightObserver(new FXShapeLightObserver(horizontalRectangle1Right));
+        List<LightObserver> horizontalStreetStraight = List.of(
+                new FXShapeLightObserver(horizontalRectangle1Straight),
+                new FXShapeLightObserver(horizontalRectangle2Straight));
 
-        crossing.addHorizontalStraightStreetLightObserver(new FXShapeLightObserver(horizontalRectangle2Straight));
-        crossing.addHorizontalLeftStreetLightObserver(new FXShapeLightObserver(horizontalRectangle2Left));
-        crossing.addHorizontalRightStreetLightObserver(new FXShapeLightObserver(horizontalRectangle2Right));
+        List<LightObserver> verticalStreetStraight = List.of(
+                new FXShapeLightObserver(verticalRectangle1Straight),
+                new FXShapeLightObserver(verticalRectangle2Straight));
 
-        crossing.addVerticalStraightStreetLightObserver(new FXShapeLightObserver(verticalRectangle1Straight));
-        crossing.addVerticalLeftStreetLightObserver(new FXShapeLightObserver(verticalRectangle1Left));
-        crossing.addVerticalRightStreetLightObserver(new FXShapeLightObserver(verticalRectangle1Right));
+        List<LightObserver> horizontalStreetLeft = List.of(
+                new FXShapeLightObserver(horizontalRectangle1Left),
+                new FXShapeLightObserver(horizontalRectangle2Left));
 
-        crossing.addVerticalStraightStreetLightObserver(new FXShapeLightObserver(verticalRectangle2Straight));
-        crossing.addVerticalLeftStreetLightObserver(new FXShapeLightObserver(verticalRectangle2Left));
-        crossing.addVerticalRightStreetLightObserver(new FXShapeLightObserver(verticalRectangle2Right));
+        List<LightObserver> verticalStreetLeft = List.of(
+                new FXShapeLightObserver(verticalRectangle1Left),
+                new FXShapeLightObserver(verticalRectangle2Left));
+
+        List<LightObserver> horizontalStreetRight = List.of(
+                new FXShapeLightObserver(horizontalRectangle1Right),
+                new FXShapeLightObserver(horizontalRectangle2Right));
+
+        List<LightObserver> verticalStreetRight = List.of(
+                new FXShapeLightObserver(verticalRectangle1Right),
+                new FXShapeLightObserver(verticalRectangle2Right));
+
+        simulationManager.addObserversToAdvancedCrossing(horizontalPedestrian, verticalPedestrian, horizontalStreetStraight, verticalStreetStraight, horizontalStreetLeft, verticalStreetLeft, horizontalStreetRight, verticalStreetRight);
 
         innerHorizontalRectangle1Straight.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowRight.png").toExternalForm())));
         innerHorizontalRectangle1Left.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowForward.png").toExternalForm())));
@@ -122,14 +128,7 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
 
         lengthBox.setValue(5);
 
-        stringCrossingModeMap.put("Simple Crossing Mode", crossingModeFactory.createSimpleCrossingMode());
-        stringCrossingModeMap.put("German Crossing Mode", crossingModeFactory.createGermanCrossingMode());
-        stringCrossingModeMap.put("Emergency Crossing Mode", crossingModeFactory.createEmergencyCrossingMode());
-        stringCrossingModeMap.put("Dutch Crossing Mode", crossingModeFactory.createDutchCrossingMode());
-        stringCrossingModeMap.put("Bulgarian Crossing Mode", crossingModeFactory.createBulgarianCrossingMode());
-
-        List<String> modes = new ArrayList<>(stringCrossingModeMap.keySet());
-        modeBox.setItems(entitiesToObservableListDistinct(modes));
+        modeBox.setItems(entitiesToObservableListDistinct(simulationManager.getAllCrossingModesStrings()));
 
         modeBox.setValue("German Crossing Mode");
     }
@@ -201,7 +200,7 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
     public void startSimulation() {
         if(!isActive) {
             changeColorOfAllLights("red");
-            crossing.activate(lengthBox.getValue() * 1000);
+            simulationManager.activateAdvancedCrossing(lengthBox.getValue() * 1000);
             isActive = true;
         }
     }
@@ -212,7 +211,7 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
     @FXML
     public void endSimulation() {
         if(isActive){
-            crossing.deactivate();
+            simulationManager.deactivateAdvancedCrossing();
             resetLights();
             isActive = false;
         }
@@ -236,9 +235,9 @@ public class AdvancedCrossingSimulationController extends ControllerBase impleme
     public void changeMode() {
         if(isActive) {
             endSimulation();
-            crossing.setMode(stringCrossingModeMap.get(modeBox.getValue()));
+            simulationManager.setAdvancedCrossingMode(modeBox.getValue());
             startSimulation();
         }
-        else crossing.setMode(stringCrossingModeMap.get(modeBox.getValue()));
+        else simulationManager.setAdvancedCrossingMode(modeBox.getValue());
     }
 }
