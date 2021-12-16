@@ -19,6 +19,10 @@ First, we created a few requirements for the traffic light. Important to know is
 
 The class diagram shows the TrafficLight interface and the classes it needs in order to work properly. First, we designed the different light behaviour. It is very straight forward that the light behaviour consists of multiple states following one and another, therefor we decided to use a state-machine-pattern like design here. Each behaviour-enum implements the LightState interface and therfore each state of this behavior needs to implement the 'getNextState' method. This way we can easily define different light states and the order of them. 
 
+
+### Factory Pattern (Henrik)
+
+
 ## Design principles
 
 ## Scrum (Patrick)
