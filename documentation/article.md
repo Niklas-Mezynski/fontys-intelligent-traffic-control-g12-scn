@@ -20,7 +20,7 @@ As the scrum master I was responsible for the general organization of the projec
 
 I also made sure that the meetings took place within the limitations of the timebox. Henrik and I worked together closely to make sure that he, as product owner, got the deliverables he wanted in-time. We planned the deliverables together in the project board and I made sure that everyone knew what their tasks were. 
 
-## Tests (Hendrik, Patrick)
+## Tests (Henrik, Patrick)
 
 The application itself has gotten quite big. It was paramount that we implemented high-quality tests with an excellent coverage. We also configured a task in GitHub which automatically runs all our tests for every new push. This made sure that our application continued to work as expected throughout the project. It also saved us a lot of time because we didn’t have to test everything manually after every sprint.
 
