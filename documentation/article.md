@@ -6,7 +6,7 @@ as well as to explain which design patterns and principles have been applied and
 The article will also provide individual explanation of the contribution to the project written by each team member.
 
 ## Overall architecture
-
+In terms of architecure our group decided to organize our system into separate layers, where each layer has different responsibilities. There are two main layers - the business logic and the presentation logic layers. The business logic layer is responible for handling the business rules, calculations, and logic within an application which dictate how it behaves. The purpose of the presentation logic layer is to display information to and collect information from the user - in other words it is responible for maintaining the user interface, where the end user interacts with the application. The two layers are closed - all user requests go throught the presentation layer to the business logic layer where they are executed and results are returned to the presentation layer and displayed to the user. The separate layers work in isolation in order to prevent business logic from accessing view logic directly, because we know that a lower level layer should not be able to access a higher level layer. This way we keep our layers as independent from each other as possible, which allows us to easily test them in isolation, maintain and extend them or even completely replace them in case such measures are needed, without worrying about accidentally breaking the system. Changes in one layer do not affect the other layer directly and the amount of rework needed to adapt to those new changes is very low.
 
 
 ## Design patterns
