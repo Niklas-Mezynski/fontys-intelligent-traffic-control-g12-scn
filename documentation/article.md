@@ -21,7 +21,9 @@ The class diagram shows the TrafficLight interface and the classes it needs in o
 
 
 ### Factory Pattern (Henrik)
-
+It is a creational pattern that helps create an object without the user getting exposed to creational logic.
+- Directly suppling the behavior for the trafficlight
+- Making sure that at the beginning, the trafficlights are always in the "Stop" state. 
 
 ## Design principles
 
@@ -49,7 +51,7 @@ When that was done the advanced crossing was created. This crossing consists of 
 
 * Daniel - 
 * Henrik - 
-As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. 
+As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. At the sprint review meeting, I took a look at our work and determined what eventually missed and how we could improve. 
 
 * Niklas - 
 * Patrick -
