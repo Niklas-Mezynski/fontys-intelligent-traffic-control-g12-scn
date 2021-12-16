@@ -62,10 +62,7 @@ This way changes can be easily made to a class in the system, without a lot or a
 the system following this principle, the more maintainable and easier to understand becomes the system. 
 The code quality of the application becomes better and much easier to read and understand, thereby having fewer defects.
 
-* Dependency inversion princple,
-* Interface Segregation Principle
-* Programming to an interface not implementation princple 
-- Our layered system design also contributed to the application of the Dependency inversion princple and the programming to an interface not implementation princple. 
+* Dependency inversion princple, Interface Segregation Principle, Programming to an interface not implementation princple - Our layered system design also contributed to the application of the Dependency inversion princple and the programming to an interface not implementation princple. 
 Program to an interface means that we don't depend on a concrete types to do our work, but we depend on types, which implement the needed interface. However, 
 this principle doesn't specify how we should get the required dependency. Therefore, we apply the DIP, which says that an object shouldn't control the creation of its dependencies,
 it should just advertise what dependency it needs and let the caller should provide it. The application of those two principles gives flexibility and stability 
@@ -78,9 +75,7 @@ software entities should be open for extension, but closed for modification. In 
 can be changed in runtime without the need to edit and recompile the code itself. This allows us to be agile in the use of our system by changing 
 its behavior during runtime without worrying about breaking it accidentally. 
 
-* Composition over inheritance princple
-* Encapsulate what changes pricniple
-- The use of strategy pattern also helped us apply the Composition over inheritance princple,
+* Composition over inheritance princple, Encapsulate what changes pricniple - The use of strategy pattern also helped us apply the Composition over inheritance princple,
 which allows changing the behavior of a class at run-time by setting property during run-time which provides flexibility to apply better implementation at any time.
 It also helped us to encapsulate what changes so it won’t affect the rest of our code. This way we could easily create new different behaviours or change the old ones for the same object without having to rework this object.
 
