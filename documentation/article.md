@@ -17,7 +17,7 @@ First, we created a few requirements for the traffic light. Important to know is
 
 ![Traffic light class diagram](../design/poster_class_diagram.png?raw=true "Class diagram for the traffic light and its corresponding classes")
 
-The class diagram shows the TrafficLight interface and the classes it needs in order to work properly. First, we designed the different light behaviour. It is very straight forward that the light behaviour consists of multiple states following one and another, therefor we decided to use a state-machine-pattern like design here. Each behaviour-enum implements the LightState interface and therefor each state of this behavior needs to implement the 'getNextState' method. This way we can easily define different light states and the order of them. The next design decision was made when we thought of applying different light behaviours to the traffic light. The traffic light shall be able to have a different behaviour depending on the location of it (e.g., netherlands/germany/bulgaria). We decided to apply the strategy pattern here, so we can supply the traffic lights with their behaviour during runtime. Therefor we don't need a separate traffic light for each behaviour. The traffic light just gets supplied with an 'initial' LightState and dependent of the implementation of this LightState, the behaviour of the traffic light is determined. 
+The class diagram shows the TrafficLight interface and the classes it needs in order to work properly. First, we designed the different light behaviour. It is very straight forward that the light behaviour consists of multiple states following one and another, therefor we decided to use a state-machine-pattern like design here. Each behaviour-enum implements the LightState interface and therfore each state of this behavior needs to implement the 'getNextState' method. This way we can easily define different light states and the order of them. 
 
 
 ### Factory Pattern (Henrik)
@@ -49,7 +49,7 @@ When that was done the advanced crossing was created. This crossing consists of 
 
 * Daniel - 
 * Henrik - 
-As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. 
+As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. At the sprint review meeting, I took a look at our work and determined what eventually missed and how we could improve. 
 
 * Niklas - 
 * Patrick -
