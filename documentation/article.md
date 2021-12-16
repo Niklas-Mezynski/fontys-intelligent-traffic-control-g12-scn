@@ -19,6 +19,12 @@ First, we created a few requirements for the traffic light. Important to know is
 
 The class diagram shows the TrafficLight interface and the classes it needs in order to work properly. First, we designed the different light behaviour. It is very straight forward that the light behaviour consists of multiple states following one and another, therefor we decided to use a state-machine-pattern like design here. Each behaviour-enum implements the LightState interface and therfore each state of this behavior needs to implement the 'getNextState' method. This way we can easily define different light states and the order of them. 
 
+### Observer pattern
+To make the GUI work we utilized the observer pattern. This servers as the bridge between the GUI and the business logic.
+
+The GUI observes specific components of individual traffic lights. Whenever a light change it gets updated automatically. Because it’s loosely coupled, we can easily switch modes within the GUI as well. 
+
+
 
 ### Factory Pattern (Henrik)
 
