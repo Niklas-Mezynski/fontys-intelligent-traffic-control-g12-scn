@@ -26,7 +26,7 @@ The application itself has gotten quite big. It was paramount that we implemente
 
 Our layered architecture also makes testing quite easy because we had the possibility to test every module independently.
 
-## Crossing modes
+## Crossing modes (Patrick)
 Crossings look different in every country. Therefore, it was essential that the crossings support different (pedestrian) traffic lights. 
 
 The first “Simple crossing” iteration consisted of two Pedestrian traffic lights. It was also already completely modular in the sense that it supported all kinds of pedestrian lights.
