@@ -91,8 +91,9 @@ this principle, where the major ones are code re-usability, reduced coupling, an
 ## Your (individual) role - area(s) you worked on
 
 * Daniel - GUI, setting up basic structure, application of design principles and patterns 
-* Henrik - Product owner, project board, tests, factory pattern
-* Niklas - Traffic light + strategy pattern & state pattern
-* Patrick - Scrum master, project board, tests, crossing modes
+* Henrik - Product owner, project board, tests, factory pattern - Factory
+* Niklas - Traffic light + strategy pattern & state pattern - Strategy and stagte
+* Patrick - Scrum master, project board, tests, crossing modes - Observer (Connection gui and business logic)
 * Tanja -  nothing
 
+## Patterns:
