@@ -21,9 +21,7 @@ The class diagram shows the TrafficLight interface and the classes it needs in o
 
 
 ### Factory Pattern (Henrik)
-It is a creational pattern that helps create an object without the user getting exposed to creational logic.
-- Directly suppling the behavior for the trafficlight
-- Making sure that at the beginning, the trafficlights are always in the "Stop" state. 
+It is a creational pattern that helps create an object without the user getting exposed to creational logic. By creating the different trafficlights in the factory, we directly supply the behavior to the trafficlight without creating the behavoir itself everytime. With this, we are making sure that at the beginning, the trafficlight are always in the "Stop" state.   
 
 ### Observer pattern (Patrick)
 To make the GUI work we utilized the observer pattern. This servers as the bridge between the GUI and the business logic.
