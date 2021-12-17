@@ -25,14 +25,24 @@ It is a creational pattern that helps create an object without the user getting 
 - Directly suppling the behavior for the trafficlight
 - Making sure that at the beginning, the trafficlights are always in the "Stop" state. 
 
-## Design principles
+### Observer pattern (Patrick)
+To make the GUI work we utilized the observer pattern. This servers as the bridge between the GUI and the business logic.
 
-## Scrum (Patrick)
+The GUI observes specific components of individual traffic lights. Whenever a light change it gets updated automatically. Because it’s loosely coupled, we can easily switch modes within the GUI as well. 
+
+## Design principles (Daniel)
+
+# hurry up daniel (jk take your time)
+
+## Scrum-master (Patrick)
 As the scrum master I was responsible for the general organization of the project team. I made sure that everyone knew when the meetings took place through the Outlook Calendar, checked that everyone is present and got a chance to voice their opinion or concerns. 
 
 I also made sure that the meetings took place within the limitations of the timebox. Henrik and I worked together closely to make sure that he, as product owner, got the deliverables he wanted in-time. We planned the deliverables together in the project board and I made sure that everyone knew what their tasks were. 
 
-## Tests (Henrik, Patrick)
+## Product owner (Henrik)
+As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. At the sprint review meeting, I took a look at our work and determined what eventually missed and how we could improve. 
+
+## Tests
 
 The application itself has gotten quite big. It was paramount that we implemented high-quality tests with an excellent coverage. We also configured a task in GitHub which automatically runs all our tests for every new push. This made sure that our application continued to work as expected throughout the project. It also saved us a lot of time because we didn’t have to test everything manually after every sprint.
 
@@ -46,13 +56,3 @@ The first “Simple crossing” iteration consisted of two Pedestrian traffic li
 After the first iteration was complete it got extended with two traffic lights. All lights were placed on an axis (horizontal and vertical). It was only possible for cars and pedestrians to go straight.
 
 When that was done the advanced crossing was created. This crossing consists of pedestrian lights going each direction + traffic lights with 3 lanes. Straight, left and right. We can control every light individually and thus create an entirely modular traffic light system. Its also possible to create an advanced crossing with only 1 or 2 traffic lanes. That’s completely up to the implementer. 
-
-## Your (individual) role - area(s) you worked on
-
-* Daniel - 
-* Henrik - 
-As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. At the sprint review meeting, I took a look at our work and determined what eventually missed and how we could improve. 
-
-* Niklas - 
-* Patrick -
-* Tanja -  
