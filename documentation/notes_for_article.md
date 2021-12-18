@@ -65,7 +65,7 @@ The code quality of the application becomes better and much easier to read and u
 * Dependency inversion princple, Interface Segregation Principle, Programming to an interface not implementation princple - Our layered system design also contributed to the application of the Dependency inversion princple and the programming to an interface not implementation princple. 
 Program to an interface means that we don't depend on a concrete types to do our work, but we depend on types, which implement the needed interface. However, 
 this principle doesn't specify how we should get the required dependency. Therefore, we apply the DIP, which says that an object shouldn't control the creation of its dependencies,
-it should just advertise what dependency it needs and let the caller should provide it. The application of those two principles gives flexibility and stability 
+it should just advertise what dependency it needs and let the caller provide it. The application of those two principles gives flexibility and stability 
 at the level of the entire architecture of our application. We also implemented our interfaces in such a way that they comply with the Interface Segregation Principle. 
 This principle states that a client should not implement an interface if it doesn’t use that, which happens mostly when one interface contains more than one functionality,
 and the client only needs one functionality and no other. With proper designing we managed to prevent such issues from occuring and we applied the pricniple as much as possible.
