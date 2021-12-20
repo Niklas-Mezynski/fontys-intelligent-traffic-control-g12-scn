@@ -89,14 +89,14 @@ This way we achieved good level of stability and testability in our system.
 
 ### Everyone
 
-*Research
+Research - 
 All team members contributed to the project by doing research about traffic systems in Europe and around the world. The collected intel was used to define the behaviour of business objects such 
 as the traffic lights and crossings.
 
-*Design
+Design - 
 All design decisions were made together in the group via discussions and all members contributed to final design of our system.
 
-* Tests
+Tests - 
 The application itself has gotten quite big. It was paramount that we implemented high-quality tests with an excellent coverage. 
 We also configured a task in GitHub which automatically runs all our tests for every new push. This made sure that our application continued to work as expected throughout the project. 
 It also saved us a lot of time because we didn’t have to test everything manually after every sprint.
