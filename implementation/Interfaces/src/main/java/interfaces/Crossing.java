@@ -44,8 +44,4 @@ public interface Crossing {
 
     void changeLightBehaviour(StreetLightState streetState, PedestrianLightState pedestrianState);
 
-    List<StreetTrafficLight> getAllStreetLights();
-
-    List<PedestrianTrafficLight> getAllPedestrianLights();
-
 }
