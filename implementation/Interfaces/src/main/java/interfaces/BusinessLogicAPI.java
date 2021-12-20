@@ -1,11 +1,11 @@
 package interfaces;
 
 public interface BusinessLogicAPI {
-    TrafficLightFactory getTrafficLightFactory();
+    PedestrianTrafficLightSimulationManager getPedestrianLightSimulationManager();
 
-    BasicObservableCrossing createBasicObservableCrossing();
+    StreetTrafficLightSimulationManager getStreetLightSimulationManager();
 
-    AdvancedObservableCrossing createAdvancedObservableCrossing();
+    BasicCrossingSimulationManager getBasicCrossingSimulationManager();
 
-    CrossingModeFactory getCrossingModeFactory();
+    AdvancedCrossingSimulationManager getAdvancedCrossingSimulationManager();
 }

@@ -32,11 +32,12 @@ public interface Crossing {
 
     void startVerticalLeft();
 
+    void startPedestrianHorizontal();
+
+    void startPedestrianVertical();
+
     void setMode(CrossingMode newMode);
 
     void changeLightBehaviour(StreetLightState streetState, PedestrianLightState pedestrianState);
 
-    List<StreetTrafficLight> getAllStreetLights();
-
-    List<PedestrianTrafficLight> getAllPedestrianLights();
 }

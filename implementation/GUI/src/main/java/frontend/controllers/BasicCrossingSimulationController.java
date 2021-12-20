@@ -2,7 +2,9 @@ package frontend.controllers;
 
 import frontend.SceneManager;
 import frontend.helpers.FXShapeLightObserver;
-import interfaces.BasicObservableCrossing;
+import interfaces.BasicCrossingSimulationManager;
+import interfaces.BusinessLogicAPI;
+import interfaces.LightObserver;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
@@ -26,7 +28,7 @@ import static frontend.helpers.ObservableListHelper.entitiesToObservableListDist
  * from the app user.
  */
 public class BasicCrossingSimulationController extends ControllerBase implements Initializable{
-    BasicObservableCrossing crossing;
+    BasicCrossingSimulationManager simulationManager;
     boolean isActive;
 
     @FXML
@@ -40,30 +42,36 @@ public class BasicCrossingSimulationController extends ControllerBase implements
     @FXML
     ComboBox<Integer> lengthBox;
 
-    public BasicCrossingSimulationController(Supplier<SceneManager> sceneManager, BasicObservableCrossing crossing) {
+    public BasicCrossingSimulationController(Supplier<SceneManager> sceneManager, BasicCrossingSimulationManager manager) {
         super(sceneManager);
-        this.crossing = crossing;
+        this.simulationManager = manager;
     }
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         isActive = false;
         resetLights();
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle1));
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle2));
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle3));
-        crossing.addHorizontalPedestrianLightObserver(new FXShapeLightObserver(horizontalCircle4));
+        List<LightObserver> horizontalPedestrian = List.of(
+                new FXShapeLightObserver(horizontalCircle1),
+                new FXShapeLightObserver(horizontalCircle2),
+                new FXShapeLightObserver(horizontalCircle3),
+                new FXShapeLightObserver(horizontalCircle4));
 
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle1));
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle2));
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle3));
-        crossing.addVerticalPedestrianLightObserver(new FXShapeLightObserver(verticalCircle4));
+        List<LightObserver> verticalPedestrian = List.of(
+                new FXShapeLightObserver(verticalCircle1),
+                new FXShapeLightObserver(verticalCircle2),
+                new FXShapeLightObserver(verticalCircle3),
+                new FXShapeLightObserver(verticalCircle4));
 
-        crossing.addHorizontalStreetLightObserver(new FXShapeLightObserver(horizontalRectangle1));
-        crossing.addHorizontalStreetLightObserver(new FXShapeLightObserver(horizontalRectangle2));
+        List<LightObserver> horizontalStreet = List.of(
+                new FXShapeLightObserver(horizontalRectangle1),
+                new FXShapeLightObserver(horizontalRectangle2));
 
-        crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle1));
-        crossing.addVerticalStreetLightObserver(new FXShapeLightObserver(verticalRectangle2));
+        List<LightObserver> verticalStreet = List.of(
+                new FXShapeLightObserver(verticalRectangle1),
+                new FXShapeLightObserver(verticalRectangle2));
+
+        simulationManager.addObserversToBasicCrossing(horizontalPedestrian, verticalPedestrian, horizontalStreet, verticalStreet);
 
         innerHorizontalRectangle1.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowRight.png").toExternalForm())));
         innerHorizontalRectangle2.setFill(new ImagePattern(new Image(getClass().getResource("/frontend/shapes/arrowLeft.png").toExternalForm())));
@@ -119,7 +127,7 @@ public class BasicCrossingSimulationController extends ControllerBase implements
     public void startSimulation() {
         if(!isActive) {
             changeColorOfAllLights("red");
-            crossing.activate(lengthBox.getValue() * 1000);
+            simulationManager.activateBasicCrossing(lengthBox.getValue() * 1000);
             isActive = true;
         }
     }
@@ -130,7 +138,7 @@ public class BasicCrossingSimulationController extends ControllerBase implements
     @FXML
     public void endSimulation() {
         if(isActive){
-            crossing.deactivate();
+            simulationManager.deactivateBasicCrossing();
             resetLights();
             isActive = false;
         }

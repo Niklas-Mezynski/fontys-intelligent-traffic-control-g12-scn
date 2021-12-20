@@ -120,6 +120,16 @@ public class SimpleCrossing implements Crossing {
     }
 
     @Override
+    public void startPedestrianHorizontal() {
+        horizontalPedestrianTrafficLight.startTraffic();
+    }
+
+    @Override
+    public void startPedestrianVertical() {
+        verticalPedestrianTrafficLight.startTraffic();
+    }
+
+    @Override
     public void setMode(CrossingMode newMode) {
         this.currentMode = newMode;
     }
@@ -140,8 +150,7 @@ public class SimpleCrossing implements Crossing {
         getAllStreetLights().forEach(streetTrafficLight -> streetTrafficLight.changeState(streetState));
     }
 
-    @Override
-    public List<StreetTrafficLight> getAllStreetLights() {
+    private List<StreetTrafficLight> getAllStreetLights() {
         List<StreetTrafficLight> allStreetLights = new ArrayList<>();
         allStreetLights.add(horizontalStreetTrafficLightStraight);
         allStreetLights.add(verticalStreetTrafficLightStraight);
@@ -152,8 +161,7 @@ public class SimpleCrossing implements Crossing {
         return allStreetLights;
     }
 
-    @Override
-    public List<PedestrianTrafficLight> getAllPedestrianLights() {
+    private List<PedestrianTrafficLight> getAllPedestrianLights() {
         return List.of(horizontalPedestrianTrafficLight, verticalPedestrianTrafficLight);
     }
 }

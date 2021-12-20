@@ -11,7 +11,6 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
-import shapes.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.FileDescriptor;
@@ -25,21 +24,14 @@ import static frontend.helpers.ObservableListHelper.entitiesToObservableListDist
 
 public class SingleStreetTrafficLightSimulationController extends ControllerBase implements Initializable {
     Timer timer;
-    TrafficLightFactory trafficLightFactory;
-    LightBehaviourFactory lightBehaviourFactory;
-    StreetTrafficLight currentTrafficLight;
-    Map<String, StreetShape> stringToShapeMap;
     Map<String, String> shapeToURLMap;
-    Map<String, StreetLightState> behaviourMap;
     boolean isSimulationStarted;
     private final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+    private final StreetTrafficLightSimulationManager simulationManager;
 
-    public SingleStreetTrafficLightSimulationController(Supplier<SceneManager> sceneManager, TrafficLightFactory factory) {
+    public SingleStreetTrafficLightSimulationController(Supplier<SceneManager> sceneManager, StreetTrafficLightSimulationManager manager) {
         super(sceneManager);
-        this.trafficLightFactory = factory;
-        this.lightBehaviourFactory = factory.getLightBehaviourFactory();
-        stringToShapeMap = new HashMap<>();
-        behaviourMap = new HashMap<>();
+        this.simulationManager = manager;
         shapeToURLMap = new HashMap<>();
         isSimulationStarted = false;
         resetTimer();
@@ -64,38 +56,24 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     public void initialize(URL url, ResourceBundle resourceBundle) {
         resetLight();
 
-        stringToShapeMap.put("Arrow Forward Shape", new ArrowForwardShape());
-        stringToShapeMap.put("Arrow Left Shape", new ArrowLeftShape());
-        stringToShapeMap.put("Arrow Right Shape", new ArrowRightShape());
-
-        behaviourMap.put("German Street Behaviour", lightBehaviourFactory.getInitialGermanStreetState());
-        behaviourMap.put("Dutch Street Behaviour", lightBehaviourFactory.getInitialDutchStreetState());
-        behaviourMap.put("Bulgarian Street Behaviour", lightBehaviourFactory.getInitialBulgarianStreetState());
-
         shapeToURLMap.put("Arrow Forward Shape", "/frontend/shapes/arrowForward.png");
         shapeToURLMap.put("Arrow Left Shape", "/frontend/shapes/arrowLeft.png");
         shapeToURLMap.put("Arrow Right Shape", "/frontend/shapes/arrowRight.png");
 
-        List<String> shapes = new ArrayList<>(stringToShapeMap.keySet());
-        shapes.addAll(stringToShapeMap.keySet());
-        shapeBox.setItems(entitiesToObservableListDistinct(shapes));
+        shapeBox.setItems(entitiesToObservableListDistinct(simulationManager.getAllStreetShapesStrings()));
 
-        List<String> behaviours = new ArrayList<>(behaviourMap.keySet());
-        behaviourBox.setItems(entitiesToObservableListDistinct(behaviours));
+        behaviourBox.setItems(entitiesToObservableListDistinct(simulationManager.getAllStreetLightBehaviourStrings()));
 
         List<Integer> lengths = List.of(1, 2, 3, 4, 5);
         lengthBox.setItems(entitiesToObservableListDistinct(lengths));
-
-        currentTrafficLight = trafficLightFactory.createGermanStreetTrafficLight("currentTrafficLight");
 
         shapeBox.setValue("Arrow Forward Shape");
         behaviourBox.setValue("German Street Behaviour");
         lengthBox.setValue(5);
 
-        currentTrafficLight.addLightObserver(new FXShapeLightObserver(lightCircle));
-        currentTrafficLight.addShapeObserver(new CircleShapeObserver(innerCircle, shapeToURLMap));
+        simulationManager.addObserversToStreetTrafficLight(new FXShapeLightObserver(lightCircle), new CircleShapeObserver(innerCircle, shapeToURLMap));
 
-        currentTrafficLight.setShape(new ArrowForwardShape());
+        simulationManager.setShapeOfStreetTrafficLight("Arrow Forward Shape");
 
         System.setOut(new PrintStream(outputStreamCaptor));
     }
@@ -127,9 +105,10 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
             timer.schedule(new TimerTask() {
                     @Override
                     public void run() {
-                        currentTrafficLight.changeToNextState();
-                        stateField.setText(currentTrafficLight.getCurrentState().getName());
+                        simulationManager.changeStateToNextForStreetTrafficLight();
+                        stateField.setText(simulationManager.getNameOfCurrentStateOfStreetTrafficLight());
                         textArea.setText(outputStreamCaptor.toString());
+                        textArea.appendText("\n");
                     }
                 }, 0, lengthBox.getValue() * 1000);
         }
@@ -159,7 +138,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
      */
     @FXML
     public void changeShape() {
-        currentTrafficLight.setShape(stringToShapeMap.get(shapeBox.getValue()));
+        simulationManager.setShapeOfStreetTrafficLight(shapeBox.getValue());
     }
 
     /**
@@ -169,11 +148,11 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     public void changeBehaviour() {
         if(isSimulationStarted) {
             endSimulation();
-            currentTrafficLight.changeState(behaviourMap.get(behaviourBox.getValue()));
+            simulationManager.setLightBehaviourOfStreetTrafficLight(behaviourBox.getValue());
             startSimulation();
         }
         else {
-            currentTrafficLight.changeState(behaviourMap.get(behaviourBox.getValue()));
+            simulationManager.setLightBehaviourOfStreetTrafficLight(behaviourBox.getValue());
         }
     }
 
