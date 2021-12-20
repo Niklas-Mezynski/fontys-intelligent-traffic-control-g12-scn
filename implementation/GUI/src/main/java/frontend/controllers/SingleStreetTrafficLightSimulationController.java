@@ -100,6 +100,7 @@ public class SingleStreetTrafficLightSimulationController extends ControllerBase
     @FXML
     public void startSimulation() {
         resetTimer();
+        System.setOut(new PrintStream(outputStreamCaptor));
         if(!isSimulationStarted){
             isSimulationStarted = true;
             timer.schedule(new TimerTask() {

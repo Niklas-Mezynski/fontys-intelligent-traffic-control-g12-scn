@@ -74,6 +74,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
         simulationManager.addObserversToPedestrianTrafficLight(new FXShapeLightObserver(lightCircle), new CircleShapeObserver(innerCircle, shapeToURLMap));
 
         simulationManager.setShapeOfPedestrianTrafficLight("Dot Shape");
+
         System.setOut(new PrintStream(outputStreamCaptor));
     }
 
@@ -99,6 +100,7 @@ public class SinglePedestrianTrafficLightSimulationController extends Controller
     @FXML
     public void startSimulation() {
         resetTimer();
+        System.setOut(new PrintStream(outputStreamCaptor));
         if(!isSimulationStarted){
             isSimulationStarted = true;
             timer.schedule(new TimerTask() {
