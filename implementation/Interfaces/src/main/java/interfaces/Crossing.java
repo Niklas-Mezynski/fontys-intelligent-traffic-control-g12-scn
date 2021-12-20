@@ -39,4 +39,13 @@ public interface Crossing {
     void setMode(CrossingMode newMode);
 
     void changeLightBehaviour(StreetLightState streetState, PedestrianLightState pedestrianState);
+
+    void setMode(CrossingMode newMode);
+
+    void changeLightBehaviour(StreetLightState streetState, PedestrianLightState pedestrianState);
+
+    List<StreetTrafficLight> getAllStreetLights();
+
+    List<PedestrianTrafficLight> getAllPedestrianLights();
+
 }

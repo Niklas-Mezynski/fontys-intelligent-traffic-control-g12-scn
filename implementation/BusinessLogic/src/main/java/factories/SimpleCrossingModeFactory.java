@@ -20,7 +20,7 @@ public class SimpleCrossingModeFactory implements CrossingModeFactory {
 
     @Override
     public CrossingMode createEmergencyCrossingMode() {
-        return new EmergyencyCrossingMode();
+        return new EmergencyCrossingMode();
     }
 
     @Override
@@ -39,7 +39,7 @@ public class SimpleCrossingModeFactory implements CrossingModeFactory {
         ArrayList<CrossingMode> list = new ArrayList<>();
         list.add(new SimpleGermanCrossingMode());
         list.add(new GermanCrossingMode());
-        list.add(new EmergyencyCrossingMode());
+        list.add(new EmergencyCrossingMode());
         list.add(new DutchCrossingMode());
         list.add(new BulgarianCrossingMode());
 
