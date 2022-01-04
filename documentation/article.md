@@ -108,7 +108,7 @@ checked that everyone is present and got a chance to voice their opinion or conc
 I also made sure that the meetings took place within the limitations of the timebox. Henrik and I worked together closely to make sure that he, as product owner, got the deliverables he wanted in-time. 
 We planned the deliverables together in the project board and I made sure that everyone knew what their tasks were. 
 
-As a team member, I ...
+As a team member, I took part in the group designing discussions and contributed to the decisions we made as a group. I primarily worked on the Visual Paradigm file. During the implementation I primarily focussed on creating tests and also focussed on the trafficlights themselves.
 
 ### Henrik
 As a product owner, I was responsible for frequently updating the product backlog. After every sprint planning meeting, I set up the "To Do" log for the next sprint. 
