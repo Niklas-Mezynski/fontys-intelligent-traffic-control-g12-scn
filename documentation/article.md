@@ -118,7 +118,7 @@ I prioritized the different worked out user stories and based on that, put them 
 As a team member, I ...
 
 ### Niklas
-As a team member I ...
+As a team member, I always tried to understand the design ideas of my group members and liked to discuss them together. I really liked that we designed the whole business logic together, so that we could consider different design approaches and find the best one. I have also written a lot of tests for our project in order to get a good test coverage. I am proud of the traffic light design we came up with where we used the strategy and state pattern together. 
 
 ### Daniel 
 As a team member I did research on traffic control systems around the world. I took part in the group designing discussions and contributed to the decisions taken.
