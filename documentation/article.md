@@ -118,8 +118,11 @@ I prioritized the different worked out user stories and based on that, put them 
 As a team member, I ...
 
 ### Niklas
-As a team meber I ...
+As a team member I ...
 
 ### Daniel 
-As a team meber I ...
+As a team member I did research on traffic control systems around the world. I took part in the group designing discussions and contributed to the decisions taken.
+I set up the initial structure of our application and of our repository on Github with Continious Integration using Github Actions. During the implementation I worked 
+on some parts of our business logic by defining business objects and their behaviours based on the design choices we made together.
+I implemented a simple GUI to allow us to easily showcase our major use cases. I wrote tests for some of the business objects I implemented.
 
