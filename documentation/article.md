@@ -115,7 +115,7 @@ As a product owner, I was responsible for frequently updating the product backlo
 At the start of every meeting of the group, I basically communicated the current status of our work and where we are right now. What we are actually doing in a specific meeting is either decided by the group itself or by me. 
 I prioritized the different worked out user stories and based on that, put them into the "To Do" log for each sprint. At the sprint review meeting, I took a look at our work and determined what eventually missed and how we could improve. 
 
-As a team member, I ...
+As a team member, I tried to contribute to the design of the hole application as much as possible. Moreover, as well as Patrick, I primarily worked on the Visual Paradigm file, more precisely on the specific requirements of each user story and on different diagrams (for example state machine diagrams of the different light behaviours). I also worked on the factory pattern, wrote tests for different light behaviors and for the factories. Besides that, I worked on the data dictionary.
 
 ### Niklas
 As a team member, I always tried to understand the design ideas of my group members and liked to discuss them together. I really liked that we designed the whole business logic together, so that we could consider different design approaches and find the best one. I have also written a lot of tests for our project in order to get a good test coverage. I am proud of the traffic light design we came up with where we used the strategy and state pattern together. 
