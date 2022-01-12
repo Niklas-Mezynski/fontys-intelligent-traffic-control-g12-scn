@@ -133,3 +133,4 @@ hs_err_pid*
 *.BAK_*
 *.lck
 *.DS_Store
+.DS_Store
